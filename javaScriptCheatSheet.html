@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cheat Sheet</title>
+
+    <script src="cheatSheetAutomation.js"></script>
+    <script src="../Resources/Libraries/jquery-3.5.0.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="cheatSheetStyles.css">
+
+</head>
+
+<body>
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="cheatSheet.html">HTML <span class = "navSpacer">|</span></a></li>
+                <li><a href="cssCheatSheet.html">CSS <span class = "navSpacer">|</span></a></li>
+                <li><a href="javaScriptCheatSheet.html">javaScript <span class = "navSpacer">|</span></a></li>
+                <li><a href="jQueryCheatSheet.html">jQuery <span class = "navSpacer">|</span></a></li>
+                <li><a href="commandLine.html">Command Line <span class = "navSpacer">|</span></a></li>
+                <li><a href="sql.html">SQL <span class = "navSpacer">|</span></a></li>
+                <li><a href="python.html">Python <span class = "navSpacer">|</span></a></li>
+                <li><a href="php.html">PHP <span class = "navSpacer">|</span></a></li>
+                <li><a href="java.html">Java <span class = "navSpacer">|</span></a></li>
+                <li><a href="c-sharp.html">C# <span class = "navSpacer">|</span></a></li>
+                <li><a href="git.html">Git</a></li>
+            </ul>
+        </nav>
+
+        <h1>javaScript </h1>
+
+
+    </header>
+    <nav id="internalNavigation">
+        <details>
+            <summary>Go to&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</summary>
+            <ul>
+                <li><a href="#top">Data Types</a></li>
+                <li><a href="#definitions">Important definitios</a></li>
+                <li><a href="#arrays">Arrays</a></li>
+                <li><a href="#templateLiterals">Template literals</a></li>
+                <li><a href="#usefulMethods">Table of methods</a></li>
+                <li><a href="#conditionalStatements">If/Switch/Ternary</a></li>
+                <li><a href="#functions">Functions</a></li>
+                <li><a href="#loops">Loops</a></li>
+                <li><a href="#objects">Objects</a></li>
+                <li><a href="#DOM">DOM</a></li>
+                <li><a href="#handlebars">Handlebars</a></li>
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#errors">Error Handling</a></li>
+                <li><a href="#asynchronous">Asynch Ops</a></li>
+                <li><a href="#requests">Requests</a></li>
+                <li><a href="#transpilation">Transpilation</a></li>
+                <li><a href="#JSX">JSX</a></li>
+                <li><a href="#express">Express</a></li>
+                <li><a href="#testing">Testing</a></li>
+                <li><a href="#mongoose">Mongoose</a></li>
+
+
+            </ul>
+        </details>
+    </nav>
+
+    <main>
+
+        <h2>Linking external js files</h2>
+        <p><code>&ltscript <span class="green">defer</span> type=<span class="orange">"text/javascript"</span> src=<span class="orange">"./script.js"</span>&gt&lt/script&gt</code></p>
+        <p>When a browser loads an HTML file, the moment it finds a <code>&ltscript&gt</code> tag it stops loading the html content until the script has been loaded and executed. This leads to page load delay and also, if the html on the page depends on
+            that script, shit will happen from the script loading before the html. The <code>defer</code> attribute stops the browser from executing the code until the html is loaded. There is also the <code>async</code> attribute. when a browser sees
+            a script tag with a async attribute in it, it will carry on loading the html and script at the same time. The script will execute inmediately after it finishes loading wheather the html is ready or not.</p>
+
+        <h2>Data types</h2>
+        <ul>
+
+            <li>Number.</li>
+            <li>String: any grouping of characters surounded by <q>quotes. Se the whole stuff on strings <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">here</a>.</q></li>
+            <li>Boolean: True or False</li>
+            <li>Null: (without quotes) represents the intentional absence of a value.</li>
+            <li>Undefined: it also represents the absence of a value but has a different meaning the null (I don't know how yet)</li>
+            <li>Symbols: apparently I don't need to worry about these at this stage.</li>
+            <li>Object: an object is a set of data and actions that one can use on their code.<br> When we say <code>console.log()</code> we are applying the .log() action (or method) on the 'console' object.</li>
+        </ul>
+
+        <h3>typeof operator</h3>
+        <p>It is possible to find out what data type a variable contains.</p>
+        <p class="code"><span class="brown">var</span> variable01 = "Batatas are sweet"<br><span class="brown">var</span> variable02 = 25<br>typeof variable01 = "string"<br>typeof vaiable02 = "number"</p>
+
+        <h2 id="definitions">Terminology bulshit</h2>
+        <dl>
+            <dt>Properties</dt>
+            <dd>Every <strong>string</strong> has a property called <code>length</code> that stores the ammount of characters in that string. We can retrieve that information by appending (connecting) the string and the property name with a <em>dot operator</em>.</dd>
+            <p class="code"><span class="brown">var</span> myString01 = "Hello motherfuckers".<br>word.length = 19 |<span class="brown">Where 'length' is the property name.</span></p>
+
+            <dt>Methods</dt>
+            <dd>Methods are actions we can perform. And we do so by using the dot operator to call a method on a string or object and then we follow it with a set of parenthesis.</dd>
+            <p class="code">myString01.startsWith('H') = True<br><span class="brown">startsWith is the method name.</span></p>
+            <dt>Variables</dt>
+            <dd>the <code>let</code> keyword creates a local variable. The <code>var</code> keyword creates a global variable. The <code>const</code> keyword creates a constant variable, this variables can't be reasigned a value after they've been defined.
+                <strong>Global variables</strong> are accesible from anywhere in te js file whereas <strong>local variables</strong> (defined within a {block of code}) are only accessible within that block of code. Codecademy say it's better to use local
+                variables; global ones use more memory becasue they stay there (on the <i>global namespace</i>) and can get mixed up with each other.</dd>
+        </dl>
+
+        <h2 id="arrays">Arrays</h2>
+        <p>Arrays can contain any data type, they can be built through an <i>array literal</i> (wrap the elements in square brackets and separated by commas) and stored into variables. Just like strings, arrays have a built-in property that stores the amount
+            of elementsin the array.</p>
+        <div class="code"><span class="brown">var</span> myFirstArray: [<span class="orange">'string'</span>, <span class="green">true</span>, <span class="blue">20</span>];<br>myFirstArray.<span class="brown">length</span>&nbsp;| <span class="red">returns the number of elements (3)</span></div>
+        <p>Arrays defined using the <code>const</code> keyword can have their elements modified but the variable itself cannot be modified (you can't assign a hole new array to the variable for example).</p>
+        <p>For increased faff we have the option of <b>nesting</b> arrays:</p>
+        <div class="code"><span class="brown">var</span> myNestedArray: [1,[2,3]];<br>myNestedArray[1]; &nbsp;&nbsp;&nbsp;| <span class="red">returns [2,3]</span><br>myNestedArray[1][0]; | <span class="red">returns 2</span></div>
+
+        <h2 id="templateLiterals">Template literals</h2>
+        <p>It is possible to add variables into a string (interpolate). Tamplate literals are wrapped by backticks (`) and a placeolder <code>${myVar}</code> is used to add the value of the variable <code>myVar</code> into the string.</p>
+        <p class="center"><img id="tempLiterals" src="Images/templateLiterals.jpg" alt="Template literals example"></p>
+
+        <section id="usefulMethods">
+            <table>
+                <caption>Some useful methods.</caption>
+                <caption id="jsTableBottomCap" style="caption-side: bottom"><sup class="red">1</sup><em>Array Iteration Methods</em> are built in array methods for scanning through arrays. Find them all <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods">here</a>.<br>
+                    <sup class="red">2</sup> Find all the built-in object methods <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods">here</a></caption>
+                <tr>
+                    <th>Type</th>
+                    <th>Methods</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <th rowspan="4">String</th>
+                    <td class="string">startsWith</td>
+                    <td>Will return <code>true</code> if the string starts with the parameter given</td>
+                </tr>
+                <tr>
+                    <td class="string"> toUpperCase</td>
+                    <td>Returns the string in upper case.</td>
+                </tr>
+                <tr>
+                    <td class="string"> match(regExp)</td>
+                    <td>Returns an array containing the matching regular expressions.</td>
+                </tr>
+                <tr>
+                    <td class="string">trim</td>
+                    <td>Removes whitespace from both ends of the string.</td>
+                </tr>
+                <tr>
+                    <th rowspan="1">Number object</th>
+                    <td>isInteger</td>
+                    <td>Returns <code>true</code> if the number given is an integer.</td>
+                </tr>
+                <tr>
+                    <th rowspan="13">Arrays</th>
+                    <td>push('a','b')</td>
+                    <td>Adds the elements given at the end of the array.</td>
+                </tr>
+                <tr>
+                    <td>pop()</td>
+                    <td>Returns the last element of the array and removes it.</td>
+                </tr>
+                <tr>
+                    <td>shift()</td>
+                    <td>Returns the first element of the array and removes it.</td>
+                </tr>
+                <tr>
+                    <td>unshift('a','b')</td>
+                    <td>Adds the given elements at the begining of the array.</td>
+                </tr>
+                <tr>
+                    <td>slice(a,b)</td>
+                    <td>Returns a new array containing the elements a to b (b not included). The original array is not modified. If b is not specified, it includes all elements from a onwards.</td>
+                </tr>
+
+                <tr>
+                    <td>splice(a,b,"c")</td>
+                    <td>From index a, remove b elements and insert "c" in their place. Set b to 0 for adding an element without removing anything.</td>
+                </tr>
+                <tr>
+                    <td>join()</td>
+                    <td>Turns the array into a single string.</td>
+                </tr>
+                <tr>
+                    <td>indexOf()</td>
+                    <td>Returns the first index at which a given element can be found in the array, or -1 if it is not present.</td>
+                </tr>
+                <tr>
+                    <td>findIndex(<code>a => condition</code>)<sup class="red">1</sup></td>
+                    <td>Returns the index of the first element tha evaluates to <code>true</code> in the condition. Returns -1 if no elements match the condition.</td>
+                </tr>
+                <tr>
+                    <td>forEach(<code>(a, b, c) => {code block}</code>)<sup class="red">1</sup></td>
+                    <td>We are basically defining an anonymus functon that takes the parameter <code>a</code> (which takes as a value the different elemetns of the array, in turns) and applies the <code>code block</code> using that parameter. Parameters <code>b</code>                        and <code>c</code> represent index and array respectively.</td>
+                </tr>
+                <tr>
+                    <td>map(<code>a => {code block}</code>)<sup class="red">1</sup></td>
+                    <td>Works in a similar way to <code>forEach</code> but returns a new array made of the values returned by the function.</td>
+                </tr>
+                <tr>
+                    <td>filter(<code>a => condition</code>)<sup class="red">1</sup></td>
+                    <td>Returns a new array containing the elements tha evaluate to <code>true</code> in the condition.</td>
+                </tr>
+                <tr>
+                    <td>reduce(<code>(a,b) => {return a+b}, c</code>)<sup class="red">1</sup></td>
+                    <td>On the first iteration, <code>a</code> takes the value of <code>c</code> and <code>b</code> takes the value of array[0]. The code block runs and its return value is stored in <code>a</code>, <code>b</code> now takes the value of array[1].
+                        The code keeps on running all through the array and returns the last value of <code></code>a. It is essentially used for adding up all the numbers in an array. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce">Reference</a>.</td>
+                </tr>
+                <tr>
+                    <th rowspan="3">Objects<sup class="red">2</sup></th>
+                    <td>Object.keys(yourObject)</td>
+                    <td>Grabs yourObject's keys and stores them in an array.</td>
+                </tr>
+                <tr>
+                    <td>Object.entries(myObject)</td>
+                    <td>Returns an array made of arrays that contain the key:value pairs in myObject.</td>
+                </tr>
+                <tr>
+                    <td>Object.assign(a,b)</td>
+                    <td>It adds all the properties of b into a and returns a (a and b are objects).</td>
+                </tr>
+
+
+            </table>
+
+
+        </section>
+        <section id="conditionalStatements">
+            <h2>Conditional Statements</h2>
+            <h3>if...else statements</h3>
+            <p class="code">if(condition-1) {code-1}<br>else if (condition-2) {code-2}<br>&nbsp.<br>&nbsp.<br>&nbsp.<br>else if (condition-n) {code-n}<br>else {code-(n+1)}</p>
+            <p>If condition-1 evaluates to true, then code-1 executes. If it evaluates to false, then condition-2 is evaluated and code-2 executes if it is true. If all conditions evaluate to false, then code-(n+1) executes.</p>
+
+            <h3>Truthy or Falsy</h3>
+            <p class="code">if (variable){code}</p>
+            <p>In this case the code will execute if the variable exists (is <i>truthy</i>). It won't execute if the variable is <i>undefined</i>, <i>null</i>, equal to 0 or an empty string ("") (is <i>falsy</i>).</p>
+
+            <h3>Short circuit evaluation</h3>
+            <p>Given the code:</p>
+            <p class="code"><span class="brown">let</span> varA<br>if (varB){varA = varB}<br>else {varA = "default value"}</p>
+            <p>The same result can be achieved with the following short circuit:</p>
+            <p class="code"><span class="brown">let</span> varA = varB || "default value"</p>
+            <p>In the case above we define a variable <code>varA</code> and it gets assigned the value of <code>varB</code> if that variable is <i>truthy</i> or "alt value" if <code>varB</code> is <i>falsy</i></p>
+
+            <h3>Ternary operator</h3>
+            <p>The ternary operator is a short form for conditions of the type: "If (condition == true) {code1} else {code2}" and its syntax is:</p>
+            <p class="code">(condition) ? code1 : code2</p>
+
+            <h3>Switch keyword</h3>
+            <p>This tool is used to replace lots of <code>else if</code> statements. The 'default' statement at the end states the code to be executed if none of the cases match the vairable.</p>
+            <p class="code"><span class="brown">let</span> userInput = "tomato"<br> switch (userInput){<br> &nbsp <span class="orange">case</span> "batata": console.log("Batatas are £0.83");<br><span class="blue">break;</span><br> &nbsp <span class="orange">case</span>                "banana": console.log("Bananas are £1.12);<br><span class="blue">break;</span><br> &nbsp <span class="orange">case</span> "pinaple": console.log("Pinaples are £16.3);<br><span class="blue">break;</span><br> &nbsp <span class="orange">case</span>                "yourMum": console.log("Your mum is £4.20");<br><span class="blue">break;</span><br> &nbsp <span class="brown">default</span>: console.log("Vegetable not found");<br><span class="blue">break;</span><br> }
+            </p>
+        </section>
+
+        <section id="functions">
+            <h2>Functions</h2>
+            <p>See the Codecademy summary <a href="https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-functions/cheatsheet">here</a>. And find out everything there is to know about this really simple topic <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">here</a>.</p>
+            <h3>Default parameters</h3>
+            <p>Given the function:</p>
+            <p class="code"><span class="blue">function</span> fn01 (<span class="orange">input</span> = "Default"){<br>&nbsp<span class="brown">return</span> `Congratulations, ${<span class="orange">input</span>}! You've defined a function.`}</p>
+            <p>When the function is called, it will output <code>Congratulations, Default! You've defined a function.</code> Unless a different name is given, in which case it wil override the default parameter.</p>
+
+            <h3>Arrow functions</h3>
+            <p>See the reference <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">here</a>.</p>
+
+            <p>Because having two ways of defining a function wasn't enough (the traditional way and the variable way), they went and released a third way of defining a function:</p>
+            <p class="code"><span class="red">(1) </span><span class="blue">const</span> functionName = (par01, par02, ..., parN)<span class="blue"> =></span> {code}</p>
+            <p>Note that in a few pointlessly specific cases the function definition becomes shorter:
+                <ul>
+                    <li>If and only if the function takes a single parameter, the parentheses around it are not needed.</li>
+                    <li>If and only if the code block is made of a single line, both the <code>return</code> keyword and the curly brackets are not needed.</li>
+                </ul>
+                Which looks like this:</p>
+            <p class="code"><span class="blue">const</span> functionName = parameter => code</p>
+
+            <p>Now, just to be sure, let's compare <code><span class="red">(1)</span></code> with Function Expressions:</p>
+            <p class="code"><span class="blue">const</span> functionName = <span class="blue">function</span> (par01, par02, ..., parN) {code}</p>
+            <p>Wow! it really seems worth it having a hole new way of defining a function when you gain that much convenience!</p>
+            <p class="darkRed">Arrow functions are best not used as methods (don't ask me why) and have a funny interpretation of the <code>this</code> keyword.</p>
+
+            <h3>Higher order functions</h3>
+            <p>Higher order functions are those that take a function as a parameter, return a function, or both.<br>In javaScript funcitons can be treated as another data type and that allows us to assign a function as the value of a variable. You might
+                think 'Why on earth would I want to do this?' and somebody would say 'Well, imagine you have a function with a very long name and want to rename it but without loosing all the info held in its name' to which you would say 'Just don't be
+                an idiot and use comments instead of a long ass name'. Either way, we can do it because its javaScript and here is how to:
+            </p>
+            <div class="code">
+                <span class="blue">function</span> functionWithAStupidlyLongName() {<br>&nbsp; /*code block*/<br>};<br><span class="brown">const</span> newName = functionWithAStuidlyLongName;<br>newName()
+            </div>
+            <p>Note that when assigning the function to the constant variable, we do it without parenthesis because we want to assign the function itself, not the value it returns when it is invoked.</p>
+
+        </section>
+        <section id="loops">
+            <h2>The wonderful world of loops</h2>
+            <h3>Loop interruption keywords</h3>
+            <ul>
+                <li><code>continue</code>: interrupts the current iteration and jumps over to next iteration of loop. </li>
+            </ul>
+            <h3><strong>For</strong> loops</h3>
+            <p>The for loop is made of three expressions: initialization; stopping expression; iteration. The first two expressions are analized at the beginning of each iteration and the last one is applied at the end.</p>
+            <div class="code"><span class="blue">for</span> (<span class="brown">let</span> a = 0; <span class="black">a &lt X</span>;<span class="green">a++</span>) {code block}</div>
+
+            <h3><strong>While</strong> loops</h3>
+            <p>The while loops is very similar, only that the variable whose value the loop evaluates before running the code is defined outside the loop and the iterator is added inside the code block:</p>
+            <div class="code"><span class="brown">var</span> a = 0;<br><span class="blue">while</span><span class="black"> (a &lt X)</span> {<br>&nbsp; /*code block*/<br>&nbsp;<span class="green">a++</span>;<br>}
+            </div>
+
+            <h3><strong>Do ... while</strong> loops</h3>
+            <p>In the <code>do ... while</code> loop the condition is evaluated after the first iteration, which means the code will run at least once even if the condition evaluates to false the first time.</p>
+            <div class="code"><span class="brown">let</span> a = 0<br><span class="blue">do</span> {<br>/*code block*/<br><span class="green">a++</span>;}<br><span class="blue">while</span> (<span class="black">a &lt X</span>)</div>
+
+            <h3><strong>For ... in</strong> loops for objects</h3>
+            <p>Objects properties are anordered and that makes it impossible to iterate through them using the traditional for loop. But worry not my dear friends, here comes the loop of loops, the loop that loops through any loop, and object: </p>
+            <div class="code"><span class="blue">for</span>(i in objectName) {<br>&nbsp; console.log(`${i}: ${objectName[i]`)<br>}</div>
+            <p>In this case <code>i</code> isn't an index, it is the key.</p>
+
+        </section>
+        <section id="objects">
+            <h2>darthScript Vader: <strong>Objects</strong></h2>
+            <p>To create an object we use an <em>object literal</em>, that is, a pair of curly braces filled with <strong>unordered data</strong> in the form of <strong>"key": value</strong> pairs separated by commas ',' that form the object's <em>properties</em>.
+                Keys are allways strings and the values can be any data type, including other objects.</p>
+            <div class="code"><span class="brown">let</span> spaceShip = {<br>&nbsp; <span class="orange">"color"</span>: <span class="orange">"matte silver"</span>,<br>&nbsp; <span class="orange"> "tank capacity(L)"</span>: <span class="blue">150</span><br>}</div>
+
+            <h3>Accessing an object's property</h3>
+            <p>Object properties can be acces through their key name using the dot operator: <code>objectName.key</code> returns the value of that property.<br>Another way to access a property is with brackets: <code>objectName["key"]</code>; This way <b>must</b>                be used when accessing a key that has special caracters or spaces in it and it apparently has other advantages so we might as well stick to it to avoid fucking up and getting untraceable errors.<br>An object can be updated by accessing
+                one of its properties and assigning a new value with the <i>assignment operator</i> '='. If the property already exists, it will be assignd the new value, if it doesn't, it will be created.<br> Properties can be deleted with: <code><span class="blue">delete</span> objectName.key</code></p>
+
+            <h3>Methods</h3>
+            <p>When the data stored in an object is a function, we call it a <em>method</em>. This is why to call a method we need a <i>dot operator</i> and pair of parentheses, because we are calling an object's property that is actually a function. Para
+                que quede claro, un metodo es una funcion guardada en un objeto</p>
+
+            <p>Writing an method into an object was quite intuitive and straightforward - the key is the function name, then use the keyword <code>function</code> and define an annonymus function normally - untill some asshole made it possible to remove
+                the colon (:) and the <code>function</code> keyword:</p>
+            <div class="code"><span class="red">old style</span><br><span class="brown">var</span> myObject = {<br>&nbsp; <span class="orange">"functionName"</span>: <span class="blue">function</span>() {/*function body*/}<br>}<br><span class="red">new style</span><br>
+                <span class="brown">var</span> myObject = {<br>&nbsp; <span class="orange">"functionName"</span>() {/*function body*/}<br>}
+            </div>
+
+            <h3>Privacy</h3>
+            <p>It refers to the fact that we sometimes don't want some properties in our objects to be modified. javaScript ahsn't got any built in privacy but there are some naming conventions that indicate this. An underscore before the property name means
+                it shouldn't be modified: <code>_propertyName: 1000</code>. Keep in mind though, js won't keep you from modifying it if you try.</p>
+
+            <h3><strong>Getter</strong> and <strong>Setter</strong> methods</h3>
+            <p>This is a load of horseshit, for some reason you would want to use the <code>get</code> keyword before defining a method and that allows you to access the method without using parentheses so it looks like you're accessing a property but it's
+                actually a getter method. You can see what it's all about <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get">here</a> but there's not a lot to see really.</p>
+            <div class="code"><img src="Images/getter.jpg" alt="getter example of usage"></div>
+
+            <p>Now the <code>setter</code> method is a different thing, it allows you to modify an object's property but checking the input first.</p>
+            <div class="code"><img src="Images/setter.jpg" alt="setter method example"></div>
+
+            <h3>Factory Functions</h3>
+            <p>Pretty straightforward, define a function that takes X amount of parameters, return an object with X amount of properties using those parameters. Easy, right? No! they had to go and create a shorthand to save yourself 5 keystrokes. What a
+                load of dogshit! for fuck's sake. Anyway, this is it:</p>
+            <div class="code"><span class="brown">const</span> <span class="blue">functionFactory</span>(a, b, c, ..., n){<br>&nbsp; <span class="black">return</span> {a, b, c, ..., n}<br>}<br><span class="brown">var</span> myObject = <span class="blue">functionFactory</span>                (<span class="orange">"Robert"</span>, <span class="orange">"de Niro"</span>, <span class="darkRed">69</span>);<br><br>console.log(myObject) | <span class="red">returns</span> {a: "Robert", b: "de Niro", c: 69}</div>
+            <p>In short, when defining the function, the name you give the parameters, will be the key name in the object</p>
+
+            <h3>Classes - another way of creating objects</h3>
+            <p>Findout more <a href="https://www.codecademy.com/learn/paths/web-development/tracks/webdev-intermediate-javascript/modules/learn-javascript-classes/cheatsheet">here</a>.</p>
+
+            <p>Did you like the factory functions? Screw them!<br>As we all know by now, javaScript loves redundancy, and in the sake of it here we have another object-mass-production technique</p>
+            <p>Correction: instances are not objects, they're only unbelievably similar to them. Classes are created like this:</p>
+            <div class="code"><span class="blue">class</span> Dog {<br>&nbsp;<span class="green">constructor</span>(name, age) {<br>&nbsp;&nbsp;this.<span class="green">name</span> = <span class="brown">name</span>;<br>&nbsp;&nbsp;this.<span class="green">age</span> =
+                <span class="brown">age</span>;<br>&nbsp;}
+                <span class="black">/*Add getters and Setters here*/</span><br>}<br><span class="brown">const</span> favDog = <span class="blue">new</span> Dog(Malek, 3);</div>
+
+            <p>By convention, class names should be Capitalized and camelCased. When we create a new <em>instance</em> of our class (an object wuth the properties and methods of a class), we do it using the <code>new</code> keyword which calls the <code>constructor</code>                method. After the constructor (when we define the class) we can add getters, setters and oter methods, only they <b>will not</b> be separated by <b>commas</b>.</p>
+
+            <h4>Static Methods</h4>
+            <p>These are methods that can be called directly on the class but not on the individual instances. Just use the <code>static</code> keyword before the method name.</p>
+
+            <h4>Inheritance</h4>
+            <p>Sometimes, we will want to create several classes that share some properties. In this case, we can create a <em>parent class</em> (or superclass, I personally prefer this term) and many <em>child classes</em> (or subclasses) that will inherit
+                their properties. The <code>extends</code> keyword makes every property and method in the superclass available to the subclass, the <code>super</code> keyword passes the value to the superclass' constructor, the new properties need to
+                be defined normally (but <b>after</b> the inherited properties)</p>
+            <div class="code"><img src="Images/superClass.jpg" alt="superclass" height="450px"></div>
+
+
+
+            <h3>Destructured assignment</h3>
+            <p>This one takes the first position in the podium of pointless cowshit. It allows you to grab an object's property and assign it to a variable with the same name as the object's property:<br><code>const key = objectName.key</code> is the easy,
+                straightforward and intuitive way to do it, but for a pinch of nonesense and confusion they also made it possible to do it like this:<br><code> const {key} = objectName</code> </p>
+        </section>
+
+        <section id="DOM">
+            <h2><b>D</b>ocument <b>O</b>bject <b>M</b>odel</h2>
+            <h3>Accessing elements</h3>
+            <p>We can use tags, classes and ids to acces all elements that match or we can use the <code>.querySelector("selector")</code> which will return the first element that matches. Note you can select "#id" and ".class", not only tag name.<br> The
+                <code>.parentNode</code>, <code>.children</code> and <code>.firstChild</code> properties, allow you to navigate the DOM.</p>
+
+            <h3>Styling an element</h3>
+            <p>The <code>.style</code> property of DOM elements provides acces to the <strong>inline styles</strong> of that element. The syntax looks like: <code>element.style.property</code></p>
+            <div class="code"><span class="brown">let</span> blue = document.querySelector(".blue")<br>blue.style.color = "blue"</div>
+            <p>Note that multi word properties need to be written in camelCase insted of using hiphens.</p>
+
+            <h3>Create an element</h3>
+            <p>The following code creates an element, gives it an ID, modifies it's innerHTML and adds it onto the page's body:</p>
+            <div class="code"><img src="Images/DOMcreateElement.jpg" alt="steps to create a new element" height="200px"></div>
+            <p>It is also possible to <strong>remove</strong> an element with <code>document.removeChild("selector")</code>.</p>
+
+            <h3>Interactivity</h3>
+            <p>We can get elements to respond to any <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event</a>:</p>
+            <div class="code"><span class="brown">let</span> myElement = document.querySelector("button")<br>myElement.event = myFunction</div>
+            <p>The <em>event handler function</em>, the function that runs when an event fires on certain element, is registered as a <em>property</em> of the DOM element it interacts with.<br> Another way of adding event handlers is the <code>.addEventListener()</code>                method which takes in two parameters, the event as a string and without the <code>on-</code> prefix and the function name. The method is prefered when you want to add more than one event listener to a single element. And it looks like
+                this:
+                <br> <span class="code">myElement.addEventListener(<span class="orange">"click"</span>,
+                <span class="blue">myFunction</span>);</span><br> The <code>.removeEventListener</code> does what you expect and takes the same parameters as its cousin.
+            </p>
+
+            <p>All event handlers are passed the event object as an argument if no arguments are explicity passed on to the function at the time of calling it.</p>
+
+            <h3>Event Object Properties</h3>
+            <p>As you may have expected, javaScript stores events as objects and they've got some built-in properties like:
+                <ul>
+                    <li><code>.target</code> returns the element the event belongs to (whose property it is, because it's an object but at the same time it's the property of a DOM object.</li>
+                    <li><code>.type</code> returns the name of the event (brilliant, eh?)</li>
+                    <li><code>.timeStamp</code> stores the number of milliseconds that passed between the document loading and the event firing.</li>
+                </ul>
+            </p>
+        </section>
+
+        <section id="handlebars">
+            <h2>Handlebars</h2>
+            <p>See how to use it <a href="https://www.codecademy.com/learn/paths/web-development/tracks/build-interactive-websites/modules/templating-with-handlebars/cheatsheet">here</a>.</p>
+            <p>Handlebars is a library that allows you to create templates. It's not the simplest one to use, but it works like this:</p>
+            <div class="code"><span class="brown">const</span> template = <span class="orange">'&ltp&gtHello, {{name}}! Welcome to handlebars&lt/p&gt'</span>;<br><span class="brown">const</span> templateFunction = <span class="darkRed">Handlebars</span>.<span class="blue">compile</span>(template);<br>
+                <span class="brown">var</span> myObject = {<span class="green">name</span>: <span class="orange">"Steve"</span>};<br><span class="brown">const</span> html = <span class="darkRed">templateFunction</span>(myObject); </div>
+
+            <p>So, to make things clear, this is how it goes:
+                <ol>
+                    <li><code>Handlebars.compile()</code> takes the template and returns a function.</li>
+                    <li>That function (<code>templateFunction</code>) takes in an object (which contains your text, like the user's name from an input box) and returns a nice and neat string.</li>
+                    <li>You then whack that string into a DOM element of your preference and Boom!</li>
+                </ol>
+            </p>
+        </section>
+
+        <section id="modules">
+            <h2>Modules</h2>
+            <p>Take a look at this <a href="https://medium.com/dailyjs/javascript-module-cheatsheet-7bd474f1d829">cheatsheet</a>.</p>
+            <p>A modules is an object that contains a chunk of code to be reused in other files.<br>Every file run un Node.js has a built in <code>module</code> object and this object has a property called <code>exports</code> whose contents are exported
+                from the file. To export our module, then, all we have to do is create it and assign it as the value of the exports property of the module object:<br> <code>module.exports = myModule</code>.<br>To load the module from another file use
+                the <code>require()</code> function which takes the url of the file containing your module and returns the module.<br> <code>const myModule = require('./myScript.js')</code></p>
+
+            <p>Guess what! there's another way of exporting and importing shit since ES6, great!<br><code>export default myModule</code> for exporting.<br><code>import myModule from './myScript.js'</code> for importing.<br>But did you know that not all browsers
+                support ES6? For that reason and because javaScript is shit we won't use the new syntax :D.</p>
+
+            <p>You thought two ways of achieving the same thing was redundant enough? How innocent...<br><code>export {varName01, varName02, ... , varNameN}</code> exports everything stored in those variables<br><code>import {varName01, varName02, ... , varNameN} from './myScript.js' </code>                does the job on the other side.<br><code>import <span class="blue">*</span> from './myScript.js'</code> imports the entire module.</p>
+
+            <p>How about another one? Yesss!<br>In the method above, we can say <code>varName01 <span class="blue">as</span> alternativeName</code> to export the variable with a different name. Cool stuff eh?</p>
+        </section>
+
+        <section id="errors">
+            <h2>Error handling</h2>
+            <p>The <code>Error("Error message")</code> function creates a error object like the ones the console logs when your program is broken. Logging it with <code>console.<span class="red">error</span></code> makes it appear in red and be recognised
+                by the console as an error but it won't stop the rest of the code from running. We need to <code>throw</code> the error for that.</p>
+
+            <h3>Try ... catch</h3>
+            <p>The <code>try</code> statement will attempt to run the code block inside it, and if it throws an error, instead of stopping the code and logging it to the console, it will pass it to the <code>catch(e)</code> statement, store it in the variable
+                <code>e</code> and process it according to what we tell the catch statement to do. Take a look at my girlfriend:</p>
+            <div class="code"><span class="blue">try</span> {<br>&nbsp;<span class="black">/*code prone to error*/</span> }<br><span class="blue">catch</span>(<span class="brown">e</span>) {<br>&nbsp;<span class="black">/*if an error is thrown, do this*/ </span>}</div>
+            <p>The beauty of this is that I can put an <code>if/else</code> statement in the try and throw an error myself to then handle it in the catch statement.</p>
+        </section>
+
+        <section id="asynchronous">
+            <h2>Asynchronous operations</h2>
+            <h3>Promises</h3>
+            <p>See the complete detailed explanation <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Here</a></p>
+            <p>A promise is an object that is created by passing an <strong>executor function</strong> to the <code>new Promise</code> constructor. <br>
+                <code>var promise01 = new Promise(executor);</code><br>A promise can be in one of three states: <i>pending</i>, <i>fulfilled</i> (with a value) or <i>rejected</i> (with a reason).<br> The executor function is written by me and starts running
+                asynchronously inmediately after the constructor is called. In turn the executor function takes two functions: <code>resolve(result)</code> and <code>reject(reason)</code>, one of which will be called at the end of the executor's code.
+                Depending on the output of the executor, one of these functions will be called and then js will pass the value we passed to this function (the result in case of fulfillment or the reason in case of rejection) into the promise's settled
+                status. If the promise was fulfilled, the result will be passed to the fulfillment handling function (assigned to the promise object via the .then method) and if it is rejected, the reason will be passed to the rejection handling function
+                (assigned to the promise object via the .catch method, or as the second parameter of the .then method). </p>
+            <div class="code"><span class="brown">var</span> somePromise = <span class="blue">new</span> Promise(executor(resolved, rejected) => {<br>&nbsp;<span class="blue">try</span>{<span class="black">/*some code*/</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span clas="darkRed">resolved</span>(
+                <span class="orange">result</span>)}<br>&nbsp;<span class="blue">catch</span>(<span class="orange">e</span>) {rejected(<span class="orange">e</span>)}<br>})<br><br>somePromise.then(handleFulfillment, handleRejection);</div>
+            <p>When the somePromise object is created, *some code* is going to run and if the task is completed, <code>resolved</code> will be called with the result of that task. this changes the status of the <code>somePromise</code> object to fulfilled
+                and sets it's value equal to <code>result</code>, then <code>handleFulfillment(result)</code> will be called (obviously it needs to be defined first, which I didn't do here because I'm lazy). If instead *some code* throws an error, rejected(e)
+                will be called and then <code>e</code> will be passed to <code>handleRejection</code>.</p>
+
+            <p>The <code>Promise.all()</code> static method takes an array of promises and waits untill all promises are fulfilled or one is rejected to return an array of the values of the resolved promises or the reason for rejection, respectively</p>
+
+            <h3>Async ... await</h3>
+            <p>To define an asynchronous function, simply use the <code>async</code> keyword before the function definition and you're done.<br>Async functions <strong>allways return a promise</strong> even if you don't tell it to: if there's no return value
+                in the function definition, it will return a promise with a resolved value of <i>undefined</i>, if the function only returns a non-promise value, it will instead return a promise with that value.</p>
+
+            <p>The <code>await</code> keyword can only be used inside async functions. It halts the rest of the function untill the promise is resolved and returns the resolved value of that promise.</p>
+
+        </section>
+
+        <section id="requests">
+            <h2>Requests</h2>
+            <h3>XML Http Request</h3>
+            <p>See all the properties and methods of the XMLHttpRequest object <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">here</a>.</p>
+            <p>HTTP (HyperText Transfer Protocol) is the language through which computers and servers comunicate in order to send and receive things. It is a client-server protocol, this means that the requests are initiated by the recipient (usually a web
+                browser). The browser and server comunicate by sending individual messages, the ones sent by the browser are called <i>requests</i> and the ones sent by the server are called <i>responses</i>. The connection through which the devices comunicate
+                is called Transfer Control Protocol (TCP) and a new one is built every time the browser wants to talk to the server.<br>Requests consist of the following elements:
+                <ul>
+                    <li>An HTTP method (GET, POST, etc).</li>
+                    <li>The version of the HTTP protocol it follows.</li>
+                    <li>The path of the resource to get (url).</li>
+                    <li>A body, in the case of POST, that contains the resource sent.</li>
+                </ul>
+                And responses consist of:
+                <ul>
+                    <li>The version of the HTTP.</li>
+                    <li>Status code.</li>
+                    <li>A body, containing the resource.</li>
+                </ul>
+
+                To send a request we need to create a <code>new XMLHttpRequest</code> object.<br>Once created the object, its <code>.responseType</code> property allows you to select what kind of data the response contains by setting its value to a
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType">string</a>.<br>The <code>.onreadystatechange</code> event handler allows you to control what happens when the <code>.readyState</code> property changes
+                (see the syntax to check wether the request completed successfuly <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/onreadystatechange">here</a>) by setting its value to a function.<br>The <code>.open(method, url)</code>                method initializes the request.
+            </p>
+            <div class="code"><img src="Images/request.jpg" alt="xhr request example." height="350px"> </div>
+
+            <h3>Fetch request</h3>
+            <p>Find out more about using fetch <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">here</a>.</p>
+            <p>The <code>fetch()</code> function takes the url as its only parameter, creates a request and returns a promise. Handle the promise with <code>.then</code> methods. </p>
+            <div class="code"><img src="Images/fetch.jpg" alt="fetch function" height="60px"> </div>
+            <p>The fetch function returns a promise that contains the HTTP response in its resolved value. To extract the json object from it, we apply the <code>.json()</code> method on that response.</p>
+
+        </section>
+
+        <section id="transpilation">
+            <h2>Compatibility and transpilation</h2>
+            <p>Transpilation is the translation from a programming language to another. In javascript, because it's shit, we need to transpile ES6 to ES5 because 5 years after it's release, many browsers still don't support it.</p>
+
+            <p>To transpile a js file using babel, the file needs to be located inside the project's directory inside a folder called <code>src</code>. Then, in the terminal, from the project directory, type <code>npm init</code> to create a <code>package.json</code>                file. Once this is done type <code>npm install babel-cli -D</code> and <code>npm install babel-preset-env -D</code> to install some stuff (the package that contains the code for mapping ES6 code into ES5 is in there somewhere).</p>
+            <p>Once this is done, create a file in the project's directory called <code>.babelrc</code> and write the following js object in it: <br><code>{"presets": ["env"]}</code><br>This file tells babel what versions of js we want to transpile our code
+                from (somehow "env" means "ES6 and above" in babelian).</p>
+            <p>Now we need to add a script into the package.json file. In the "scripts" object, add a property called <code>"build"</code> and assign it the following value: <code>"babel src -d lib"</code> which means "grab the source file from <code>src</code>                directory", "write the result into a <code>d</code>irectory", "save the result in <code>lib</code> directory".</p>
+        </section>
+
+        <section id="JSX">
+            <h2>React and JSX</h2>
+            <p>See the reference <a href="https://reactjs.org/docs/hello-world.html" l>here</a>
+            <h3>Add react to a website</h3>
+            <p>Se the step by step <a href="https://reactjs.org/docs/add-react-to-a-website.html">here</a>.</p>
+            <p>You will need to add the following script tags on your html file: </p>
+            <p>Make sure to change <code>"development.js</code> for <code>"production.min.js"</code><br>
+
+            <code>
+            &lt;script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin&gt;&lt;/script&gt<br>
+            &lt;script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin&gt;<br>
+            &lt;script type="module" src="myReactAppFile.js"&gt;&lt;/script&gt;<br>
+            </code>
+            <span class="red">Remember to link your own .js file as type="module"</span><br><br>
+
+            Then go to the root directory of your application from your command line and run the commands:
+            <code>npm init <br>
+            npm install babel-cli@6 babel-preset-react-app@3</code><br><br>
+            And then in your project's root directory run <br>
+            <code>npx babel --watch src --out-dir destination --presets react-app/prod </code><br>
+            Where src is the folder where your ES6 file is and destination is the folder where you want your transpiled file. Link the transpiled file to your html file and give your <code>script</code> tag a type="module" attribute.<br> 
+        
+    </p>    
+
+                <p>JSX is a javascript syntax extension thing that looks like HTML but with some particularities:
+                    <ul>
+                        <li>JSX elements can be thrown into any place the other data types can be (variables, functions, object properties, you name it, JSX fits in).</li>
+                        <li>They can have attributes, just like HTML elements do.</li>
+                        <li>If a JSX expression takes more than one line, it <strong>must</strong> be wrapped in parentheses.</li>
+                        <li>Outer element rule: the first opening tag and the final closing tag in an expression must belong to the same element (the hole thing needs to be wrapped in a containing element - in div).</li>
+                        <li>We can't use the <code>class</code> attribute, use <code>className</code> instead.</li>
+                        <li>Self-closing tags must have a forward slash at the end: &ltbr/&gt.</li>
+                        <li>To write JavaScript code inside a JSX element, wrap it in curly braces.</li>
+                        <li>You can acces global variables inside a JSX expression.</li>
+                        <li>Event listener names are camelCased: <code>&ltimg onClick={someFunction} src={imgUrl} /&gt</code>.</li>
+                        <li>You <strong>cannot</strong> whack an <code>if</code> statement inside a JSX expression.But you <strong>can</strong> use a <code>ternary operator</code>.</li>
+                        <li>Another operator we can use is <code>condition && code block</code> in which the code block runs only if the condition evaluates to true. Nothing happens otherwise. </li>
+                        <li>When writing lists, give the <code>li</code> elements a <code>key</code> attribute and assign it a unique value for every item. React will use this keys for something.</li>
+                        <li>Adjacent JSX elements must be wrapped in a containing element, but we can use <em>fragments</em> (&lt;&gt; &lt;/&gt;) instead of using a <code>div</code> element.</li>
+                    </ul>
+                </p>
+
+                <h3>Render JSX elements</h3>
+                <p>To render JSX elements use:</p>
+                <div class="code"><span class="blue">import</span> <span class="brown">React</span> from <span class="orange">"react"</span>;<br><span class="blue">import</span> <span class="brown">ReactDOM</span> from <span class="orange">"react-dom"</span>;<br><br>
+                    <span class="brown">ReactDOM</span>.<span class="lightblue">render</span>(JSXelement, HTMLelement);</div>
+
+                <h3>.createElement method</h3>
+                <p>See the documentation <a href="https://reactjs.org/docs/react-api.html#react.createelement">here</a>.</p>
+
+                <h3>Components</h3>
+
+                <p>JSX elements can be HTML-esque or can be a component. A component is actually a class that <code>extends </code>the <code>React.Component</code> class. </p>
+                <div class="code"><img src="Images/JSXcomponents.jpg" height="300px" alt="JSX Components"> </div>
+                <p>The class we just created has only one method: <code>render</code>, that returns a JSX element. When a component is passed onto the <code>ReactDOM.render</code> method, ReactDOM.render knows it's not a html element because it's capitalized
+                    (we must make sure to capitalize the component class when defining it) and then calls the render method on the component, which in turn returns a JSX element for ReactDOM.render to render.</p>
+
+                <h3>Component properties</h3>
+                <p>All components can be given properties at the moment of creating an instance of them: <code>&lt;MyComponent name="Stuart" /&gt;</code>, this gives the JSX element a property <code>name</code> with a value of <code>Stuart</code>. When defining
+                    the constructor of a component, it must <strong>allways</strong> start with <code>super(props)</code>. A component's properties are stored under it's <code>props</code> property.<br> Components are usually given a <code>state</code>                    property which can be modified by calling the <code>setState</code> method and passing to it the new value of the state property (only modify a component's state through the <code>setState</code> method, otherwise React won't re-render
+                    the element. When a component's state changes, React automatically re-renders it. A component's state cannot be accesed by another component (this is why states are called local or encapsulated).
+                </p>
+                <p>All components have a built in property called <code>defaultProps</code> that we can assign an object to and this objects value will be used if no properties are passed on to the component when it gets called. Find out <a href="https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values">more</a>.</p>
+
+                <h3>Function components</h3>
+                <p>When a component has only got a render method, it can be described as a function instead of a subclass of <code>React.Components</code></p>
+                <div class="code">function SomeComponent(props){<br>&nbsp;return /*JSX element*/<br>}</div>
+
+                <h3>Creating a React App</h3>
+                <p>To start a react app, in the console, go to the directory where the app will be located and type <code>create-react-app app_name</code> once the console did it's thing, change directory to the app directory and type <code>npm start</code>                    for the terminal to render your html on the browser. The files in the <code>src</code> directory are the ones you want to edit (I think). </p>
+
+                <h3>Styles</h3>
+                <p>When creating a JSX element, we can add inline styles by adding a style property and passing it an object with all the styles. Multi word style names are camelCased instead of hyphenated.</p>
+                <div class="code">&lt;h1 style={{color: 'blue', 'fontSize': '1.2 rem'}}&gt;Styled header&lt;/h1&gt;</div>
+                <p>The first set of brackets is for inserting js into JSX and the second belongs to the object. This allows you to write a style object, store iti in a variable and then assign it to the style property.</p>
+
+                <h3>Proptype and default props</h3>
+                <p>See the reference <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">here</a>.</p>
+                <p>React has some built-in typechecking. By givin the property <code>propTypes</code> to your component you can ensure a certain data type is passed to your element with an error showing on the console if the data type is incorrect.</p>
+
+                <h3>Lifecycle methods</h3>
+                <p>There are three categories of lifecycle methods: <code>mounting, updating</code> and <code>unmounting</code>.<br>
+                    <ol class="lifecycleMethods">Mounting methods:
+                        <li><code>componentWillMount</code></li>
+                        <li><code>render</code></li>
+                        <li><code>componentDidMount</code></li>
+                    </ol>
+                    When a component 'mounts' (renders for the first time), it calls these three methods in that order.</p>
+
+                <ol class="lifecycleMethods">Updating methods
+                    <li><code>componentWillReceiveProps(nextProps)</code>: this method receives the properties being passed on to the component and allows you to compare the new properties to the current state before the component gets updated. </li>
+                    <li><code>shouldcomponentUpdate(nextProps, nextState)</code>: this method must return either <code>true</code> or <code>false</code>. If it returns true, everything goes as normal, but if it returns false, all subsequent update methods
+                        will NOT be called, not even <code>render</code>.</li>
+                    <li><code>componentWillUpdate(nextProps, nextState)</code>: you <strong>can't</strong> call setState from within this method.</li>
+                    <li><code>render</code></li>
+                    <li><code>componentDidUpdate(prevProps, prevState)</code></li>
+                </ol>
+                All five of these methods are called in order every time a component updates. The last two are useful for interacting with elements outside react. </p>
+
+            <ol>Unmounting method
+                <li><code>componentWillUnmount</code>: This is the only unmounting method and it gets called when the component gets removed from the DOM, the user changes browser windows or closes the browser.</li>
+            </ol>
+        </section>
+
+        <section id="express">
+            <h2>Servers with Node's express module</h2>
+            <p>See file <code>~/IT-training/express/express-usage.js</code> for notes on express. Visit <a href="http://expressjs.com/">express.com</a> for the reference.</p>
+        </section>
+
+        <section id="testing">
+            <h2>Testing with Mocha and Chai</h2>
+            <p>Find the references for <a href="https://mochajs.org/">Mocha</a> and <a href="https://www.chaijs.com/">Chai</a> here.</p>
+        </section>
+
+        <section id="mongoose">
+            <h2>Mongoose</h2>
+            <p><a href="https://mongoosejs.com/">Documentation</a></p>
+            <p>Mongoose is a JavaScript library for working with databases in JSON format. It provides the methods to translate JS objects into BSON (Binary JSON) data and vice versa.</p>
+
+            <div class="code">
+                const schema = new mongoose.Schema({<br>
+                &nbsp;name: {type: string, required: true},<br>
+                &nbsp;property<sub>1</sub>: {type: number, required: true}<br>
+                });<br>
+                <span class="brown">Creates the structure of the file.</span><br><br>
+                const item<sub>1</sub> = mongoose.model(<span class="yellow">'item1'</span>, schema);<br>
+                <span class="brown">Creates an item</span>
+            </div>
+        </section>
+
+        
+
+
+    </main>
+</body>
+
+</html>

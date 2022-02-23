@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cheat Sheet</title>
+
+    <script src="cheatSheetAutomation.js"></script>
+    <script src="../Resources/Libraries/jquery-3.5.0.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="cheatSheetStyles.css">
+
+</head>
+
+<body>
+    <header>
+
+        <nav>
+            <ul>
+                <li><a href="cheatSheet.html">HTML <span class = "navSpacer">|</span></a></li>
+                <li><a href="cssCheatSheet.html">CSS <span class = "navSpacer">|</span></a></li>
+                <li><a href="javaScriptCheatSheet.html">javaScript <span class = "navSpacer">|</span></a></li>
+                <li><a href="jQueryCheatSheet.html">jQuery <span class = "navSpacer">|</span></a></li>
+                <li><a href="commandLine.html">Command Line <span class = "navSpacer">|</span></a></li>
+                <li><a href="sql.html">SQL <span class = "navSpacer">|</span></a></li>
+                <li><a href="python.html">Python <span class = "navSpacer">|</span></a></li>
+                <li><a href="php.html">PHP <span class = "navSpacer">|</span></a></li>
+                <li><a href="java.html">Java <span class = "navSpacer">|</span></a></li>
+                <li><a href="c-sharp.html">C# <span class = "navSpacer">|</span></a></li>
+                <li><a href="git.html">Git</a></li>
+            </ul>
+        </nav>
+
+        <h1>HTML</h1>
+
+    </header>
+    <main>
+        <h2>Some important definitions</h2>
+        <dl>
+            <dt>HTTP</dt>
+            <dd>HyperText Trasfer Protocol. It's the language the two computers trying to send stuff to each other use to comunicate.</dd>
+            <dt>TCP</dt>
+            <dd>Transmission Control Protocol. Manages the channels between computers that are opened every time a computer makes a request from a server.</dd>
+            <dt>URL</dt>
+            <dd>Uniform Resource Locator. It's the adress that contains the files.</dd>
+            <dt>IP</dt>
+            <dd>Internet Protocol</dd>
+        </dl>
+
+        <table id="myHTMLReference">
+            
+            <tr>
+                <th>Category</th>
+                <th>Tag</th>
+                <th>Element</th>
+                <th>Attributes</th>
+                <th>Values</th>
+                <th>Notes</th>
+            </tr>
+                <th rowspan="1">Head</th>
+                <td>&lt;meta&gt;</td>
+                <td>Metadata</td>
+                <td>1)charset,<br> 2)name, <br>3)content</td>
+                <td>1)UTF-8,<br> 2)description, keywords, viewport, author</td>
+                <td>Use the <code>meta</code> tag inside the <code>head</code> tag to include all this things. See the reference <a href="https://www.w3schools.com/tags/tag_meta.asp">here</a>.</td>
+            
+            <tr>
+                <th rowspan="5">Visual formatting</th>
+                <td class="visualF"> &lti&gt </td>
+                <td> Italics </td>
+                <td></td>
+                <td></td>
+                <td>Makes the text appear in <i>italics</i>.</td>
+            </tr>
+            <tr>
+                <td class="visualF"> &ltb&gt </td>
+                <td>Bold</td>
+                <td></td>
+                <td></td>
+                <td>Makes the text appear in <b>bold</b>.</td>
+            </tr>
+            <tr>
+                <td class="visualF"> &ltdetails&gt </td>
+                <td>Details widget</td>
+                <td></td>
+                <td></td>
+                <td>Creates a widget that needs to be toggled open in order to see the information contained in it. See how to use it <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details">here</a>.</td>
+            </tr>
+            <tr>
+                <td class="visualF"> &ltfigure&gt </td>
+                <td>Figure</td>
+                <td></td>
+                <td></td>
+                <td>Used for sticking together a piece of media and its caption through the &ltfigcaption&gt tag. When moving the figure with CSS, its caption will go with it.</td>
+            </tr>
+            <tr>
+                <td>&lt;hr&gt;</td>
+                <td>Horizontal Rule</td>
+                <td></td>
+                <td></td>
+                <td>Draws a line across the screen.</td>
+            </tr>
+            <tr>
+                <th rowspan="15">Semantics</th>
+                <td class="semantic"> &ltem&gt </td>
+                <td>Emphasis</td>
+                <td></td>
+                <td></td>
+                <td>Emphasises text and makes it appear in <i>italics</i>.</td>
+            </tr>
+            <tr>
+                <td class="semantic"> &ltstrong&gt </td>
+                <td>Strong</td>
+                <td></td>
+                <td></td>
+                <td>Emphasises text and makes it appear in <b>bold</b>. For very important text.</td>
+            </tr>
+            <tr>
+                <td class="semantic"> &ltq&gt </td>
+                <td>Quotation</td>
+                <td></td>
+                <td></td>
+                <td>Encloses text in <q>quotes</q>.</td>
+            </tr>
+            <tr>
+                <td class="semantic"> &ltheader&gt </td>
+                <td>Page header</td>
+                <td></td>
+                <td></td>
+                <td>Encloses the page's header containing the company logo, name and navaigation manu.</td>
+            </tr>
+            <tr>
+                <td class="semantic"> &ltnav&gt </td>
+                <td>Navigation menu</td>
+                <td></td>
+                <td></td>
+                <td>Used for enclosing the navigation menu. Very important for SEO and page readers.</td>
+            </tr>
+            <tr>
+                <td class="semantic"> &ltmain&gt </td>
+                <td>Main content</td>
+                <td></td>
+                <td></td>
+                <td>Encloses the page's main content (sandwiched between header and footer).</td>
+            </tr>
+            <tr>
+                <td class="semantic"> &ltsection&gt </td>
+                <td>Section</td>
+                <td></td>
+                <td></td>
+                <td>Used for splitting the main content of te page into sections.</td>
+            </tr>
+            <tr>
+                <td class="semantic"> &ltarticle&gt </td>
+                <td>Article</td>
+                <td></td>
+                <td></td>
+                <td>Contains independent, self-contained content from a <b>forum post</b>, <b>blog post</b> or <b>news story</b>. It can be nested inside a Section and vice versa.</td>
+            </tr>
+            <tr>
+                <td class="semantic"> &ltaside&gt </td>
+                <td>Aside</td>
+                <td></td>
+                <td></td>
+                <td>Used for information that is related to its surrounding content. Usually placed as a sidebar.</td>
+            </tr>
+            <tr>
+                <td class="semantic"> &ltfooter&gt </td>
+                <td>Page footer</td>
+                <td></td>
+                <td></td>
+                <td>Encloses the page's footer containing contact info, site map, links to privacy policy, etc.</td>
+            </tr>
+            <tr>
+                <td class="semantics"> &ltthead&gt </td>
+                <td>Table header</td>
+                <td></td>
+                <td></td>
+                <td>Envelops and defines the table's header.</td>
+            </tr>
+            <tr>
+                <td class="semantics"> &lttbody&gt </td>
+                <td>Table body</td>
+                <td></td>
+                <td></td>
+                <td>Envelops and defines the table's main content.</td>
+            </tr>
+            <tr>
+                <td class="semantics"> &lttfoot&gt </td>
+                <td>Table footer</td>
+                <td></td>
+                <td></td>
+                <td>Envelops and defines the table's footer (conclusions/totals/etc).</td>
+            </tr>
+            <tr>
+                <td class="semantics"> &lttime&gt </td>
+                <td>Time</td>
+                <td></td>
+                <td></td>
+                <td>Use this tag when indicating dates and times for SEO. See how <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time">here</a>.</td>
+            </tr>
+            <td class="semantics">&ltblockquote&gt</td>
+            <td>Block Quotation</td>
+            <td>cite</td>
+            <td>Set the cite attribute's value to the url of the quote</td>
+            <td>Nest a <code>p</code> element for the quoted text and a <code>&ltcite&gt</code> element for the quote. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blockquote">Reference</a>.</td>
+            <tr>
+            </tr>
+            <tr>
+                <th rowspan="5">Lists</th>
+                <td class="lists"> &ltol&gt </td>
+                <td>Ordered List</td>
+                <td>type</td>
+                <td><ul>
+                    <li>a: lowercase letters</li>
+                    <li>A: uppercase letters</li>
+                    <li>i: lowercase roman</li>
+                    <li>I: uppercase roman</li>
+                </ul></td>
+                <td>Creates a list of &ltli&gts with ordered numbers.</td>
+            </tr>
+            <tr>
+                <td class="lists"> &ltul&gt </td>
+                <td>Unordered List</td>
+                <td></td>
+                <td></td>
+                <td>Creates a list of &ltli&gts with bullet points.</td>
+            </tr>
+            <tr>
+                <td>&lt;li&gt;</td>
+                <td>List item</td>
+                <td>value</td>
+                <td>An integer indicating the current value of the list item. Following <code>li</code>s will number themselves from here.</td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <td class="lists"> &ltdl&gt </td>
+                <td>Definition List</td>
+                <td></td>
+                <td></td>
+                <td>Creates a list of titles (&ltdt&gt) and definitions (&ltdd&gt).</td>
+            </tr>
+            <tr>
+                <td class="lists"> &ltmenu&gt </td>
+                <td>Menu</td>
+                <td></td>
+                <td></td>
+                <td>Creates a list of &ltli&gts.</td>
+            </tr>
+            <tr>
+                <th rowspan="5">Table</th>
+                <td class="table"> &lttable&gt </td>
+                <td>Table</td>
+                <td></td>
+                <td></td>
+                <td>Creates a table.</td>
+            </tr>
+            <tr>
+                <td class="table"> &lttr&gt </td>
+                <td>Table row</td>
+                <td></td>
+                <td></td>
+                <td>Creates a table row.</td>
+            </tr>
+            <tr>
+                <td class="table"> &lttd&gt </td>
+                <td>Table definition</td>
+                <td>rowspan |<br>colspan</td>
+                <td>Takes a numeric value for the cell to ocupy that number of cells.</td>
+                <td>Gives content to a cell.</td>
+            </tr>
+            <tr>
+                <td class="table"> &ltcaption&gt </td>
+                <td>Table caption</td>
+                <td>style</td>
+                <td>caption-side: bottom</td>
+                <td>Is a child of the table element and defines its caption (default position: top).</td>
+            </tr>
+            <tr>
+                <td class="table"> &ltcolgroup&gt </td>
+                <td>Column group</td>
+                <td></td>
+                <td></td>
+                <td>Defines a group of columns by taking the element &ltcol&gt as children. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/colgroup">More info</a>.</td>
+            </tr>
+            <tr>
+                <th rowspan="6">Media</th>
+                <td class="media">&ltaudio&gt</td>
+                <td>Audio</td>
+                <td>controls |<br>autoplay</td>
+                <td></td>
+                <td>It takes a &ltsource&gt tag as a child which takes the 'src' attribute for linking the content</td>
+            </tr>
+            <tr>
+                <td class="media">&ltembed&gt</td>
+                <td>Embed</td>
+                <td>src</td>
+                <td></td>
+                <td>It is a self closing tag and is used for embeding any sort of media. It can also be used to embed html into html.</td>
+            </tr>
+            <tr>
+                <td class="media">&ltvideo&gt</td>
+                <td>Video</td>
+                <td>width | height | controls | autoplay</td>
+                <td></td>
+                <td>Use the 'controls' attribute for the browser to add basic play controls. Use <code>source</code> tags as children to provide different sources in case of incompatibility. Write the alternative text (to display if video is not available) between the opening and closing tags. <a href="https://www.w3schools.com/html/html5_video.asp">reference</a>.</td>
+            </tr>
+            <tr>
+                <td class="media">&ltimg&gt</td>
+                <td>Image</td>
+                <td>src | alt | title | height | width</td>
+                <td>The value of the 'title' attribute diplays on mousover.</td>
+                <td>the 'alt' attribute allows you to select the text to display when the image is not available. Determine the size in pixels.</td>
+            </tr>
+            <tr>
+                <td class="media">&lt;picture&gt;</td>
+                <td>Picture</td>
+                <td></td>
+                <td></td>
+                <td>Allows you to set different sources for an image depending on view or device. Use <code>&lt;source&gt;</code> tags as children with <code>media</code> and <code>srcset</code> attributes for specifying screen conditions and file source respectively. Use an <code>&lt;img&gt;</code> tag as the last child for browsers that do not support the <code>picture</code> element or screens that don't match the given conditions. <a href="https://www.w3schools.com/html/html_images_picture.asp">Reference</a>.</td>
+            </tr>
+            <tr>
+                <td class="media">&lt;svg&gt;</td>
+                <td>Scalabe Vector Graphics</td>
+                <td></td>
+                <td></td>
+                <td>Defines vector-based graphics in XML format. <a href="https://www.w3schools.com/graphics/svg_intro.asp">W3Schools tutorial</a>.</td>
+            </tr>
+            <tr>
+                <th rowspan="1">Links</th>
+                <td>&lta&gt</td>
+                <td>anchor element</td>
+                <td>target</td>
+                <td>"_blank" to open in new tab.</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th rowspan="3">Forms</th>
+                <td>&lt;input&gt;</td>
+                <td>Form input</td>
+                <td>pattern</td>
+                <td></td>
+                <td>Use the <code>pattern</code> attribute to force the input field to match a regular expression.</td>
+            </tr>
+            <tr>
+                <td class="forms">&lt;label&gt;</td>
+                <td>label: a caption for an item in a UI</td>
+                <td>for</td>
+                <td>set for = to the id of the element it is labeling</td>
+                <td>Labels make items readable by screen readers. Set the innerHTML to the description of the item.</td>
+            </tr>
+            <tr>
+                <td>&lt;fieldset&gt;</td>
+                <td>fieldset</td>
+                <td></td>
+                <td></td>
+                <td>Wrap your form items in a pair of <code>fieldset</code> tags to draw a box around them. Find out <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/fieldset">more</a>.</td>
+            </tr>
+            <caption style="caption-side: bottom" class="red">See W3School's list of all html tags <a href="https://www.w3schools.com/tags/default.asp">here</a>.</caption>
+
+
+        </table>
+
+
+        <section>
+            <figure>
+                <h2 id="webPageStructure">Web page structure.</h2>
+                <p>Proper semantic structuring of a webpage helps Search Engines and screen readers find and describe the content on the page.</p>
+                <img src="../Images/webPageStructure.jpg" alt="A web page's structure.">
+                <figcaption>Web page basic structure.</figcaption>
+            </figure>
+        </section>
+
+
+    </main>
+
+</body>
+
+</html>

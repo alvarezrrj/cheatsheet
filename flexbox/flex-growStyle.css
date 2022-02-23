@@ -1,0 +1,77 @@
+body {
+    margin: 10px;
+    border: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+p {
+    font-size: 12px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 16px;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+
+/*Items' dimensions*/
+
+.top,
+.middle,
+.bottom {
+    width: 100px;
+    height: 100px;
+    background-color: Dodgerblue;
+    border: medium solid lightgrey;
+    margin: 10px 20px;
+}
+
+.top.side {
+    flex-grow: 1;
+}
+
+.top.center {
+    flex-grow: 1;
+}
+
+
+/*Doesn't get a value, doesn't stretch*/
+
+.middle.side {}
+
+.middle.center {
+    flex-grow: 1;
+}
+
+.bottom.side {
+    flex-grow: 1;
+}
+
+.bottom.center {
+    flex-grow: 2;
+}
+
+
+/*Containers' properties*/
+
+#top,
+#middle,
+#bottom {
+    display: flex;
+    background-color: Whitesmoke;
+    /*Align horizontally*/
+    justify-content: center;
+    min-height: 200px;
+    /*Align vertically*/
+    align-items: center;
+    border: thin dashed lightgrey;
+}

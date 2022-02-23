@@ -1,0 +1,55 @@
+body {
+    font-family: 'Roboto Mono', monospace;
+    margin: 10px;
+}
+
+h1 {
+    margin: 20px;
+    text-align: center;
+    font-size: 18px;
+}
+
+p {
+    font-size: 12px;
+    text-align: center;
+}
+
+.container {
+    height: 150px;
+    background-color: WhiteSmoke;
+    display: flex;
+    justify-content: center;
+    border: thin dashed lightgrey;
+    align-items: center;
+}
+
+.left,
+.center,
+.right {
+    min-height: 75px;
+    width: 125px;
+    background-color: DodgerBlue;
+    border: 2px solid lightgrey;
+}
+
+.center {
+    height: 75px;
+}
+
+/*Note that the align property is set on the container*/
+
+#flexstart .left {
+    align-self: flex-start;
+}
+
+#flexend .left {
+    align-self: flex-end;
+}
+
+#center .left {
+    align-self: center;
+}
+
+#stretch .left {
+    align-self: stretch;
+}

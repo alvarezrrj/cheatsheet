@@ -1,0 +1,50 @@
+body {
+    border: 0;
+    margin: 10px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+h1 {
+    text-align: center;
+    display: block;
+    font-size: 18px;
+}
+
+.container {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    background-color: whitesmoke;
+    border: thin dashed lightgrey;
+}
+
+.box {
+    height: 75px;
+    width: 100px;
+    background-color: dodgerblue;
+    border: 1px solid lightgrey;
+    display: inline-block;
+}
+
+
+/*Note that the justify propety is applied on the container*/
+
+#flexstart {
+    justify-content: flex-start;
+}
+
+#flexend {
+    justify-content: flex-end;
+}
+
+#center {
+    justify-content: center;
+}
+
+#spacearound {
+    justify-content: space-around;
+}
+
+#spacebetween {
+    justify-content: space-between;
+}

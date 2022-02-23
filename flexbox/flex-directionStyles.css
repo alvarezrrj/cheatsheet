@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    border: 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+p {
+    font-size: 12px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 14px;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+.container {
+    border: thin dashed lightgrey;
+    display: flex;
+    height: 600px;
+}
+
+.container.row {
+    height: 150px;
+}
+
+.box {
+    background-color: dodgerblue;
+    border: 1px solid white;
+    width: 100px;
+    height: 100px;
+}
+
+#row {
+    flex-direction: row;
+}
+
+#row-reverse {
+    flex-direction: row-reverse;
+}
+
+#column {
+    flex-direction: column;
+}
+
+#column-reverse {
+    flex-direction: column-reverse;
+}

@@ -1,0 +1,326 @@
+@font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Space Mono'), local('SpaceMono-Regular'), url(https://fonts.gstatic.com/s/spacemono/v5/i7dPIFZifjKcF5UAWdDRYEF8RQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Space Mono';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Space Mono Bold'), local('SpaceMono-Bold'), url(https://fonts.gstatic.com/s/spacemono/v5/i7dMIFZifjKcF5UAWdDRaPpZUFWaHg.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+html {
+    background: #F7F7F7;
+    /* Old browsers */
+    background: -moz-linear-gradient(45deg, #F7F7F7 0%, #EAE0D5 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, #F7F7F7 0%, #EAE0D5 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, #F7F7F7 0%, #EAE0D5 100%);
+    width: 60%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: cornflowerblue;
+    background-size: auto;
+    position: fixed;
+    top: 0px;
+    width: 57%;
+    text-align: center;
+    margin: 0 15px;
+    z-index: 2;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 1px 1px 0.5em grey, -1px 1px 0.5em grey;
+}
+
+main {
+    position: relative;
+    top: 120px;
+    z-index: 1;
+    margin-bottom: 120px;
+}
+
+figcaption {
+    font-size: 12px;
+    color: rgb(134, 134, 134);
+}
+
+#jsTableBottomCap {
+    font-size: 0.85rem;
+}
+
+sup {
+    font-size: .6rem
+}
+
+
+/*Header navigation*/
+
+header nav {
+    text-align: left;
+    margin-top: -5px;
+    display: flex;
+    width: 76%;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: darkgrey;
+}
+
+nav ul li a:hover {
+    color: black;
+}
+
+.navSpacer {
+    color: darkgrey;
+}
+
+
+/*Internal navigation list*/
+
+#internalNavigation {
+    position: fixed;
+    right: 10px;
+    z-index: 3;
+}
+
+details summary {
+    cursor: pointer;
+}
+
+#internalNavigation ul {
+    list-style: none;
+}
+
+#internalNavigation ul li a {
+    color: rgb(59, 100, 39);
+}
+
+#internalNavigation ul li a:hover {
+    color: black;
+}
+
+#flexbox a {
+    text-decoration: none;
+    color: rgb(98, 98, 98);
+}
+
+#flexbox a:hover {
+    color: black;
+}
+
+footer {
+    height: 120px;
+    background-color: rgb(221, 210, 182);
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2,
+h3,
+h4 {
+    font-weight: lighter;
+}
+
+table {
+    border: medium solid grey;
+    border-collapse: collapse;
+    box-shadow: 5px 5px 0.5em rgba(100, 100, 100, .5);
+}
+
+td {
+    border: thin solid grey;
+}
+
+th {
+    background-color: lightgrey;
+    border: thin gray solid;
+}
+
+tr:nth-child(even) {
+    background-color: #FCE6EA
+}
+
+tr:nth-child(odd) {
+    background-color: #C9DFFF
+}
+
+td:nth-child(1) {
+    text-align: center;
+}
+
+td:nth-child(2) {
+    text-align: center;
+}
+
+td:nth-child(3) {
+    text-align: center;
+}
+
+td:nth-child(4) {
+    text-align: center;
+}
+
+td:nth-child(5) {
+    text-align: center;
+}
+
+
+/*Typography section*/
+
+span#serif {
+    font-family: serif
+}
+
+span#sansSerif {
+    font-family: sans-serif
+}
+
+span#monospace {
+    font-family: monospace
+}
+
+#webFonts {
+    font-family: "Cedarville Cursive";
+}
+
+.spaceMono {
+    font-family: "Space mono", monospace;
+}
+
+section#pageLayout h3 {
+    color: red;
+    font-weight: bold;
+}
+
+#lighter {
+    font-weight: lighter
+}
+
+#bold {
+    font-weight: bold
+}
+
+#bolder {
+    font-weight: bolder
+}
+
+section#typography h3 {
+    margin-left: 15px
+}
+
+#children {
+    list-style-type: circle;
+}
+
+#imageShadow {
+    border: thin solid grey;
+    border-radius: 10px;
+    width: 90%;
+}
+
+#imageShadow h4 {
+    padding: 3px;
+    width: auto;
+    text-align: center;
+}
+
+aside#imageShadow code {
+    text-align: center;
+}
+
+#breakpoints {
+    max-width: 100%;
+    height: auto;
+}
+
+.code {
+    background-color: rgb(107, 107, 107);
+    color: white;
+    text-align: left;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-family: monospace;
+}
+
+pre {
+    text-align: center;
+    background-color: rgb(59, 59, 59);
+    color: white;
+}
+
+#positioning .code {
+    margin-left: 0;
+}
+
+.lifecycleMethods {
+    list-style: upper-roman;
+}
+
+
+/*Colors*/
+
+.brown {
+    color: rgb(255, 136, 0)
+}
+
+.center {
+    text-align: center;
+}
+
+.blue {
+    color: rgb(50, 50, 212)
+}
+
+.lightblue {
+    color: rgb(38, 149, 240)
+}
+
+.orange {
+    color: rgb(255, 230, 0)
+}
+
+.red {
+    color: rgb(194, 0, 0)
+}
+
+.green {
+    color: rgb(0, 255, 0);
+}
+
+.black {
+    color: black;
+}
+
+.darkRed {
+    color: rgb(161, 0, 0);
+}
+
+
+/*Media queries*/
+
+@media only screen and (max-width: 1000px) {
+    html {
+        width: 100%
+    }
+    header {
+        width: 95%;
+        margin: 0px 5px;
+    }
+}
