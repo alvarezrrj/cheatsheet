@@ -96,6 +96,12 @@ listslists
             
         </section>
 
+        <section id="cl-args">
+          <h2>Command Line Arguments</h2>
+          <p>To access command line arguments, import the <code>argv</code> list from the <code>sys</code> module.</p>
+
+        </section>
+
         <section id="controlFlow">
           <h2>Control Flow</h2>
           <h3>Logical operators</h3>
@@ -133,6 +139,11 @@ listslists
 
 					It is important to remember this when passing lists and dictionaries to functions as arguments. If the function modifies the argument, it will be modifying the global variable, since it was passed a reference to the value instead of a copy of the value (pp 100 ATBSWP). The copy module's copy() function allows you to copy a list in orther to assign it to a second variable without modifying the first one.
 					</p>
+        </section>
+
+        <section id="sets">
+          <h2>Sets</h2>
+          <p>Sets are things that contain values with duplicates filtered out. The <code>set.add(element)</code> functon adds an element to the set only if it isn't already in it</p>
         </section>
 
         <section id="tuples">
@@ -173,6 +184,15 @@ listslists
                   <td>dir(object)</td>
                   <td>Returns a list of all attributes. Comes in handy to see all built in methods of an object.</td>
                 </tr>
+                <tr>
+                  <th rowspan="2">Sets</th>
+                  <td class="Sets">set()</td>
+                  <td>Initialize an empty set</td>
+              </tr>
+              <tr>
+                <td>set.add(elem)</td>
+                <td>Add <code>elem</code> to the set avoiding duplicates</td>
+              </tr>
                 <tr>
                     <th rowspan="11">Lists</th>
                     <td class="lists">zip(list<sub>1</sub>, list<sub>2</sub>)</td>
@@ -336,6 +356,9 @@ listslists
 
                 <p>We can check if a substring is containd in a string with <code>substring in string</code>. This is a boolean expression.</p>
 
+                <h3>Formatted  strings</h3>
+                <p>Use <code>f"Some string and {some_variable}"</code> to insert a variable's value into your strings.</p>
+
               </section>
 
               <section id="virtualEnvironment">
@@ -345,17 +368,20 @@ listslists
               </section>
 
               <section id="dictionaries">
-                <h2>Dictionaries (~js objects)</h2>
+                <h2>Dictionaries (~js' objects, C's hash tables)</h2>
                 <p>Dictionaries are unordered sets of <code>key:value</code> pairs. Update or create a key:value pair with <code>myDic['key'] = value</code>.</p>
-                <p>Create an dictionary from two lists with the fololwing sintax:</p>
+                <p>Create a dictionary from two lists with the fololwing sintax:</p>
                 <div class="code">
-                  myObject = {key:value <span class="blue">for</span> key, value <span class="blue">in</span> zip(list1, list2)}
+                  myDict = {key:value <span class="blue">for</span> key, value <span class="blue">in</span> zip(list1, list2)}
                 </div>
 
                 <p>Check the existence of a key in a dictionary with:</p>
                 <div class="code">
                   <span class="blue">if</span> key <span class="blue">in</span> <span class="brown">dictionary</span>: <br>&nbsp;<span class="black">#Code block </span>
                 </div>
+
+                <p>Add elements into the dictionary with the following:</p>
+                <img src="Images/dict.py.png">
               </section>
 
               <section id="files">
