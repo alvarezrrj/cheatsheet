@@ -48,7 +48,7 @@
 
 <h2 id="templateLiterals">Template literals</h2>
 <p>It is possible to add variables into a string (interpolate). Tamplate literals are wrapped by backticks (`) and a placeolder <code>${myVar}</code> is used to add the value of the variable <code>myVar</code> into the string.</p>
-<p class="center"><img id="tempLiterals" src="Images/templateLiterals.jpg" alt="Template literals example"></p>
+<p class="center"><img id="tempLiterals" src="/static/Images/templateLiterals.jpg" alt="Template literals example"></p>
 
 <section id="useful-methods">
     <table>
@@ -272,10 +272,10 @@
     <h3><strong>Getter</strong> and <strong>Setter</strong> methods</h3>
     <p>This is a load of horseshit, for some reason you would want to use the <code>get</code> keyword before defining a method and that allows you to access the method without using parentheses so it looks like you're accessing a property but it's
         actually a getter method. You can see what it's all about <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get">here</a> but there's not a lot to see really.</p>
-    <div class="code"><img src="Images/getter.jpg" alt="getter example of usage"></div>
+    <div class="code"><img src="/static/Images/getter.jpg" alt="getter example of usage"></div>
 
     <p>Now the <code>setter</code> method is a different thing, it allows you to modify an object's property but checking the input first.</p>
-    <div class="code"><img src="Images/setter.jpg" alt="setter method example"></div>
+    <div class="code"><img src="/static/Images/setter.jpg" alt="setter method example"></div>
 
     <h3>Factory Functions</h3>
     <p>Pretty straightforward, define a function that takes X amount of parameters, return an object with X amount of properties using those parameters. Easy, right? No! they had to go and create a shorthand to save yourself 5 keystrokes. What a
@@ -301,7 +301,7 @@
     <p>Sometimes, we will want to create several classes that share some properties. In this case, we can create a <em>parent class</em> (or superclass, I personally prefer this term) and many <em>child classes</em> (or subclasses) that will inherit
         their properties. The <code>extends</code> keyword makes every property and method in the superclass available to the subclass, the <code>super</code> keyword passes the value to the superclass' constructor, the new properties need to
         be defined normally (but <b>after</b> the inherited properties)</p>
-    <div class="code"><img src="Images/superClass.jpg" alt="superclass" height="450px"></div>
+    <div class="code"><img src="/static/Images/superClass.jpg" alt="superclass" height="450px"></div>
 
 
 
@@ -323,7 +323,7 @@
 
     <h3>Create an element</h3>
     <p>The following code creates an element, gives it an ID, modifies it's innerHTML and adds it onto the page's body:</p>
-    <div class="code"><img src="Images/DOMcreateElement.jpg" alt="steps to create a new element" height="200px"></div>
+    <div class="code"><img src="/static/Images/DOMcreateElement.jpg" alt="steps to create a new element" height="200px"></div>
     <p>It is also possible to <strong>remove</strong> an element with <code>document.removeChild("selector")</code>.</p>
 
     <h3>Interactivity</h3>
@@ -440,12 +440,12 @@
         <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType">string</a>.<br>The <code>.onreadystatechange</code> event handler allows you to control what happens when the <code>.readyState</code> property changes
         (see the syntax to check wether the request completed successfuly <a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/onreadystatechange">here</a>) by setting its value to a function.<br>The <code>.open(method, url)</code>                method initializes the request.
     </p>
-    <div class="code"><img src="Images/request.jpg" alt="xhr request example." height="350px"> </div>
+    <div class="code"><img src="/static/Images/request.jpg" alt="xhr request example." height="350px"> </div>
 
     <h3>Fetch request</h3>
     <p>Find out more about using fetch <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">here</a>.</p>
     <p>The <code>fetch()</code> function takes the url as its only parameter, creates a request and returns a promise. Handle the promise with <code>.then</code> methods. </p>
-    <div class="code"><img src="Images/fetch.jpg" alt="fetch function" height="60px"> </div>
+    <div class="code"><img src="/static/Images/fetch.jpg" alt="fetch function" height="60px"> </div>
     <p>The fetch function returns a promise that contains the HTTP response in its resolved value. To extract the json object from it, we apply the <code>.json()</code> method on that response.</p>
 
 </section>
@@ -513,7 +513,7 @@
         <h3>Components</h3>
 
         <p>JSX elements can be HTML-esque or can be a component. A component is actually a class that <code>extends </code>the <code>React.Component</code> class. </p>
-        <div class="code"><img src="Images/JSXcomponents.jpg" height="300px" alt="JSX Components"> </div>
+        <div class="code"><img src="/static/Images/JSXcomponents.jpg" height="300px" alt="JSX Components"> </div>
         <p>The class we just created has only one method: <code>render</code>, that returns a JSX element. When a component is passed onto the <code>ReactDOM.render</code> method, ReactDOM.render knows it's not a html element because it's capitalized
             (we must make sure to capitalize the component class when defining it) and then calls the render method on the component, which in turn returns a JSX element for ReactDOM.render to render.</p>
 
