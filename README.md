@@ -4,34 +4,10 @@ A simple Flask app that serves a multipage cheat sheet. Navigation bars are gene
 
 ## Getting Started
 
-Write your .html files in templates/<>
-.html files should only have &lt;section&gt;s<>
+Write your .html files in templates/<br>
+.html files should only have &lt;section&gt;s<br>
 Give your &lt;section&gt;s an id like "id-name-separated-by-dashes" (these are used for building the internal navigation links
 
-
-### Prerequisites
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
-
-
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
 
 ## Built With
 
@@ -40,7 +16,7 @@ until finished
 
 ## Authors
 
-* **Rodrigo Alvarez** - *Initial work* - [](https://github.com/alvarezrrj)
+* [Rodrigo Alvarez](https://github.com/alvarezrrj)
 
 
 ## Acknowledgments
