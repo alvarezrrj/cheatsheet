@@ -16,36 +16,29 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-html {
-    background: #F7F7F7;
-    /* Old browsers */
-    background: -moz-linear-gradient(45deg, #F7F7F7 0%, #EAE0D5 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(45deg, #F7F7F7 0%, #EAE0D5 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(45deg, #F7F7F7 0%, #EAE0D5 100%);
-    width: 60%;
-    margin: 0 auto;
+/*
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+}
+*/
+a {
+    transition: text-decoration .3s;
+}
+
+section {
+    margin: 75px 10px;
+}
+
+section:nth-child(1) {
+    margin-top: 2rem;
 }
 
 header {
     background-color: cornflowerblue;
     background-size: auto;
-    position: fixed;
-    top: 0px;
-    width: 57%;
-    text-align: center;
-    margin: 0 15px;
+    position: sticky;
     z-index: 2;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 1px 1px 0.5em grey, -1px 1px 0.5em grey;
-}
-
-main {
-    position: relative;
-    top: 120px;
-    z-index: 1;
-    margin-bottom: 120px;
+    top: 0px;
 }
 
 figcaption {
@@ -68,7 +61,6 @@ header nav {
     text-align: left;
     margin-top: -5px;
     display: flex;
-    width: 76%;
 }
 
 header nav ul li {
@@ -90,28 +82,36 @@ nav ul li a:hover {
 
 
 /*Internal navigation list*/
-
-#internalNavigation {
-    position: fixed;
-    right: 10px;
-    z-index: 3;
+#internal-nav .offcanvas-body {
+    position: sticky;
+    top: 70px;
 }
 
-details summary {
-    cursor: pointer;
+.underliner {
+    transition: width .3s;
+    width: 0px;
+    border-top: 1px solid green;
+    position: relative;
+    bottom: .5rem;
+    left: var(--bs-nav-link-padding-y);
 }
 
-#internalNavigation ul {
+#internal-nav .nav-link.active + .underliner {
+    width: 20%;
+}
+
+#internal-nav a {
+    color: darkgray !important;
+}
+
+#internal-nav ul {
     list-style: none;
 }
 
-#internalNavigation ul li a {
-    color: rgb(59, 100, 39);
-}
-
-#internalNavigation ul li a:hover {
+#internal-nav ul li a:hover {
     color: black;
 }
+/*Internal navigation list*/
 
 #flexbox a {
     text-decoration: none;
@@ -130,12 +130,6 @@ footer {
 
 h1 {
     text-align: center;
-}
-
-h2,
-h3,
-h4 {
-    font-weight: lighter;
 }
 
 table {
@@ -293,7 +287,7 @@ pre {
 }
 
 .orange {
-    color: rgb(255, 230, 0)
+    color: rgb(231, 131, 0)
 }
 
 .red {
@@ -301,7 +295,7 @@ pre {
 }
 
 .green {
-    color: rgb(0, 255, 0);
+    color: rgb(44, 189, 0);
 }
 
 .black {
@@ -321,6 +315,6 @@ pre {
     }
     header {
         width: 95%;
-        margin: 0px 5px;
+        margin: 0px auto;
     }
 }

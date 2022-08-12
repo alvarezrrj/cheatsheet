@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<section id="intro">
+    <h2>Introduction</h2>
+
+    <p>Check out the <a href="https://learn.jquery.com/">website</a></p>
+
+    <p>The symbol <code>$</code> is an alias for <code>jQuery</code> which in turn is a property of the <code>window</code> object and contains all jQuery methods and properties.</p>
+
+    <p>To ensure all javaScript code is run only when the DOM is loaded on to the browser, use the jQuery <code>.ready()</code> method. Put all your code inside it: 
+    <div class="code">
+        <span class="brown">$</span>(<span class="brown">document</span>).<span class="lightblue">ready</span>( () =&gt; {<br>
+            &nbsp; <span class="black">// jQuery code</span><br>
+        });
+    </div>
+    </p>
+
+    <h3>document.getElementBy...</h3>
+    <p>Check out the <a href="https://learn.jquery.com/using-jquery-core/selecting-elements/">possibilities</a>.
+        <ul>
+            <li>Class name: <code>$('.className')</code></li>
+            <li>ID: <code>$('#idName')</code></li>
+            <li>html tag name: <code>$('tagName')</code></li>
+        </ul>
+    To check whether a selection contains any elements, don't do <code>if ( $("div.foo)) {}</code>. this will <strong>always evaluate to true</strong> because the selection always returns an object and empty objects are <code>truthy</code>. Instead check for the length of the returned object being zero or positive (<code>if ( $("div.foo").length){}</code>).
+    </p>
+
+    <p>Refine a selection using the following methods:
+        <img src="Images/jQuery-refined-selection.png" alt="jQuery methods for refined selections"><br>
+        The <Code>eq(int)</Code> method reuturns the element in the given index as a jQuery object. This means it has methods like <code>.html()</code> and <code>.after()</code>. To select the DOM element itself (which will have properties like <code>.innerHTML</code> and <code>.appendChild()</code>) use <code>$("div.foo")[int]</code> or <code>$("div.foo").get(int)</code>. By convention, prepend variables containing jQuery objects with a $ to help stop you from mixing up your things. This is usefull when comparing elements since jQuery objects will never be equal to each other even if they were made using the same selectors and wrap the same DOM elements.
+    </p>
+
+    <h3>Create new elements</h3>
+    <p>Use <code>$("&lt;tagName&gt;inner html goes here&lt;/tagName&gt;, {attribute1: value1, attribute2: value2, ... , attributeN: valueN})</code> to create new elements and then use <code>.insertAfter()</code> or <code>appendTo()</code> to chuck it into the DOM. Take a look at <a href="https://learn.jquery.com/using-jquery-core/manipulating-elements/">the docs</a> to find out more about creating, moving and deleting elements.</p>
+
+    <h3>Traversing: navigating through families</h3>
+    <p>jQuery includes a bunch of <a href="https://learn.jquery.com/using-jquery-core/traversing/">methods</a> for selecting parents, children and sibilings.
+    </p>
+
+    <h3>CSS</h3>
+    <p class="red">
+        It is best practise to follow the convention of <em>separation of oncerns</em>. This refers to keeping files to do one specific thing, in this case, it refers to leaving the css in a css file and using javaScript to add and remove classes to the elements instead of modifying css properties in a javaScript file.
+    </p>
+
+    <p>To achieve the above, use the methods <code>.addClass('className')</code>, <code>removeClass('className')</code> or <code>.toggleClass('className)</code> which adds a class to the element if it hasn't got it and removes it if it has it.
+    </p>
+    
+    <p>Access and modify CSS properties with <code>$("div.foo").css("propertyName", "value")</code>. Give the method an object of property:value pairs to set multiple properties at once or pass it only a property name to use it as a getter. Rememeber to camelCase property names that include a hyphen.</p>
+
+    <p>The <code>.animate()</code> method takes in two arguments, an object of css properties and values (end values) and the time in miliseconds you want the transition of those porperties to take.
+    </p>
+
+    <h3>Iterating through jQuery objects</h3>
+    <p>There are <code>.map()</code> and <code>.each()</code> <a href="https://learn.jquery.com/using-jquery-core/iterating/">methods</a> for iterating.
+    </p>
+
+    <h3>Events</h3>
+    <p>Use the <code>.on("eventNAme", callback(event))</code> method to add event listeners. Certain events have a shorthand notation: <code>.click()</code>, <code>.focus()</code>, <code>.blur()</code> and <code>.change()</code>. Check out <a href="https://learn.jquery.com/events/event-basics/">the docs</a> for a full list of properties and methods that the event object contains. In adition to the event object, the event handling function has access to the DOM element on which the event was triggered via the keyword <code>this</code>.
+    </p>
+
+    <h3>Effects</h3>
+    <p>A bunch of methods allow for easy graphic efects:
+        <ul>
+            <li>.show()</li>
+            <li>.hide()</li>
+            <li>.toggle() - toggles the display property between none and visible</li>
+            <li>.fadeIn(miliseconds)</li>
+            <li>.fadeOut(miliseconds)</li>
+            <li>.toggleFade()</li>
+            <li>.slideUp()</li>
+            <li>.slideDown()</li>
+            <li>.slideToggle()</li>
+        </ul>
+    </p>
+</section>
+
+{% endblock %}

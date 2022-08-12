@@ -1,57 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
 
-<head>
-    <title>Cheat Sheet</title>
-
-    <script src="cheatSheetAutomation.js"></script>
-    <script src="../Resources/Libraries/jquery-3.5.0.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="cheatSheetStyles.css">
-
-</head>
-
-<body>
-    <header>
-
-        <nav>
-            <ul>
-                <li><a href="cheatSheet.html">HTML <span class = "navSpacer">|</span></a></li>
-                <li><a href="cssCheatSheet.html">CSS <span class = "navSpacer">|</span></a></li>
-                <li><a href="javaScriptCheatSheet.html">javaScript <span class = "navSpacer">|</span></a></li>
-                <li><a href="jQueryCheatSheet.html">jQuery <span class = "navSpacer">|</span></a></li>
-                <li><a href="commandLine.html">Command Line <span class = "navSpacer">|</span></a></li>
-                <li><a href="sql.html">SQL <span class = "navSpacer">|</span></a></li>
-                <li><a href="python.html">Python <span class = "navSpacer">|</span></a></li>
-                <li><a href="php.html">PHP <span class = "navSpacer">|</span></a></li>
-                <li><a href="java.html">Java <span class = "navSpacer">|</span></a></li>
-                <li><a href="c-sharp.html">C# <span class = "navSpacer">|</span></a></li>
-                <li><a href="git.html">Git</a></li>
-            </ul>
-        </nav>
-
-        <h1>PHP </h1>
-
-
-    </header>
-    <nav id="internalNavigation">
-        <details>
-            <summary>Go to&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</summary>
-            <ul>
-                <li><a href="#intro">Intro</a></li>
-                <li><a href="#types">Data Types</a></li>
-                <li><a href="#functions">Functions</a></li>
-                <li><a href="#built-in-functions">Built-in functions</a></li>
-                <li><a href="#dataStructures">Data Structures</a></li>
-                <li><a href="#conditionals">Conditional statements</a></li>
-                <li><a href="#userInput">User Input</a></li>
-                <li><a href="#loops">Loops</a></li>
-                <li><a href="#form-validation">Form Validation</a></li>
-                <li><a href="#classes">Classes</a></li>
-            </ul>
-        </details>
-    </nav>
-
+{% block main %}
     <main>
         <section id="intro">
             <h2>It's good to know</h2>
@@ -239,7 +188,7 @@
                     </table>
                     </section>
 
-                    <section id="dataStructures">
+                    <section id="data-structures">
                         <h2>Data Structures</h2>
                         <h3>Arrays</h3>
                         <p>Arrays are created with the <code>array(a, b, ... , n)</code> function, where the arguments passed to it become the elements of the array in the given order.<br>
@@ -326,7 +275,7 @@
                         <p>The built in <code>isset($var)</code> function checks if a variable is declared and is different than NULL. Returns a boolean value.</p>
                     </section>
 
-                    <section id="userInput">
+                    <section id="user-input">
                         <h2>User input</h2>
                         <p>The <code>readline()</code>built-in function takes a string argument (to ptompt the user) and returns the user's input.</p>
                         </section>
@@ -358,7 +307,7 @@
                         <p>Another useful function is filter_var($variable, $id). Where $variable is what we want to filter and $id specifies the type of data we want to sanitize. Check out all filter types <a href="https://www.php.net/manual/en/filter.filters.sanitize.php">here</a>.</p>
 
 
-                        <h3>Regular Expressions... I know, right?</h3>
+                        <h3>Regular Expressions</h3>
                         <p>A<b> literal</b> is a regular expression that contains the exact text that we want to match.</p>
                         
                         <p><b>Alternation</b> allows you to match either of two expressions using <code>this|that</code>. It acts like an OR logical operator and in this case it will match 'this' OR 'that'. Remember it matches the hole expression before or after the operator: <code>I like this|that</code> will match 'I like this' but not 'I like that', it will only match 'that'. Enter <b>grouping</b>. Grouping allows you to limit the scope of the alternator to the options within the group. <code>I like (this|that)</code> will match 'I like this' and 'I like that'.</p>
@@ -452,7 +401,4 @@
                
 
     </main>
-
-</body>
-
-</html>
+{% endblock %}
