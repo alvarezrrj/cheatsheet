@@ -1,5 +1,40 @@
 {% extends "layout.html" %}
 
 {% block main %}
+<section id="main-commands">
+    <h2>Main commands</h2>
+    <ul>
+        <li><code>git revert &lt;commit&gt;</code>: Undo a commit by createing a new commit that undoes the changes said commit did. You only need to specify the first 6 digits of the commit hash. Another way to specify which commit to undo is to use the <code>HEAD~n</code> syntax where <code>HEAD</code> represents the latest commit and <code>~n</code> is the nth last commit</li>
 
+        <li><code>git diff</code>: Show changes made from last <code>git add</code> (differences between workspace and index).</li>
+
+        <li><code>git diff &lt;commit or branch&gt;</code>: Show changes relative to named <code>&lt;commit&gt;</code>. Use <code>HEAD</code> to compare against latest commit or a branch name to compare against tip of a different branch.</li>
+
+        <li><code>git pull</code>: Download changes/commits that have been pushed by others to the remote and merge them into your own local repo. This is actually a combination of <code>fetch</code> and <code>merge</code></li>
+    </ul>
+</section>
+
+<section id="branches">
+    <h2>Branches</h2>
+    <p>Branches can be thought of as pointers to commits.</p>
+    <img src="/static/Images/branches.png">
+    <p>In the graph above, each white box represents a commit, each commit points towards the previous commmit, and the branches point towards a specific commit. In general, <code>master</code> or <code>main</code> are the default branch. </p>
+
+    <p>Create and switch branches with:</p>
+    <ul>
+        <li><code>git branch &lt;branch-name&gt;</code>: does not switch to the new branch.</li>
+        <li><code>git checkout -b &lt;branch-name&gt;</code>: creates new branch and switches to it.</li>
+        <li><code>git checkout &lt;branch-name&gt;</code>: switch to that branch</li>
+        <li><code>git push -u origin &lt;branch-name&gt;</code>: push a new branch for the first time.</li>
+    </ul>
+
+    <h3>Pull Requests</h3>
+    <p>When you clone a repo, bracnch it and make changes, you can then push those changes and start a pull request, that is, a request to merge in the changes that you pushed to a branch.</p>
+    <p>Pull requests are <em>not</em> a git feature. They are specific to GitHub.</p>
+    
+    <h3>Merge Conflicts</h3>
+    <p>These happen when you want to merge changes you made into a branch that was changed (on the same lines) during the period of time elapsed since you downloaded the original files. When a conflict occurs, git will add the following lines to the conflicting file and it's up to the developer to go and manually choose which lines to leave.</p>
+    <img src="/static/Images/conflict.png">
+    <p>In the image above, what's between the &lt;&lt;&lt;&lt;&lt;&lt;&lt; and the &equals;&equals;&equals;&equals;&equals;&equals;&equals; is the current version of the code. The rest is what you're trying to merge in.</p>
+</section>
 {% endblock %}

@@ -1,404 +1,405 @@
 {% extends "layout.html" %}
 
 {% block main %}
-    <main>
-        <section id="intro">
-            <h2>It's good to know</h2>
-            <p>Php can be written inline within html documents. The start of a php line looks like this: <code>&lt;? php command</code> and the end of it looks like this: <code>?&gt;</code>. Php <em>statements</em> are terminated in a semicolon (;).<br>
-            Comments can be written the same way as in JavaScript. Use "//" for inline comments and "/* ... */" for multiline comments.</p>
+<section id="intro">
+<h2>It's good to know</h2>
+<p>Php can be written inline within html documents. The start of a php line looks like this: <code>&lt;? php command</code> and the end of it looks like this: <code>?&gt;</code>. Php <em>statements</em> are terminated in a semicolon (;).<br>
+Comments can be written the same way as in JavaScript. Use "//" for inline comments and "/* ... */" for multiline comments.</p>
 
-            <p>The <code>&lt;?php echo "..." ?&gt;</code> command can be writen in the short form: <code>&lt;?= "..." ?&gt;</code></p>
+<p>The <code>&lt;?php echo "..." ?&gt;</code> command can be writen in the short form: <code>&lt;?= "..." ?&gt;</code></p>
 
-            <h3>Where does php run?</h3>
-            <p>Php can be written into html files and interpreted by browsers but it can also be run on a terminal. Write your php file starting with <code>&lt;?php</code> but leave out the closing tag.</p>
+<h3>Where does php run?</h3>
+<p>Php can be written into html files and interpreted by browsers but it can also be run on a terminal. Write your php file starting with <code>&lt;?php</code> but leave out the closing tag.</p>
 
-            <h3>Importing files</h3>
-            <p>Use <code>include "filepath.php"</code> to import things.</p>
-        </section>
+<h3>Importing files</h3>
+<p>Use <code>include "filepath.php"</code> to import things.</p>
+</section>
 
-        <section id="types">
-            <h2>Data Types</h2>
-            <h3>Strings</h3>
-            <p>See all different types of strings in <a href="https://www.php.net/manual/en/language.types.string.php">the docs</a>. <br>
-            Strings are wrapped in double quotes and to include quotes inside a string we have to use the escape sequence \", or use a single quote.</p>
+<section id="types">
+<h2>Data Types</h2>
+<h3>Strings</h3>
+<p>See all different types of strings in <a href="https://www.php.net/manual/en/language.types.string.php">the docs</a>. <br>
+Strings are wrapped in double quotes and to include quotes inside a string we have to use the escape sequence \", or use a single quote.</p>
 
-            <h3>String concatenation</h3>
-            <p>Use the <em>concatenation operator</em> (.) to join strings together. The code <code>echo "Hola" . "perro"</code> outputs <code>Holaperro</code>.</p>
+<h3>String concatenation</h3>
+<p>Use the <em>concatenation operator</em> (.) to join strings together. The code <code>echo "Hola" . "perro"</code> outputs <code>Holaperro</code>.</p>
 
-            <h3>Variable assignment</h3>
-            <p>Declare a variable using the following sintax: </p>
-            <div class="code">
-                <span class="brown">$my_str</span> = <span class="orange">"Saratustra"</span>;<br>
-                <span class="brown">$my_int</span> = <span class="darkRed">7</span>;<br>
-                <span class="brown">$my_float</span> = <span class="darkRed">3.14</span>;
-            </div>
-            <p>Variable names can contain letters, numbers and underscores but cannot start with a number.<br>
-            To call a variable's value, use the dollar sign and variable's name: <code>echo <span class="brown">$my_var</span></code> prints "Saratustra".</p>
+<h4>Multi-line strings</h4>
+<p>See the reference for multi-line strings <a href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc">here</a>.</p>
 
-            <p>In other languages it is possible to grab a variable's value, perform an operation on it and reassign it to the same variable by doing something like <code>+=</code>. The same is possible on Php when working with numbers, for strings, use <code>.=</code> to concatenate a new string into a variable.</p>
+<h3>Variable assignment</h3>
+<p>Declare a variable using the following sintax: </p>
+<div class="code">
+<span class="brown">$my_str</span> = <span class="orange">"Saratustra"</span>;<br>
+<span class="brown">$my_int</span> = <span class="darkRed">7</span>;<br>
+<span class="brown">$my_float</span> = <span class="darkRed">3.14</span>;
+</div>
+<p>Variable names can contain letters, numbers and underscores but cannot start with a number.<br>
+To call a variable's value, use the dollar sign and variable's name: <code>echo <span class="brown">$my_var</span></code> prints "Saratustra".</p>
 
-            <h3>Assignment by reference, alias alias</h3>
-            <p>Use the syntax <code>$var2 =& $var1</code> to create an alias for a variable, that is, $var2 points at the same space in memory as $var1.</p>
+<p>In other languages it is possible to grab a variable's value, perform an operation on it and reassign it to the same variable by doing something like <code>+=</code>. The same is possible on Php when working with numbers, for strings, use <code>.=</code> to concatenate a new string into a variable.</p>
 
-            <h3>Variable Parsing</h3>
-            <p>Double quoted strings allow you to throw variables at them and they will be parsed as the value they contain. Use curly braces if you need to modify the resulting  string. Let's take a look:</p>
-            <div class="code">
-                <span class="brown">$food</span> = <span class="orange">"treat"</span>;<br>
-                <span class="brown">$amount</span> = <span class="orange">"a lot"</span>;<br>
-                <span class="blue">echo</span> <span class="orange">"I love </span><span class="darkRed">$</span>{<span class="darkRed">food</span>}<span class="orange">s</span> <span class="darkRed">$amount</span><span class="orange">"</span>;<br><br>
-                <span class="black">&gt;&gt; "I love treats a lot".</span>
-            </div>
+<h3>Assignment by reference, alias alias</h3>
+<p>Use the syntax <code>$var2 =& $var1</code> to create an alias for a variable, that is, $var2 points at the same space in memory as $var1.</p>
 
-            <h3>Superglobals and form handling</h3>
-            <p>Superglobals are variables that are related to https requests (I think) and are available in all scopes within the php script:</p>
-            <ul>
-                <li>$GLOBALS</li>
-                <li>$_SERVER</li>
-                <li>$_GET
-                <p>Contains an associative array of the query parameters in the URL.<br>
-                When setting the HTML's form <code>method</code> attribute to "get", the form entries will be sent to the server in the URL query string.</p></li>
-                <li>$_POST
-                    <p>Contains an asoociative array with the variables in a form sent to the server via a POST method.<br>
-                    When setting the forms <code>method</code> attribute to "post", the form data will be sent in the request's headers</p>
-                </li>
-                <li>$_FILES</li>
-                <li>$_COOKIE</li>
-                <li>$_SESSION</li>
-                <li>$_REQUEST
-                    <p>Cotains the contents of $_GET, $_POST, and $_COOKIE.</p>
-                </li>
-                <li>$_ENV</li>
-            </ul>
+<h3>Variable Parsing</h3>
+<p>Double quoted strings allow you to throw variables at them and they will be parsed as the value they contain. Use curly braces if you need to modify the resulting  string. Let's take a look:</p>
+<div class="code">
+<span class="brown">$food</span> = <span class="orange">"treat"</span>;<br>
+<span class="brown">$amount</span> = <span class="orange">"a lot"</span>;<br>
+<span class="blue">echo</span> <span class="orange">"I love </span><span class="darkRed">$</span>{<span class="darkRed">food</span>}<span class="orange">s</span> <span class="darkRed">$amount</span><span class="orange">"</span>;<br><br>
+<span class="black">&gt;&gt; "I love treats a lot".</span>
+</div>
 
-            <p>A forms <code>action</code> attribute accepts a link as a parameter and redirects the user to it when the submit button is pressed.</p>
-        </section>
+<h3>Superglobals and form handling</h3>
+<p>Superglobals are variables that are related to https requests (I think) and are available in all scopes within the php script:</p>
+<ul>
+<li>$GLOBALS</li>
+<li>$_SERVER</li>
+<li>$_GET
+<p>Contains an associative array of the query parameters in the URL.<br>
+When setting the HTML's form <code>method</code> attribute to "get", the form entries will be sent to the server in the URL query string.</p></li>
+<li>$_POST
+<p>Contains an asoociative array with the variables in a form sent to the server via a POST method.<br>
+When setting the forms <code>method</code> attribute to "post", the form data will be sent in the request's headers</p>
+</li>
+<li>$_FILES</li>
+<li>$_COOKIE</li>
+<li>$_SESSION</li>
+<li>$_REQUEST
+<p>Cotains the contents of $_GET, $_POST, and $_COOKIE.</p>
+</li>
+<li>$_ENV</li>
+</ul>
 
-        <section id="functions">
-            <h2>Functions</h2>
-            <p>Defining functions looks very much like JavaScript: </p>
-            <div class="code">
-                    <span class="brown">$global_var</span>;<br>
-                <span class="blue">funcition myFunction</span>(<span class="darkRed">$param1</span>, <span class="darkRed">$param2</span>, &<span class="darkRed">$param3</span> ) {<br>
-                    &nbsp;<span class="blue">global</span> <span class="darkRed">$global_var</span><br>
-                    &nbsp;<span class="black">/* Code block */</span>
-                <br>}<br>
-                <span class="black">Any actions performed on param3 will modify the value of the original variable, as it is an alias.<br>
-                A function can access variables from the global scope using the above syntax.</span>
-            </div>
+<p>A forms <code>action</code> attribute accepts a link as a parameter and redirects the user to it when the submit button is pressed.</p>
+</section>
 
-            <p>Defining functions with default parameters looks just like python (and probably js too).</p>
+<section id="functions">
+<h2>Functions</h2>
+<p>Defining functions looks very much like JavaScript: </p>
+<div class="code">
+<span class="brown">$global_var</span>;<br>
+<span class="blue">funcition myFunction</span>(<span class="darkRed">$param1</span>, <span class="darkRed">$param2</span>, &<span class="darkRed">$param3</span> ) {<br>
+&nbsp;<span class="blue">global</span> <span class="darkRed">$global_var</span><br>
+&nbsp;<span class="black">/* Code block */</span>
+<br>}<br>
+<span class="black">Any actions performed on param3 will modify the value of the original variable, as it is an alias.<br>
+A function can access variables from the global scope using the above syntax.</span>
+</div>
 
-            <p>A note on conventions: variable names are ususally <code>snake_cased</code> and function names are <code>camelCased</code>.</p>
-        </section>
+<p>Defining functions with default parameters looks just like python (and probably js too).</p>
 
-        <section id="built-in-functions">
-                <table>
-                    <tr>
-                        <th>Type</th>
-                        <th>Function</th>
-                        <th>Notes</th>
-                    </tr>
-                    <tr>
-                        <th rowspan="9">Strings</th>
-                        <td>strrev($string)</td>
-                        <td>Returns the string reversed.</td>
-                    </tr>
-                    <tr>
-                        <td>strtolower($string)</td>
-                        <td>Returns the string in lower case.</td>
-                    </tr>
-                    <tr>
-                        <td>str_repeat($string, x)</td>
-                        <td>Returns the string repeated x times.</td>
-                    </tr>
-                    <tr>
-                        <td>substr_count($string, $substring)</td>
-                        <td>Returns the amount of times the substring appears in the string.</td>
-                    </tr>
-                    <td>strlen($string)</td>
-                    <td>Returns the length of the given string.</td>
-                    <tr>
-                        <td>htmlspecialchars($string)</td>
-                        <td>Turns html characters into non html ones.</td>
-                    </tr>
-                    <tr>
-                        <td>filter_var($variable, $id [, ['options' => $options]])</td>
-                        <td>Filters out variables like emails and can also do URL encoding. See the reference <a href="https://www.php.net/manual/en/filter.filters.sanitize.php">here</a>. It can also be used to validate things like emails. Options is an associative_array; check the posibilities in the docs.</td>
-                    </tr>
-                    <tr>
-                        <td>preg_match($pattern, $string)</td>
-                        <td>Checks the string against the regular expression ($pattern) and returns 1 if it matches, 0 if it doesn't and FALSE if there is an error.</td>
-                    </tr>
-                    <tr>
-                        <td>preg_replace($pattern, $replacement, $string)</td>
-                        <td>It replaces the matching pattern with the given string. Usefulf for turning differently formatted versions of a piece of data to a single format. Tip: match the elements you don't want in your string and replace them with an empty string.</td>
-                    </tr>
-                    <tr>
-                        <th rowspan="3">Numbers</th>
-                        <td>abs($number)</td>
-                        <td>Returns the absolute value of $number (|$number|).</td>
-                    </tr>
-                    <tr>
-                        <td>round($number)</td>
-                        <td>Returns the closest integer (rounds up for .5)</td>
-                    </tr>
-                    <tr>
-                        <td>rand(x, y)</td>
-                        <td>Returns a random number between x and y (inclussively). If the parameters are ommited, will return a number between 0 and the largest number the current environment will allow.</td>
-                    </tr>
-                    <tr>
-                        <th rowspan="9">Arrays</th>
-                        <td>count($array)</td>
-                        <td>Returns the number of elements in the array.</td>
-                    </tr>
-                    <tr>
-                        <td>print_r($array)</td>
-                        <td>prints out arrays in human readable format showing indexes.</td>
-                    </tr>
-                    <tr>
-                        <td>implode($string, $array)</td>
-                        <td>Turns the array into a string, joining the elements using the given string.</td>
-                    </tr>
-                    <tr>
-                        <td>array_pop($array)</td>
-                        <td>Returns the last element of the array and deletes it from the array.</td>
-                    </tr>
-                    <tr>
-                        <td>array_push($array, a, b, ... , n)</td>
-                        <td>Adds the given elements to the end of the array and returns the new array size.</td>
-                    </tr>
-                    <tr>
-                        <td>array_shift($array)</td>
-                        <td>Removes the first element of the array and returns it's value.</td>
-                    </tr>
-                    <tr>
-                        <td>array_unshift($array, a, b, ... , n</td>
-                        <td>Adds the given elements to the beginning of the array and returns the new array size.</td>
-                    </tr>
-                    <tr>
-                        <td>unset($array[index])</td>
-                        <td>Removes the element in that index. <span class="red">Note: this doesn't shift the indexes of the elements after the removed element. Better leave this function for key=> value pairs only.</span></td>
-                    </tr>
-                    <tr>
-                        <td>in_array($element, $array [, bool $strict = FALSE])</td>
-                        <td>Returns true if the element is in the array. Uses loose comparison unless strict is set to TRUE.  </td>
-                    </tr>
+<p>A note on conventions: variable names are ususally <code>snake_cased</code> and function names are <code>camelCased</code>.</p>
+</section>
 
-
-                    </table>
-                    </section>
-
-                    <section id="data-structures">
-                        <h2>Data Structures</h2>
-                        <h3>Arrays</h3>
-                        <p>Arrays are created with the <code>array(a, b, ... , n)</code> function, where the arguments passed to it become the elements of the array in the given order.<br>
-                        Or we can just use the good old square brackets wrapping the comma separated values (just like JS, nothing new here). Should have mentioned this first, huh?.<br>
-                        Accessing and reassigning elements of an array is done just like in any other language: <code>$array[index] = 'new value';</code>.<br>
-                        Push new elements into an array with this siyntax: <code>$array[] = 'new element';</code>, or using the <code>array_push()</code> function.
-                    </p>
-
-                        <h3>Associative arrays, aka key=>value pairs.</h3>
-                        <p>
-                            To create a key=>value pair use this syntax: <code>$my_array = [key1 => value1, key2 => value2, ... , keyn => valuen]</code>. Or use the <code>Array()</code> function and pass the key=>value pairs with the same notaion. Keys can be strings or integers.<br>
-                            Note that php's arrays are actually key:value pairs where the keys are integers starting in 0, which means that all built-in functions for Arrays work with this motherfuckers too.<br>
-                            Join two arrays together by simply adding them: <code>$array1 + $array2</code> and php will grab all the unique keys from the second array and push them into the first one.
-                        </p>
-
-                    </section>
-
-                    <section id="conditionals">
-                        <h2>Conditionals</h2>
-                        <h3><b>If</b> Statement</h3>
-                        <div class="code">
-                            <span class="blue">If</span> (condition === <span class="darkRed"> TRUE</span>) {<br>
-                            &nbsp; <span class="black">// Code block</span><br>}<br>
-                            <span class="blue">elseif</span> (condition2 === <span class="darkRed">TRUE</span>) {<br>
-                            &nbsp; <span class="black">// Code Block</span><br>}
-                            <br>
-                            <span class="blue">else </span> { <br>
-                            &nbsp; <span class="black"> // Code block</span><br>
-                            }<br>
-                            <span class="brown">Note: the booleans are not case sensitive, but they're written in uppercase for convention.</span>
-                        </div>
-                        <p>Just like in JavaScript, PHP has an <em>identical operator</em>: <code>===</code> and an <em>equal operator</em>: <code>==</code>.</p>
-
-                        <h3><b>Switch</b> statement</h3>
-                        <p>The syntax is the same as JS:</p>
-                        <div class="code">
-                            <span class="blue">Switch</span> (<span class="darkRed">$param</span>) {<br>
-                            &nbsp; <span class="blue">case</span> <span class="brown">"A"</span>:<br>
-                            &nbsp; &nbsp; <span class="black">// Code block</span><br>
-                            &nbsp; &nbsp; <span class="blue">break</span>;<br>
-                            &nbsp; <span class="blue">case</span> <span class="brown">"B"</span>:<br>
-                            &nbsp; <span class="blue">case</span> <span class="brown">"C"</span>:<br>
-                            &nbsp; &nbsp; <span class="black">// Code block</span><br>
-                            &nbsp; &nbsp; <span class="blue">break</span>;<br>
-                            &nbsp; &nbsp; .<br>
-                            &nbsp; &nbsp; .<br>
-                            &nbsp; &nbsp; .<br>
-                            &nbsp; <span class="blue">case</span> <span class="brown">"N"</span>:<br>
-                            &nbsp; &nbsp; <span class="black">// Code block</span><br>
-                            &nbsp; &nbsp; <span class="blue">break</span>;<br>
-                            &nbsp; <span class="blue">default</span>:<br>
-                            &nbsp; &nbsp; <span class="black">// Code block to run if no case matches.</span><br>
-                            &nbsp; &nbsp; <span class="blue">break</span>;<br>
-                            }<br>
-                            <span class="brown">Note: you can join cases for which you want the same code to run. This is due to <strong>fallthrough</strong>: when the machine finds a case that matches but no 'break' keyword, it will run all subsequent code untill it finds a 'break' or the end of the statement.</span>
-                        </div>
-                    
-                        <h3><b>Ternary</b> operator</h3>
-                        <div class="code"><span class="darkRed">condition</span> ? <span class="black">return this if TRUE</span> : <span class="black">return this if FALSE</span></div>
-
-                        <h3>Truthy and Falsy</h3>
-                        <p>Nothing new here. Falsy variables are:
-                            <ul>
-                                <li>Empty strings</li>
-                                <li>"0"</li>
-                                <li>Undefined or undeclared variables</li>
-                                <li>Empty arrays</li>
-                                <li>Number 0</li>
-                            </ul>
-                        </p>
-
-                        <h3>Logical Operators</h3>
-                        <p>
-                            <ul>
-                                <li><code>&&, and</code>: and</li>
-                                <li><code>||, or</code>: or</li>
-                                <li><code>!</code>: not</li>
-                                <li><code>xor</code>: returns true if A or B is TRUE but not both</li>
-                            </ul>
-                            The <code>&&</code> operator has a higher <em>operator precedence</em> than the <code>||</code> operator. Which means that in a complex operation including them both, the computer will evaluate it first. Use parenthesis to force a diferent order of opeeration.<br>
-                            The operators <code>and, or</code> have lower precedence than <code>&&</code> and <code>||</code>.
-                        </p>
-
-                        <p>The built in <code>isset($var)</code> function checks if a variable is declared and is different than NULL. Returns a boolean value.</p>
-                    </section>
-
-                    <section id="user-input">
-                        <h2>User input</h2>
-                        <p>The <code>readline()</code>built-in function takes a string argument (to ptompt the user) and returns the user's input.</p>
-                        </section>
-
-                    <section id="loops">
-                        <h2>Loops</h2>
-                        <p><ul>
-                            <li><code>While (condition){code block}</code></li>
-                            <li><code>do {code block} while (condition)</code></li>
-                            <li><code>for (counter = 0; condition; counter++) {code block}</code></li>
-                            <li><code>foreach($array as $element){code block} //Iterates through arrays and $elements takes the values of the elements in the array succesively.</code><br>
-                            In associative arrays, $element will be the value, not the key. Use:<br>
-                        <code>foreach($associative_array as $key => $value) {code block} //To access both keys and values.</code></li>
-                        </ul>
-                        Use <code>break</code> and <code>continue</code> to stop the loop and skip current iteration respectivelly.<br>
-
-                        Sometimes, and for some reason we might want to do some funny shit with our for loops: We can get rid of the brackets surrounding the code block and use a colon (:) instead of the opening bracket and <code>endfor; / endwhile; / endforeach;</code> (remember the semicolon [;]) instead of the closing one. Fuck knows when and why this will become usefull.
-                    </p>
-
-                    </section>
-
-                    <section id="form-validation">
-                        <h2>Form Validation</h2>
-                        <p><strong>Always</strong> validate form data on the server side to avoid people from beeing cunts. It is possible to modify the data sent on a form after it is sent but before it arrives on the server. So be careful and re-validate all data once it arrives, also, people can't see what we are doing on the server and that makes it harder for them to bypass our tests.</p>
-
-                        <h3>Data Sanitazing</h3>
-                        <p>Any time we are displaying data introduced by the user back to them, it's a good idea to use the built-in function <code>htmlspecialchars($data)</code> which turns any html elements into special characters so that the php interpreter does not recognzie them as html. This is to protect your users against man-in-the-middle attacks in which things like <code>&lt;a href="http://data_stealing_website.scam"&gt;Your account has been compromised, click here to get sorted!&lt;/a&gt;</code> can be added to the user's input.</p>
-
-                        <p>Another useful function is filter_var($variable, $id). Where $variable is what we want to filter and $id specifies the type of data we want to sanitize. Check out all filter types <a href="https://www.php.net/manual/en/filter.filters.sanitize.php">here</a>.</p>
+<section id="built-in-functions">
+<table>
+<tr>
+    <th>Type</th>
+    <th>Function</th>
+    <th>Notes</th>
+</tr>
+<tr>
+    <th rowspan="9">Strings</th>
+    <td>strrev($string)</td>
+    <td>Returns the string reversed.</td>
+</tr>
+<tr>
+    <td>strtolower($string)</td>
+    <td>Returns the string in lower case.</td>
+</tr>
+<tr>
+    <td>str_repeat($string, x)</td>
+    <td>Returns the string repeated x times.</td>
+</tr>
+<tr>
+    <td>substr_count($string, $substring)</td>
+    <td>Returns the amount of times the substring appears in the string.</td>
+</tr>
+<td>strlen($string)</td>
+<td>Returns the length of the given string.</td>
+<tr>
+    <td>htmlspecialchars($string)</td>
+    <td>Turns html characters into non html ones.</td>
+</tr>
+<tr>
+    <td>filter_var($variable, $id [, ['options' => $options]])</td>
+    <td>Filters out variables like emails and can also do URL encoding. See the reference <a href="https://www.php.net/manual/en/filter.filters.sanitize.php">here</a>. It can also be used to validate things like emails. Options is an associative_array; check the posibilities in the docs.</td>
+</tr>
+<tr>
+    <td>preg_match($pattern, $string)</td>
+    <td>Checks the string against the regular expression ($pattern) and returns 1 if it matches, 0 if it doesn't and FALSE if there is an error.</td>
+</tr>
+<tr>
+    <td>preg_replace($pattern, $replacement, $string)</td>
+    <td>It replaces the matching pattern with the given string. Usefulf for turning differently formatted versions of a piece of data to a single format. Tip: match the elements you don't want in your string and replace them with an empty string.</td>
+</tr>
+<tr>
+    <th rowspan="3">Numbers</th>
+    <td>abs($number)</td>
+    <td>Returns the absolute value of $number (|$number|).</td>
+</tr>
+<tr>
+    <td>round($number)</td>
+    <td>Returns the closest integer (rounds up for .5)</td>
+</tr>
+<tr>
+    <td>rand(x, y)</td>
+    <td>Returns a random number between x and y (inclussively). If the parameters are ommited, will return a number between 0 and the largest number the current environment will allow.</td>
+</tr>
+<tr>
+    <th rowspan="9">Arrays</th>
+    <td>count($array)</td>
+    <td>Returns the number of elements in the array.</td>
+</tr>
+<tr>
+    <td>print_r($array)</td>
+    <td>prints out arrays in human readable format showing indexes.</td>
+</tr>
+<tr>
+    <td>implode($string, $array)</td>
+    <td>Turns the array into a string, joining the elements using the given string.</td>
+</tr>
+<tr>
+    <td>array_pop($array)</td>
+    <td>Returns the last element of the array and deletes it from the array.</td>
+</tr>
+<tr>
+    <td>array_push($array, a, b, ... , n)</td>
+    <td>Adds the given elements to the end of the array and returns the new array size.</td>
+</tr>
+<tr>
+    <td>array_shift($array)</td>
+    <td>Removes the first element of the array and returns it's value.</td>
+</tr>
+<tr>
+    <td>array_unshift($array, a, b, ... , n</td>
+    <td>Adds the given elements to the beginning of the array and returns the new array size.</td>
+</tr>
+<tr>
+    <td>unset($array[index])</td>
+    <td>Removes the element in that index. <span class="red">Note: this doesn't shift the indexes of the elements after the removed element. Better leave this function for key=> value pairs only.</span></td>
+</tr>
+<tr>
+    <td>in_array($element, $array [, bool $strict = FALSE])</td>
+    <td>Returns true if the element is in the array. Uses loose comparison unless strict is set to TRUE.  </td>
+</tr>
 
 
-                        <h3>Regular Expressions</h3>
-                        <p>A<b> literal</b> is a regular expression that contains the exact text that we want to match.</p>
-                        
-                        <p><b>Alternation</b> allows you to match either of two expressions using <code>this|that</code>. It acts like an OR logical operator and in this case it will match 'this' OR 'that'. Remember it matches the hole expression before or after the operator: <code>I like this|that</code> will match 'I like this' but not 'I like that', it will only match 'that'. Enter <b>grouping</b>. Grouping allows you to limit the scope of the alternator to the options within the group. <code>I like (this|that)</code> will match 'I like this' and 'I like that'.</p>
+</table>
+</section>
 
-                        <p><b>Character sets</b>, denoted with square brackets, match one character from a series of characters. <code>ban[ao]na</code> will match both 'banana' and 'banona'. The regex <code>[cat]</code> will match the letters c, a and t but not the text 'cat'.<br>
-                        Placing a caret (<code>^</code>) symbol before a character set will <i>negate</i> the set and match any character that is <b>not</b> in the set. [^cat] will match anything that is neither 'c', 'a', or 't'.<br>
-                        Within a character set we can use <b>ranges</b> instead of typing all the characters. Use <code>[a-c]</code> to match either 'a', 'b', or 'c'. You can also insert many ranges in one character set: <code>[A-Za-z]</code> will match any letter either uppercase or lowercase.
-                        </p>
+<section id="data-structures">
+    <h2>Data Structures</h2>
+    <h3>Arrays</h3>
+    <p>Arrays are created with the <code>array(a, b, ... , n)</code> function, where the arguments passed to it become the elements of the array in the given order.<br>
+    Or we can just use the good old square brackets wrapping the comma separated values (just like JS, nothing new here). Should have mentioned this first, huh?.<br>
+    Accessing and reassigning elements of an array is done just like in any other language: <code>$array[index] = 'new value';</code>.<br>
+    Push new elements into an array with this siyntax: <code>$array[] = 'new element';</code>, or using the <code>array_push()</code> function.
+</p>
 
-                        <p><b>Wildcards</b> (.) will match <b>any</b> character, even whitespace.</p>
+    <h3>Associative arrays, aka key=>value pairs.</h3>
+    <p>
+        To create a key=>value pair use this syntax: <code>$my_array = [key1 => value1, key2 => value2, ... , keyn => valuen]</code>. Or use the <code>Array()</code> function and pass the key=>value pairs with the same notaion. Keys can be strings or integers.<br>
+        Note that php's arrays are actually key:value pairs where the keys are integers starting in 0, which means that all built-in functions for Arrays work with this motherfuckers too.<br>
+        Join two arrays together by simply adding them: <code>$array1 + $array2</code> and php will grab all the unique keys from the second array and push them into the first one.
+    </p>
 
-                        <p><b>Shorthand character classes </b>allow us to write frequent ranges in a shorter and faster way:
-                        <ul>
-                            <li>\w: "word" class represents the [A-Za-z0-9_] regex and matches any uppercase character, lowercase character, digit or underscore. Use <code>\W</code> for non-word characters.</li>
-                            <li>\d: "digit" class represents the [0-9] regex. It matches any number. Use <code>\D</code> for non-digit characters.</li>
-                            <li>\s: "whitespace" class represents the [t\r\n\f\v] regex and matches single space, tab, carriage return (whatever that is), line break, form feed or vertical tab. Use <Code>\S</Code> for non-whitespace characters.</li>
-                        </ul>
-                        </p>
+</section>
 
-                        <p><b>Quantifiers</b> allow us to denote the quantity of a character we want to match: <code>\w{3}</code> will match any 3 word character words and <code>\w{3,8}</code> will match any 3 to 8 word character words.</p>
+<section id="conditionals">
+    <h2>Conditionals</h2>
+    <h3><b>If</b> Statement</h3>
+    <div class="code">
+        <span class="blue">If</span> (condition === <span class="darkRed"> TRUE</span>) {<br>
+        &nbsp; <span class="black">// Code block</span><br>}<br>
+        <span class="blue">elseif</span> (condition2 === <span class="darkRed">TRUE</span>) {<br>
+        &nbsp; <span class="black">// Code Block</span><br>}
+        <br>
+        <span class="blue">else </span> { <br>
+        &nbsp; <span class="black"> // Code block</span><br>
+        }<br>
+        <span class="brown">Note: the booleans are not case sensitive, but they're written in uppercase for convention.</span>
+    </div>
+    <p>Just like in JavaScript, PHP has an <em>identical operator</em>: <code>===</code> and an <em>equal operator</em>: <code>==</code>.</p>
 
-                        <p>The <b>optional quantifier</b> (<Code>?</Code>) allows you to indicate that the character before it may appear 0 or 1 times (it's optional, right?). Use grouping to get the quantifier to apply to multiple characters.</p>
+    <h3><b>Switch</b> statement</h3>
+    <p>The syntax is the same as JS:</p>
+    <div class="code">
+        <span class="blue">Switch</span> (<span class="darkRed">$param</span>) {<br>
+        &nbsp; <span class="blue">case</span> <span class="brown">"A"</span>:<br>
+        &nbsp; &nbsp; <span class="black">// Code block</span><br>
+        &nbsp; &nbsp; <span class="blue">break</span>;<br>
+        &nbsp; <span class="blue">case</span> <span class="brown">"B"</span>:<br>
+        &nbsp; <span class="blue">case</span> <span class="brown">"C"</span>:<br>
+        &nbsp; &nbsp; <span class="black">// Code block</span><br>
+        &nbsp; &nbsp; <span class="blue">break</span>;<br>
+        &nbsp; &nbsp; .<br>
+        &nbsp; &nbsp; .<br>
+        &nbsp; &nbsp; .<br>
+        &nbsp; <span class="blue">case</span> <span class="brown">"N"</span>:<br>
+        &nbsp; &nbsp; <span class="black">// Code block</span><br>
+        &nbsp; &nbsp; <span class="blue">break</span>;<br>
+        &nbsp; <span class="blue">default</span>:<br>
+        &nbsp; &nbsp; <span class="black">// Code block to run if no case matches.</span><br>
+        &nbsp; &nbsp; <span class="blue">break</span>;<br>
+        }<br>
+        <span class="brown">Note: you can join cases for which you want the same code to run. This is due to <strong>fallthrough</strong>: when the machine finds a case that matches but no 'break' keyword, it will run all subsequent code untill it finds a 'break' or the end of the statement.</span>
+    </div>
 
-                        <p>The <strong>Kleene star</strong> (Did you know? Stephen Kleene invented this regex stuff)(<code>*</code>) is the ultimate quantifier. It matches the character preceding it 0, 1 or multiple times. And the <strong>Knleene plus</strong> (<code>+</code>) matches the character 1 or more times.</p>
+    <h3><b>Ternary</b> operator</h3>
+    <div class="code"><span class="darkRed">condition</span> ? <span class="black">return this if TRUE</span> : <span class="black">return this if FALSE</span></div>
 
-                        <p><b>Anchors</b> allow you to ensure the matched text begins and ends exactly as you state it. The hat (<code>^</code>) and dollar sign (<code>$</code>) allow you to match text at the beginning and end of a string respectivelly.</p>
+    <h3>Truthy and Falsy</h3>
+    <p>Nothing new here. Falsy variables are:
+        <ul>
+            <li>Empty strings</li>
+            <li>"0"</li>
+            <li>Undefined or undeclared variables</li>
+            <li>Empty arrays</li>
+            <li>Number 0</li>
+        </ul>
+    </p>
 
-                        <h3>Rerouting</h3>
-                        <p>After a succesful form validation, we usually want to redirect the user to a new page. For this we use the <code>header("Location: $url")</code> function. Remember that this function needs to be called before anything gets output by the script, even empty lines like the ones produced by <code>include</code> or <code>require</code> functions. For this reason the function needs to go right at the top of the file. Inmediately after the call to <code>header()</code> use the <code>exit</code> keyword to terminate the current script. TAke a look at the <a herf="https://www.php.net/manual/en/function.header.php">docs</a>.</p>
+    <h3>Logical Operators</h3>
+    <p>
+        <ul>
+            <li><code>&&, and</code>: and</li>
+            <li><code>||, or</code>: or</li>
+            <li><code>!</code>: not</li>
+            <li><code>xor</code>: returns true if A or B is TRUE but not both</li>
+        </ul>
+        The <code>&&</code> operator has a higher <em>operator precedence</em> than the <code>||</code> operator. Which means that in a complex operation including them both, the computer will evaluate it first. Use parenthesis to force a diferent order of opeeration.<br>
+        The operators <code>and, or</code> have lower precedence than <code>&&</code> and <code>||</code>.
+    </p>
 
-                    </section>
+    <p>The built in <code>isset($var)</code> function checks if a variable is declared and is different than NULL. Returns a boolean value.</p>
+</section>
 
-                    <section id="classes">
-                        <h2>Classes</h2>
-                        <p>Classes are defined and instantiated the same way they are in javaScript: </p>
-                        <div class="code">
-                            <span class="blue">class Perro </span> { <br>
-                            &nbsp; <span class="blue">public</span> <span class="brown">$name</span>, <span class="brown">$lastName</span>, <span class="brown">$color</span>;<br>
-                            <span class="black">// The public keyword makes this properties accessible from within the object and from outside. Public is the default for methods.</span><br>
-                            <br>
+<section id="user-input">
+    <h2>User input</h2>
+    <p>The <code>readline()</code>built-in function takes a string argument (to ptompt the user) and returns the user's input.</p>
+    </section>
 
-                            &nbsp; <span class="blue">private</span> <span class="brown">$health</span>;<br>
-                            <span class="black">// Private properties can only be accesed by the object's methods. REMEMBER: private properties cannot be accesed by child classes. Use <em>protected</em> instead to allow this.</span><br>
-                            <br>
+<section id="loops">
+    <h2>Loops</h2>
+    <p><ul>
+        <li><code>While (condition){code block}</code></li>
+        <li><code>do {code block} while (condition)</code></li>
+        <li><code>for (counter = 0; condition; counter++) {code block}</code></li>
+        <li><code>foreach($array as $element){code block} //Iterates through arrays and $elements takes the values of the elements in the array succesively.</code><br>
+        In associative arrays, $element will be the value, not the key. Use:<br>
+    <code>foreach($associative_array as $key => $value) {code block} //To access both keys and values.</code></li>
+    </ul>
+    Use <code>break</code> and <code>continue</code> to stop the loop and skip current iteration respectivelly.<br>
 
-                            &nbsp; <span class="blue">static function bark</span>(){<br>
-                            &nbsp; &nbsp; <span class="blue">return</span> <span class="orange">"Whof!"</span><br>
-                            &nbsp; }<br>
-                            <span class="black">// Assign a class static methods (or properties) that you can later access without the need of instantiating the class through the syntax ClassName::methodName()</span><br>
-                            <br>
+    Sometimes, and for some reason we might want to do some funny shit with our for loops: We can get rid of the brackets surrounding the code block and use a colon (:) instead of the opening bracket and <code>endfor; / endwhile; / endforeach;</code> (remember the semicolon [;]) instead of the closing one. Fuck knows when and why this will become usefull.
+</p>
 
-                            &nbsp; <span class="blue">function __construct</span>(<span class="brown">$param1</span>) { <br>
-                            &nbsp; &nbsp; <span class="brown">$this </span>-> <span class="brown"> name</span> = <span class="brown">$param1</span>;<br>
-                            <span class="black">/* The constructor is called at the moment of instantiating */</span><br>
-                            <br>
+</section>
 
-                            &nbsp; <span class="blue">function getHealth</span>() {<br>
-                            &nbsp; &nbsp; <span class="blue">return</span> <span class="brown">$this</span> -> <span class="brown">health</span>;<br>
-                            &nbsp; }<br>
-                            <span class="black">// Use getters and setters to access private properties.</span><br>
-                            <br>
+<section id="form-validation">
+    <h2>Form Validation</h2>
+    <p><strong>Always</strong> validate form data on the server side to avoid people from beeing cunts. It is possible to modify the data sent on a form after it is sent but before it arrives on the server. So be careful and re-validate all data once it arrives, also, people can't see what we are doing on the server and that makes it harder for them to bypass our tests.</p>
 
-                            &nbsp; <span class="blue">function getFullName</span>(){<br>
-                            &nbsp; &nbsp; <span class="blue">return </span><span class="brown">$this</span> -> <span class="brown">name</span> . <span class="orange">" "</span> . <span class="brown">$this</span> -> <span class="brown">lastName</span>;<br>
-                            &nbsp; }<br>
-                            };
-                
-                            
-                            <br>
-                            <br>
-                            <span class="brown">$perrito</span> = <span class="blue"> new </span> <span class="brown">Perro</span>(<span class="orange">"Batata"</span>);<br>
-                            <br>
-                            
-                            <span class="black">/* Use the object operator '->' to access the object's properties and methods. */</span><br>
-                            <span class="brown">$perrito </span>-> <span class="brown">color</span> = <span class="orange">"magenta"</span>;<br>
-                            <br>
+    <h3>Data Sanitazing</h3>
+    <p>Any time we are displaying data introduced by the user back to them, it's a good idea to use the built-in function <code>htmlspecialchars($data)</code> which turns any html elements into special characters so that the php interpreter does not recognzie them as html. This is to protect your users against man-in-the-middle attacks in which things like <code>&lt;a href="http://data_stealing_website.scam"&gt;Your account has been compromised, click here to get sorted!&lt;/a&gt;</code> can be added to the user's input.</p>
 
-                            <span class="blue">echo</span> <span class="brown">$perrito</span> -> <span class="brown">name</span>;<br>
-                            <span class="black">&gt;&gt; prints "Batata"</span><br>
-                            <br>
+    <p>Another useful function is filter_var($variable, $id). Where $variable is what we want to filter and $id specifies the type of data we want to sanitize. Check out all filter types <a href="https://www.php.net/manual/en/filter.filters.sanitize.php">here</a>.</p>
 
-                            <span class="blue">echo</span> <span class="brown">Perro</span>::<span class="brown">bark</span>();<br>
-                            <span class="black">&gt;&gt; prints "Whof!"</span>
-                    
-                        </div>
+    <h3>Rerouting</h3>
+    <p>After a succesful form validation, we usually want to redirect the user to a new page. For this we use the <code>header("Location: $url")</code> function. Remember that this function needs to be called before anything gets output by the script, even empty lines like the ones produced by <code>include</code> or <code>require</code> functions. For this reason the function needs to go right at the top of the file. Inmediately after the call to <code>header()</code> use the <code>exit</code> keyword to terminate the current script. TAke a look at the <a herf="https://www.php.net/manual/en/function.header.php">docs</a>.</p>
+</section>
 
-                        <h3>Inhrtitance</h3>
-                        <p>Subclasses can be defined using the keyword <code>extends</code>. Nothing new here.<br>
-                        Within a subclass we can overwrite a parent method by simply redefining it and we can call parent methods using <code>parent::methodName()</code></p>
-                    </section>
-               
+<section id="regular-expressions">
+    <h2>Regular Expressions</h2>
+    <p>A<b> literal</b> is a regular expression that contains the exact text that we want to match.</p>
+    
+    <p><b>Alternation</b> allows you to match either of two expressions using <code>this|that</code>. It acts like an OR logical operator and in this case it will match 'this' OR 'that'. Remember it matches the hole expression before or after the operator: <code>I like this|that</code> will match 'I like this' but not 'I like that', it will only match 'that'. Enter <b>grouping</b>. Grouping allows you to limit the scope of the alternator to the options within the group. <code>I like (this|that)</code> will match 'I like this' and 'I like that'.</p>
 
-    </main>
+    <p><b>Character sets</b>, denoted with square brackets, match one character from a series of characters. <code>ban[ao]na</code> will match both 'banana' and 'banona'. The regex <code>[cat]</code> will match the letters c, a and t but not the text 'cat'.<br>
+    Placing a caret (<code>^</code>) symbol before a character set will <i>negate</i> the set and match any character that is <b>not</b> in the set. [^cat] will match anything that is neither 'c', 'a', or 't'.<br>
+    Within a character set we can use <b>ranges</b> instead of typing all the characters. Use <code>[a-c]</code> to match either 'a', 'b', or 'c'. You can also insert many ranges in one character set: <code>[A-Za-z]</code> will match any letter either uppercase or lowercase.
+    </p>
+
+    <p><b>Wildcards</b> (.) will match <b>any</b> character, even whitespace.</p>
+
+    <p><b>Shorthand character classes </b>allow us to write frequent ranges in a shorter and faster way:
+    <ul>
+        <li>\w: "word" class represents the [A-Za-z0-9_] regex and matches any uppercase character, lowercase character, digit or underscore. Use <code>\W</code> for non-word characters.</li>
+        <li>\d: "digit" class represents the [0-9] regex. It matches any number. Use <code>\D</code> for non-digit characters.</li>
+        <li>\s: "whitespace" class represents the [t\r\n\f\v] regex and matches single space, tab, carriage return (whatever that is), line break, form feed or vertical tab. Use <Code>\S</Code> for non-whitespace characters.</li>
+    </ul>
+    </p>
+
+    <p><b>Quantifiers</b> allow us to denote the quantity of a character we want to match: <code>\w{3}</code> will match any 3 word character words and <code>\w{3,8}</code> will match any 3 to 8 word character words.</p>
+
+    <p>The <b>optional quantifier</b> (<Code>?</Code>) allows you to indicate that the character before it may appear 0 or 1 times (it's optional, right?). Use grouping to get the quantifier to apply to multiple characters.</p>
+
+    <p>The <strong>Kleene star</strong> (Did you know? Stephen Kleene invented this regex stuff)(<code>*</code>) is the ultimate quantifier. It matches the character preceding it 0, 1 or multiple times. And the <strong>Knleene plus</strong> (<code>+</code>) matches the character 1 or more times.</p>
+
+    <p><b>Anchors</b> allow you to ensure the matched text begins and ends exactly as you state it. The hat (<code>^</code>) and dollar sign (<code>$</code>) allow you to match text at the beginning and end of a string respectivelly.</p>
+
+</section>
+
+<section id="classes">
+    <h2>Classes</h2>
+    <p>Classes are defined and instantiated the same way they are in javaScript: </p>
+    <div class="code">
+        <span class="blue">class Perro </span> { <br>
+        &nbsp; <span class="blue">public</span> <span class="brown">$name</span>, <span class="brown">$lastName</span>, <span class="brown">$color</span>;<br>
+        <span class="black">// The public keyword makes this properties accessible from within the object and from outside. Public is the default for methods.</span><br>
+        <br>
+
+        &nbsp; <span class="blue">private</span> <span class="brown">$health</span>;<br>
+        <span class="black">// Private properties can only be accesed by the object's methods. REMEMBER: private properties cannot be accesed by child classes. Use <em>protected</em> instead to allow this.</span><br>
+        <br>
+
+        &nbsp; <span class="blue">static function bark</span>(){<br>
+        &nbsp; &nbsp; <span class="blue">return</span> <span class="orange">"Whof!"</span><br>
+        &nbsp; }<br>
+        <span class="black">// Assign a class static methods (or properties) that you can later access without the need of instantiating the class through the syntax ClassName::methodName()</span><br>
+        <br>
+
+        &nbsp; <span class="blue">function __construct</span>(<span class="brown">$param1</span>) { <br>
+        &nbsp; &nbsp; <span class="brown">$this </span>-> <span class="brown"> name</span> = <span class="brown">$param1</span>;<br>
+        <span class="black">/* The constructor is called at the moment of instantiating */</span><br>
+        <br>
+
+        &nbsp; <span class="blue">function getHealth</span>() {<br>
+        &nbsp; &nbsp; <span class="blue">return</span> <span class="brown">$this</span> -> <span class="brown">health</span>;<br>
+        &nbsp; }<br>
+        <span class="black">// Use getters and setters to access private properties.</span><br>
+        <br>
+
+        &nbsp; <span class="blue">function getFullName</span>(){<br>
+        &nbsp; &nbsp; <span class="blue">return </span><span class="brown">$this</span> -> <span class="brown">name</span> . <span class="orange">" "</span> . <span class="brown">$this</span> -> <span class="brown">lastName</span>;<br>
+        &nbsp; }<br>
+        };
+
+        
+        <br>
+        <br>
+        <span class="brown">$perrito</span> = <span class="blue"> new </span> <span class="brown">Perro</span>(<span class="orange">"Batata"</span>);<br>
+        <br>
+        
+        <span class="black">/* Use the object operator '->' to access the object's properties and methods. */</span><br>
+        <span class="brown">$perrito </span>-> <span class="brown">color</span> = <span class="orange">"magenta"</span>;<br>
+        <br>
+
+        <span class="blue">echo</span> <span class="brown">$perrito</span> -> <span class="brown">name</span>;<br>
+        <span class="black">&gt;&gt; prints "Batata"</span><br>
+        <br>
+
+        <span class="blue">echo</span> <span class="brown">Perro</span>::<span class="brown">bark</span>();<br>
+        <span class="black">&gt;&gt; prints "Whof!"</span>
+
+    </div>
+
+    <h3>Inhrtitance</h3>
+    <p>Subclasses can be defined using the keyword <code>extends</code>. Nothing new here.<br>
+    Within a subclass we can overwrite a parent method by simply redefining it and we can call parent methods using <code>parent::methodName()</code></p>
+</section>
+
 {% endblock %}

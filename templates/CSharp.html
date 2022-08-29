@@ -206,7 +206,7 @@
   </p>
 
   <h3>Abstract members</h3>
-  <p>In the superclass definition use <code>acces_modifier abstract type MemberName;</code> to ensure that all subclasses define that property or method. This is useful if you want all your subclasses to have a certain member that is unique to them so you can't define it within the superclass. Only bear in mind that if one member of a class is <code>abstract</code>, then the hole class cannot be instantiated and therefore the entire class itself needs to be declared as <code>abstract</code> (<code>abstract class ClassName)</code>. Also remember that when defining the member in subclasses we are in effect overriding it, so we need to use the <code>override</code> keyword.</p>
+  <p>In the superclass definition use <code>acces_modifier abstract type MemberName;</code> to ensure that all subclasses define that property or method. This is useful if you want all your subclasses to have a certain member that is unique to them so you can't define it within the superclass. Only bear in mind that if one member of a class is <code>abstract</code>, then the hole class cannot be instantiated and therefore the entire class itself needs to be declared as <code>abstract</code> (<code>abstract class ClassName</code>). Also remember that when defining the member in subclasses we are in effect overriding it, so we need to use the <code>override</code> keyword.</p>
 </section>
 
 <section id="references">
@@ -217,10 +217,10 @@
       <span class="brown">type varName2</span> = <span class="brown">varName</span> ;
     </div>
     Instead of copying the value (in this case an object) of <code>varName</code>  onto <code>varName2</code>, C# assings the same object to the second variable. Kind of like doing an <code>alias</code>.<br>
-    Just keep in mind this doesn't work the same way with <i>value types</i> (<code>int</code>, <code>double</code>, <Code>bool</Code>, <code>char</code>), where the variable contains te actual value instead of pointing to an adress in memory that contains the object as it happens with <i>reference types</i>.
+    Just keep in mind this doesn't work the same way with <i>value types</i> (<code>int</code>, <code>double</code>, <Code>bool</Code>, <code>char</code>), where the variable contains the actual value instead of pointing to an address in memory that contains the object as it happens with <i>reference types</i>.
   </p>
 
-  <p>Now this is important when doing comparison in C# because when comparing <i>value types</i>, C will check whether the variables contain the same value. But when comparing <i>reference types</i>, C will check wether the variables point to the same adress  in memory, that is, whether they <b>are the same thing</b>.</p>
+  <p>Now this is important when doing comparison in C# because when comparing <i>value types</i>, C will check whether the variables contain the same value. But when comparing <i>reference types</i>, C will check wether the variables point to the same address  in memory, that is, whether they <b>are the same thing</b>.</p>
 
   <p>When a class (<code>SomeClass</code>) implements an interface (<code>ISomeInterface</code>) or extends a <code>Superclass</code>, we can reference instances of that class as of type <code>ISomeInterface</code> or <code>Superclass</code>. This is called <strong>upcasting</strong>. Bear in mind though, that when referencing an object as belonging to it's superclass, we loose all functionality specific to the subclass and can only access the members of the instannce that are present in the superclass.</p>
 
@@ -232,7 +232,7 @@
 
     The Object class has a couple (arguably) usefull methods:<br>
     <ul>
-      <li>Equals(object) (<code>virtual</code>) - I don't really know what this thing compares, the actual value? the data type? the adress at which the variable points to? </li>
+      <li>Equals(object) (<code>virtual</code>) - I don't really know what this thing compares, the actual value? the data type? the address at which the variable points to? </li>
       <li>GetType() - returns the data type.</li>
       <li>ToString() (<code>virtual</code>)- describes the object.</li>
 
@@ -329,4 +329,4 @@
     <p>For a full list of methods <a href="https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.aggregate?view=net-5.0">see the reference</a>.</p>
   </p>
 </section>
-{% enblock %}
+{% endblock %}

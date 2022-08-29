@@ -109,10 +109,20 @@
         <span class="blue">FROM</span> table<sub>2</sub>;
     </div>
 
+    <h3>See a database's structure</h3>
+    <p>In MariaDB, you can use the <code>SHOW CREATE DATABASE dbname | TABLE tblname</code> to se a db structure.</p>
+
+</section>
+
+<section id="users">
+    <h2>Create a new user:</h2>
+    <img src="/static/Images/create_user.png">
+
     <h3>Permissions</h3>
     <p>Grant a user access to a database with the following</p>
     <img src="/static/Images/sql-privileges.png">
 </section>
+
 
 <section id="JavaScript">
     <h2>SQL in JavaScript</h2>
@@ -156,6 +166,55 @@
         &nbsp; db.run('QUERY<sub>n</sub>', callback<sub>n</sub>)<br>
         });
     </div>
+</section>
+
+<section id="php">
+    <h2>SQL in PHP</h2>
+    <p>The <code>Mysqli</code> (MySQL improved) class allows you to acces the functionality provided by MySQL 4.1 and above.</p>
+
+    <p>Connect to the database with <br>
+        <code>$conn = new mysqli($host, $user, $password, $dbname, $port, $socket);</code> See the <a href="https://www.php.net/manual/en/book.mysqli">reference</a>. <br>
+        and ensure the connection was successful by checking<br>
+        <code>$conn->conncect_errno</code> which will be set to 0 on a successful connection and an integer value on error. If <code>$conn->conncect_errno</code> is different than 0, you can then find the error description under <br>
+        <code>$conn->connect_error</code>.</p>
+
+    <p>Once you have the connection object set up, run queries with <br>
+    <code>$result = $conn->query("SELECT * FROM tblname");</code><br>
+    which returns one of the following: <br>
+    <ul>
+        <li>
+            <code>false</code> on failure. Use <code>$conn->error</code> to see a description of the last error.
+        </li>
+        <li>
+            <code>true</code> on success for queries that don't return any data.
+        </li>
+        <li>
+            a <a href="https://www.php.net/manual/en/class.mysqli-result.php"><code>mysqli_result</code></a> object on success for queries that return data.
+        </li>
+    </ul> 
+
+    Use <code>$result->fetchh_all(MYSQLI_ASSOC)</code> to get an array of asociative arrays, each of which represents a result row. Alternatively use <br>
+    <code>$result->fetch_asoc()</code> which returns an asociative array representing a row each time you call it or <code>null</code> when there are no more rows.
+</p>
+
+    <h3>Prepared statements</h3>
+    <p>Use <br><code>$stmt = $conn->prepare("QUERY WITH ? PLACEHOLDERS ?")</code> and then bind the parameters with<br>
+    <code><a href="https://www.php.net/manual/en/mysqli-stmt.bind-param.php">$stmt->bind_param</a>("ss", $var1, $var2)</code> followed by <br>
+    <code>$stmt->execute()</code> which runs the query and returns <code>true</code> on success and <code>false</code> on failure.<br>
+    You can then run <code>$result = $stmt->get_result()</code> which returns a <code>mysqli_result</code> object that can be used as described above. </p>
+
+</section>
+
+<section id="race-conditions">
+    <h2>Race conditions</h2>
+    <p>When multiple users are making changes to your database at the same time, the server might split resources and run the same query for both users at the same time. If the first user's interaction was meant to update the database but the <code>update</code> code doesn't run untill the second user's <code>select</code> code is run, then the second user get's the <em>old</em> value returned to him and. This can be solved by using: </p>
+
+    <div class="code">
+        BEGIN TRANSACTION; <br>
+        <span class="black"># Do your thing without beign interupted</span> <br>
+        COMMIT;
+    </div>
+    
 </section>
 
 {% endblock %}
