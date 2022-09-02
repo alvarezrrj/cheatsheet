@@ -2,111 +2,190 @@
 
 {% block main %}
 <section id="intro">
-  <h2>Intro</h2>
-  <p>
-    Let's see if i got this right: an application written in C contains many classes, each written in its own file, which is named after the class it contains and is used by the <code>main()</code> method in the <code>Program</code> class (in the Program.cs file).
-  </p>
+    <h2>Intro</h2>
+    <p>
+        Let's see if i got this right: an application written in C contains many classes, each written in its own file, which is named after the class it contains and is used by the <code>main()</code> method in the <code>Program</code> class (in the Program.cs file).
+    </p>
 
-  <p>Classes can have different members (things accessable by dot notation): 
+    <h3>Classes and Namespace</h3>
+    <p>
+        Classes contain the code that implements a type and are organized into namespaces to prevent naming collisions. A namespace is like the surname for a type.
+    </p>
+
+    <p>
+        Classes can contain different data members (fields) and function members (methods, Properties, and others) which are accessable by dot notation:
+        <ul>
+            <li>Fields: have their variable names written in lowercase and are directly modifiable by doing <code>instanceName.fieldName = newValue;</code></li>
+            <li>Properties: these are in a state of quantum entanglement with fields. Anything that happens to these happens to them. In fact, they are named after the field they are entangled to but with Title case. When doing <code>instanceName.Property</code> in the background C is calling a <code>Set</code> or <code>Get</code> method which in turn modifies or returns the value of the correspondent field.</li>
+            <li>Methods: define the constructor by giving it the same name as the class itself and use the <code>this</code> keyword (although it's not mandatory, it's better to be explicit) to set the Properties' values</li>
+        </ul>
+
+        Property and Getter/Setter syntax looks like this:<br>
+        <div class="code">
+            <img src="/static/Images/cs-class-properties.jpg" alt="Getter/Setter syntax example" height="190"><br>
+            <span class="red">Where 'value' is the value passed on to the setter.</span><br>
+            <br>
+            <span class="black">/* If you like overcomplicating things and you want a Property that directly sets the value of the field with no validation whatsoever, there is a forn of shorthand syntax for you: */</span><br>
+            <span class="blue">public</span> <span class="brown">string Name </span>{<br>
+            &nbsp; {<span class="blue">get</span>; <span class="blue">set</span>;}<br>}
+            <br>
+            <br>
+            <Span class="red">Mote that in the shorthand form, it's not necesary to define the field, C does it for us.</Span>
+        </div>
+        <br>
+        <strong>Static</strong> members can be added by using the keyword <Code>static</Code> between the access modifier and the data type and they can be accessed through <code>ClassName.Member</code> (static members are related to the Class, not an instance). Only remember that static methods can only access static fields.
+        If you make the hole Class static, it won't be able to be instantiated. Do this if you are creating a library or utility.
+    </p>
+
+    <h3>State</h3>
+    <p>
+        At any moment during execution of your application, its state is the collection of all values stored in memory. Some methods don't rely on the current state of the application to work properly. That is, they can work without referencing or changing any value stored in memory. These are <strong>stateless</strong> or <strong>static</strong> methods.
+    </p>
+
+    <p>
+        Other methods moidfy the state of the application by updating values or storing new ones. These are known as <strong>stateful</strong> or <strong>instance</strong> methods.
+    </p>
+
+
+
+    <p>
+        C# is an object oriented programming language. Very similar to Java by the looks of it. Use <code>Console.WriteLine("String")</code> to write to the console and <code>Console.ReadLine()</code> to read user input.<br>
+        User input from the console comes in as a string. To convert variables from one data type to another use the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.convert?view=netframework-4.7.2">Convert class</a>.<br>
+        <code>// Write single line comments like this</code> and<br>
+        <code>
+            /* Multi <br>
+            &nbsp; &nbsp;line<br>
+            &nbsp; &nbsp;comments<br>
+            &nbsp; &nbsp;like this          */
+        </code>
+    </p>
+
+    <h3>Data types and variable declaration</h3>
+    <p>
+        Variable declaration syntax is: <br>
+        <div class="code">
+            <span class="blue">type</span>[?] <span class="brown">varName</span> = value;
+            <span class="black"># Where the optional question mark makes the variable nullable. Otherwise it <strong>must</strong> have a value.</span>
+        </div>
+    </p>
+
+    <h3>Implicitly typed local variables</h3>
+    <p>
+        Use the <code>var</code> keyword to instruct the compiler to infer the type. Once the type has been inferred, it is assigned to the variable and it will act the same way as if the actual data type had been used to declare the variable.
+    </p>
+
+    <p>
+        <strong>You can only use the <code>var</code> keyword if the variable is initialized </strong>(given a value)
+    </p>
+
     <ul>
-      <li>Fields: have their variable names written in lowercase and are directly modifiable by doing <code>instanceName.fieldName = newValue;</code></li>
-      <li>Properties: these are in a state of quantum entanglement with fields. Anything that happens to these happens to them. In fact, they are named after the field they are entangled to but with Title case. When doing <code>instanceName.Property</code> in the background C is calling a <code>Set</code> or <code>Get</code> method which in turn modifies or returns the value of the correspondent field.</li>
-      <li>Methods: define the constructor by giving it the same name as the class itself and use the <code>this</code> keyword (although it's not mandatory, it's better to be explicit) to set the Properties' values</li>
+        Data types
+        <li><code>int</code></li>
+        <li><code>float</code></li>
+        <li><code>decimal</code> number sufixed with letter <code>m</code> (12.30m is a decimal literal, 12.30 is a float)</li>
+        <li><code>double</code> (double precision floating point number.)</li>
+        <li><code>char</code> single quoted</li>
+        <li><code>string</code> double quoted</li>
+        <li><code>bool</code> - true / false (lowercase)</li>
+        <li><code>DateTime</code></li>
+        <li><code>null / unassigned</code> - a variable is <code>null</code> if and only if it is explicitly assigned <code>null</code> as it's value (<code>type varName = null;</code>). It is <code>unassigned</code> if it gets declared but not assigned any value (<code>type varName</code>;).</li>
     </ul>
 
-    Property and Getter/Setter syntax looks like this:<br>
-    <div class="code">
-    <img src="/static/Images/cs-class-properties.jpg" alt="Getter/Setter syntax example" height="190px"><br>
-    <span class="red">Where 'value' is the value passed on to the setter.</span><br>
-    <br>
-    <span class="black">/* If you like overcomplicating things and you want a Property that directly sets the value of the field with no validation whatsoever, there is a forn of shorthand syntax for you: */</span><br>
-    <span class="blue">public</span> <span class="brown">string Name </span>{<br>
-      &nbsp; {<span class="blue">get</span>; <span class="blue">set</span>;}<br>}
-      <br>
-      <br>
-      <Span class="red">Mote that in the shorthand form, it's not necesary to define the field, C does it for us.</Span>
-  </div>
-  <br>
-  <strong>Static</strong> members can be added by using the keyword <Code>static</Code> between the access modifier and the data type and they can be accessed through <code>ClassName.Member</code> (static members are related to the Class, not an instance). Only remember that static methods can only access static fields.
-  If you make the hole Class static, it won't be able to be instantiated. Do this if you are creating a library or utility.
-          </p>
-
-
-  <p>C# is an object oriented programming language. Very similar to Java by the looks of it. Use <code>Console.WriteLine("String")</code> to write to the console and <code>Console.ReadLine()</code> to read user input.<br>
-  User input from the console comes in as a string. To convert variables from one data type to another use the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.convert?view=netframework-4.7.2">Convert class</a>.<br>
-  <code>// Write single line comments like this</code> and<br>
-  <code>/* Multi <br>
-  &nbsp; &nbsp;line<br>
-  &nbsp; &nbsp;comments<br>
-  &nbsp; &nbsp;like this          */</code>
-  </p>
-
-  <h3>Data types and variable declaration</h3>
-  <p>Variable declaration syntax is: <br>
-  <div class="code">
-    <span class="blue">type</span> <span class="brown">varName</span> = value; 
-  </div>
-  </p>
-
-  <ul>Data types
-    <li><code>int</code></li>
-    <li><code>float</code></li>
-    <li><code>double</code> (double precision floating point number. Just use these.)</li>
-    <li><code>char</code></li>
-    <li><code>string</code></li>
-    <li><code>bool</code> - true / false (lowercase)</li>
-    <li><code>DateTime</code></li>
-    <li><code>null / unassigned</code> - a variable is <code>null</code> if and only if it is explicitly assigned <code>null</code> as it's value (<code>type varName = null;</code>). It is <code>unassigned</code> if it gets declared but not assigned any value (<code>type varName</code>;).</li>
-  </ul>
-
-  <h3>Logical operators</h3>
-  <ul>
-    <li>&& - and</li>
-    <li>|| - or</li>
-    <li>! - not</li>
-  </ul>
-
-  <h3>Math class</h3>
-  <p>Here are a couple Math built in methods (check out <a href="https://docs.microsoft.com/en-us/dotnet/api/system.math.abs?view=net-5.0">the docs</a> for the hole lot): </p>
-  <ul>
-    <li><code>Math.Abs(number)</code> returns the absolute value of number.</li>
-    <li><code>Math.Sqrt(number)</code> returns the sqare root.</li>
-    <li><code>Math.Floor(number)</code> rounds the number down.</li>
-    <li><code>Math.Ceiling(number)</code> rounds up.</li>
-    <li><code>Math.Min(a, b)</code> returns the smaller of two numbers.</li>
-    
-  </ul>
-
-  <h3>Array class</h3>
-  <p>Take  a look at a couple built-in methods for iterating  through arrays (visit <a href="https://docs.microsoft.com/en-us/dotnet/api/system.array.asreadonly?view=net-5.0">the docs</a> for the full list):
+    <h3>Logical operators</h3>
     <ul>
-      <li><code>Array.Exists(array, callback)</code> - returns <code>true</code> if the callback returns <code>true</code> with any of the elements in the array.</li>
-      <li><code>Array.Find(array, callback)</code> - returns the first element for which the callback returns true.</li>
-      <li><code>Array.IndexOf(arrayName, element)</code> - returns the position of the element or -1 if not found.</li>
+        <li>&& - and</li>
+        <li>|| - or</li>
+        <li>! - not</li>
     </ul>
-  </p>
 
-  <p>Declare and initialize arrays as follows: 
-    <div class="code">
-      <span class="black">//Single line </span><br>
-      <span class="brown">type</span>[] <span class="brown">arrayName</span> = {<span class="brown">element1</span>, <span class="brown">element2</span>, ..., <span class="brown">elementn</span>};
-      <br><br>
-      <span class="black">//Multi line</span><br>
-      <span class="brown">type</span>[] <span class="brown">arrayName</span>;<br>
-      <span class="brown">arrayName</span> = <span class="blue">new</span> <span class="brown">type</span>[] {<span class="brown">element1</span>, <span class="brown">element2</span>, ..., <span class="brown">elementn</span>};<br>
-      <br>
-      <span class="black">//Initialize empty array</span><br>
-      <span class="brown">type</span>[] <span class="brown">arrayName</span> = <span class="blue">new</span> <span class="brown">type</span>[<span class="darkRed">size</span>];<br>
-      <span class="black">//Where size is an integer</span><br>
-      <br>
-      <span class="red">Note you must use the new keyword when declaring and initializing the array on different lines.</span>
-                    
-    </div>
+    <h3>Comparison operators</h3>
+    <ul>
+        <li>== - equals</li>
+        <li>&gt; - greater than</li>
+        <li>&lt; - less than</li>
+        <li>&gt;= - greater than or equals</li>
+        <li>&lt;= - less than or equals</li>
+    </ul>
 
-    Just like in Java, array sizes are <strong>fixed</strong>. Luckily, there exists the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.array.resize?view=net-5.0"><code>Resize</code></a> method.
-  </p>
-  
-            
+    <h3>Math class</h3>
+    <p>Here are a couple Math built in methods (check out <a href="https://docs.microsoft.com/en-us/dotnet/api/system.math.abs?view=net-5.0">the docs</a> for the hole lot): </p>
+    <ul>
+        <li><code>Math.Abs(number)</code> returns the absolute value of number.</li>
+        <li><code>Math.Sqrt(number)</code> returns the sqare root.</li>
+        <li><code>Math.Floor(number)</code> rounds the number down.</li>
+        <li><code>Math.Ceiling(number)</code> rounds up.</li>
+        <li><code>Math.Min(a, b)</code> returns the smaller of two numbers.</li>
+
+    </ul>
+
+    <h3>Array class</h3>
+    <p>
+        Take  a look at a couple built-in methods for iterating  through arrays (visit <a href="https://docs.microsoft.com/en-us/dotnet/api/system.array.asreadonly?view=net-5.0">the docs</a> for the full list):
+        <ul>
+            <li><code>Array.Exists(array, callback)</code> - returns <code>true</code> if the callback returns <code>true</code> with any of the elements in the array.</li>
+            <li><code>Array.Find(array, callback)</code> - returns the first element for which the callback returns true.</li>
+            <li><code>Array.IndexOf(arrayName, element)</code> - returns the position of the element or -1 if not found.</li>
+        </ul>
+    </p>
+
+    <p>
+        Declare and initialize arrays as follows:
+        <div class="code">
+            <span class="black">// Single line </span><br>
+            <span class="brown">type</span>[] <span class="brown">arrayName</span> = {<span class="brown">element1</span>, <span class="brown">element2</span>, ..., <span class="brown">elementn</span>};
+            <br><br>
+            <span class="black">// Multi line</span><br>
+            <span class="brown">type</span>[] <span class="brown">arrayName</span>;<br>
+            <span class="brown">arrayName</span> = <span class="blue">new</span> <span class="brown">type</span>[] {<span class="brown">element1</span>, <span class="brown">element2</span>, ..., <span class="brown">elementn</span>};<br>
+            <br>
+            <span class="black">// Initialize empty array</span><br>
+            <span class="brown">type</span>[] <span class="brown">arrayName</span> = <span class="blue">new</span> <span class="brown">type</span>[<span class="darkRed">size</span>];<br>
+            <span class="black">// Where size is an integer</span><br>
+            <br>
+            <span class="red">Note you must use the new keyword when declaring and initializing the array on different lines.</span>
+
+        </div>
+
+        Just like in Java, array sizes are <strong>fixed</strong>. Luckily, there exists the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.array.resize?view=net-5.0"><code>Resize</code></a> method.
+    </p>
+
+
+</section>
+
+<section id="access-modifiers">
+    <h2>Access Modifiers</h2>
+    <p>Use them to specify accessibility leves for members:</p>
+    <ul>
+        <li>
+            <code>public</code>: Access is not restricted.
+        </li>
+        <li>
+            <code>protected</code>: Access is limited to the containing class or types derived from the containing class (subclasses). You can access protected members from an instance of a derived class but not from an instance of the class itself.
+        </li>
+        <li>
+            <code>internal</code>: Access is limited to the current assembly. It avoids classes writen in different files accesing the memeber (they can instantiate a public class containing an internal member, but they can't access the member).
+        </li>
+        <li>
+            <code>private</code>: It's the least permissived access level. Access is limited to the containing type (the body of the class or struct in which they are declared). To make them accessible outside the class, Properties or Methods that return them need to be defined.
+        </li>
+    </ul>
+
+    <h3>Other modifier keywords</h3>
+    <ul>
+        <li>
+            <code>readonly</code>: A readonly field can't be assigned after the constructor exits. This has different implication for valu types and reference types:
+            <ul>
+                <li>value type readonly fields are immutable.</li>
+                <li>reference type readonly fields must always point to the same object. That object isn't immutable but it cannot be replaced by another instance.</li>
+            </ul>
+        </li>
+        <li>
+            <code>sealed</code>: When applied to a class, this modifier prevents other classes from inheriting from it.
+        </li>
+        <li>
+            <code>static</code>: A static member belongs to the type itself rather than to an instance of some class. If the static keyword is applied to a class, all its members must be static.
+        </li>
+    </ul>
 </section>
 
 <section id="control-flow">
@@ -255,14 +334,29 @@
 
   </p>
 
-  <h3>Variable parsing into strings</h3>
+  <h3>Variable parsing into strings (string interpolation)</h3>
   <p>Use the following syntax:
     <div class="code">
-      <span class="brown">string myString</span> = <span class="orange">$"This is a string that will parse a </span>{<span class="brown">variable</span>}<span class="yellow">."</span>;
+      <span class="brown">string myString</span> = <span class="orange">$"This is a string that will parse a </span>{<span class="brown">variable</span>}<span class="yellow">."</span>;<br />
+        <span class="red">Escape sequences (like \t and \n) are parsed by the complier.</span>
     </div>
     <br>
     Check the <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated">docs</a>.
   </p>
+
+    <h4>Verbatim String Literal</h4>
+    <p>Escape an entire string by prepending your string with an <code>@</code> directive</p>
+    <div class="code">
+        Console.WriteLine(<span class="brown">@"c:\source\repos"</span>); <br />
+        <br />
+        > c:\source\repos
+
+    </div>
+
+    <p>String interpolation and verbatim literals <strong>can</strong> be combined.</p>
+
+    <h4>String concatenation</h4>
+    <p>Concatenate strings with <span class="brown">"Hello, "</span> <code>+</code> <span class="brown">"World!"</span>;</p>
 
   <h3>String's built in methods and properties</h3>
   <p>Find them all in the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.clone?view=net-5.0">docs</a>.</p>
@@ -328,5 +422,61 @@
     </div>
     <p>For a full list of methods <a href="https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.aggregate?view=net-5.0">see the reference</a>.</p>
   </p>
+</section>
+
+<section id="ASP.NET-core">
+    <h2>ASP .NET Core</h2>
+    <h3>Entity Framework Core</h3>
+    <p>This is a NuGet package that allows you to interact with a SQL Server. Once your <code>ApplicationDbContext.cs</code> (db structure),  <code>connection string</code> (server name and that, in appsettings.json) and <code>dependency injection</code> (builder.Services in Program.cs) are set up, run the following incantation to cretate a <code>Migrations</code> folder and the files that will create the database:</p>
+    <div class="code">add-migration AddTablenameToDb</div>
+
+    <p>You can then run <code>Update-Database</code> from the Package Manager Console which will run the files created by the above command and thus create the database (if it doesn't exist) and add the table to it.</p>
+
+</section>
+
+<section id="file-system">
+    <h2>File system</h2>
+    <p>
+        .NET contains built-in types for working with the file system under the <code>System.IO</code> namespace. Like the <code>Path.DirectorySeparatorChar</code>, which contains a a backslash on Windows and forward slash on Unix. And <code>Path.Combine()</code> which takes two strings and stick the correct separator between them.
+    </p>
+
+    <h3>File Extensions</h3>
+    <p>
+        Use <code>Path.GetExtension(string path)</code> to retrieve the extension prepended by a dot (ie: ".json").
+    </p>
+
+
+    <h3>EnumerateDirectories</h3>
+    <script src="https://gist.github.com/alvarezrrj/4ff840fae7dab47dea71f77039f6eb56.js"></script>
+
+    <h3>EnumerateFiles</h3>
+    <script src="https://gist.github.com/alvarezrrj/f24a9ce812ba4184cf4365d8f1e99765.js"></script>
+
+    <p>
+        Both methods have an overload that accepts a search pattern (like <code>"*.html"</code>) files and directories must match. And a third overload that also accepts a <a href="https://docs.microsoft.com/en-us/dotnet/api/system.io.searchoption?view=net-6.0">SearchOption</a> to indicate weather to traverse into subdirectories or not.
+    </p>
+
+    <h3>Special Folders</h3>
+    <p>
+        There is an enumeration of constants under <code>System.Environment.SpecialFolder</code> used to retrieve the paths for special directories, like My Documents in Windows and ~ on Unix. You can then use <code>Environment.GetFolderPath(Environment.SpecialFolder)</code> to obtain a string that contains the path to a given folder.
+    </p>
+
+    <h3>Directory</h3>
+    <p>
+        Use <code>Directory.GetCurrentDirectory()</code> to return a string that contains the absolute path to the current working directory, and does not end with a backslash.
+    </p>
+
+    <p>
+        Create directories with <code>Direcotry.CreateDirectory(string path)</code>. And check if a directory exists with <code>Directory.Exists(path)</code>.
+    </p>
+
+    <h3>File</h3>
+    <p>
+        Create a file using the <code>File.WriteAllText(string path, string contents)</code> which creates a file in write mode (overwrites it if it exists) and writes <code>contents</code> into it.
+    </p>
+
+    <p>
+        Read a file with <code>File.ReadAllText(string path)</code> which returns the entire contents as a string.
+    </p>
 </section>
 {% endblock %}
