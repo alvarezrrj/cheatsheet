@@ -5,16 +5,7 @@
     <h2><b>S</b>tructured <b>Q</b>uery <b>L</b>anguage</h2>
     <p>SQL statements end in a semicolon and are made of <em>clauses</em> (in capital letters) and other things froom the universe of data.</p>
 
-    <div class="code">
-        <span class="blue">SELECT DISTINCT</span> column (use * for all, DISTINCT filters duplicate results)<br>
-        <span class="blue">AS</span> <span class="orange">'alias name'</span> (wrap your alias in single quotes)<br>
-        <span class="blue">FROM</span> table_name<br>
-        <span class="blue">WHERE</span> condition<br>
-        <span class="blue">WHERE</span> name <span class="blue">LIKE</span> <span class="orange">'se_en'</span> matches all names starting with 'se', finishing with 'en' and with a character in between.<br>
-        <span class="blue">ORDER BY</span> column <span class="blue">DESC</span> <br>
-        <span class="brown">Use DESC to sort in decreasing order, use ASC for ascending. SQL stores the columns we selected in a 1-indexed array. ORDER BY 1 orders the results by the first column we selected in the statement.</span><br>
-        <span class="blue">LIMIT</span> 10 (only show 10 rows)
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/b97a8e27e5b1379ba8adb23471e1a6a7.js"></script>
 
     <h3>Wildcards</h3>
     <ul>
@@ -29,45 +20,22 @@
 
     <h3>Manipulating minds... tables</h3>
     <p>Create a new table with:</p>
-    <div class="code">
-        <span class="blue">CREATE TABLE</span> table_name (<br>
-        &nbsp;column_name data_type,<br>
-        &nbsp;column_name data_type,<br>
-        &nbsp;column_name data_type<br>);<br>
-        <span class="brown">Note: don't quote column names or data types, data types go in CAPITALS.</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/a62f0bffdd563fdc60a86e1f00428cbf.js"></script>
+
     <p>Once you've got a beautiful table you can add data to it:            </p>
-    <div class="code">
-        <span class="blue">INSERT INTO</span> table-name (col<sub>1</sub>, col<sub>2</sub>, ... , col<sub>n</sub>)<br>
-        <span class="blue">VALUES</span> (value<sub>1</sub>, value<sub>2</sub>, ... , value<sub>n</sub>);
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/aafd099a13100f039bba34d2dd9ecfd8.js"></script>
+
     <p>It doesn't end here though, you can also <code>ALTER</code> tables.</p>
-    <div class="code">
-        <span class="blue">ALTER TABLE</span> table-name<br>
-        <span class="blue">ADD COLUMN</span> column-name data-type;
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/786f571385c789038fd709cdaf85224f.js"></script>
+
     <p>And then <code>UPDATE</code> your newly created column with:</p>
-    <div class="code">
-        <span class="blue">UPDATE</span> table-name<br>
-        <span class="blue">SET</span> column-name = value<br>
-        <span class="blue">WHERE</span> condition;<br>
-        <span class="brown">Note: condition can be something like name = 'Carol' or id = 3.14</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/845c905a365b246df0f600ebb657b717.js"></script>
+
     <p>Don't like that row?</p>
-    <div class="code">
-        <span class="blue">DELETE FROM</span> table<br>
-        <span class="blue">WHERE</span> condition;
-        <span class="brown">And the row(s) that meet the condition are gone.</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/9dc8eeb8b6e54be1d892b35d9181c0a0.js"></script>
     
     <h3>Constraints</h3>
-    <div class="code">
-        <span class="blue">CREATE TABLE</span> table-name ( <br>
-        id INTEGER PRIMARY KEY, <span class="brown">Keeps you from creating rows with the same id.</span><br>
-        recipient TEXT NOT NULL, <span class="brown">Keeps you from creating rows with empty value in this column.</span><br>
-        name TEXT UNIQUE, <span class="brown">Similar to primary key but a table can have multiple of these.</span><br>
-        award_name TEXT DEFAULT <span class="orange">'Grammy'</span><br>);
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/517c2d8ba6cd052aaa43805a07e5ee01.js"></script>
 
     <h3>Agregates</h3>
     <p>Agregates are calculations made on a table's data.</p>
@@ -80,34 +48,14 @@
     </ul>
     
     <h4>Agregate and group by syntax</h4>
-    <div class="code">
-        <span class="blue">SELECT</span> col-name(s)<br>
-        <span class="blue">FROM</span> table-name<br>
-        <span class="blue">WHERE</span> condition<br>
-        <span class="blue">GROUP BY</span> col-name<br>
-        <span class="blue">ORDER BY</span> col-name<br>
-        <span class="blue">HAVING</span> condition<br>
-        <span class="vrown">HAVING is the conditional for agregates.</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/50ce0e59a96569810dfae48b9ee9cc6c.js"></script>
 
     <h3>Multiple tables</h3>
     <p>Join tables with:</p>
-    <div class="code">
-        <span class="blue">SELECT</span> table<sub>1</sub>.col<sub>n</sub>, table<sub>2</sub>.col<sub>m</sub><br>
-        <span class="blue">FROM</span> table<sub>1</sub><br>
-        <span class="blue">[LEFT] JOIN</span> table<sub>2</sub><br>
-        <span class="blue">ON</span> table<sub>1</sub>.id = table<sub>2</sub>.id;<br>
-        <span class="brown">A left join keeps all rows from the first table even if they don't meet the ON condition.</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/be958e9c35c4b158ed0f1a116dc7eab2.js"></script>
 
     <p>If you have two tables with the same number of columns and same data type in the same order, you can add the rows together: </p>
-    <div class="code">
-        <span class="blue">SELECT</span> *<br>
-        <span class="blue">FROM</span> table<sub>1</sub><br>
-        <span class="blue">UNION </span><br>
-        <span class="blue">SELECT</span> *<br>
-        <span class="blue">FROM</span> table<sub>2</sub>;
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/d76abf235385d01a7eb5658ca1db7e09.js"></script>
 
     <h3>See a database's structure</h3>
     <p>In MariaDB, you can use the <code>SHOW CREATE DATABASE dbname | TABLE tblname</code> to se a db structure.</p>
@@ -116,56 +64,29 @@
 
 <section id="users">
     <h2>Create a new user:</h2>
-    <img src="/static/Images/create_user.png">
+    <script src="https://gist.github.com/alvarezrrj/f3996113c263898e4c25f1be00dc048c.js"></script>
 
     <h3>Permissions</h3>
     <p>Grant a user access to a database with the following</p>
-    <img src="/static/Images/sql-privileges.png">
-</section>
+    <script src="https://gist.github.com/alvarezrrj/441e6cadd204efbae84150bcccf6e383.js"></script></section>
 
 
 <section id="JavaScript">
     <h2>SQL in JavaScript</h2>
     <p>CodeCademy <a href="https://www.codecademy.com/learn/paths/web-development/tracks/building-a-persistent-api/modules/learn-node-sqlite-module/cheatsheet">cheatsheet</a></p>
     <p>To run sql queries in javascript, first import the <code>sqlite</code> module and then open the database file</p>
-    <div class="code">
-        const sqlite3 = require(<span class="orange">'sqlite3'</span>);<br>
-        const printQueryResults = require(<span class="orange">'./utils'</span>);<br>
-        const db = new sqlite3.Database(<span class="orange">'./filepath.sqlite'</span>);<br>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/50f1d26cc7a5c937df84b8d16accd08c.js"></script>
 
     <p>Then, to run a query and retrieve all rows returned, call <code>db.all()</code></p>
-    <div class="code">
-        db.all(<span class="orange">'SELECT * FROM tableName'</span>, (error, rows) => {<br>
-        &nbsp; if(error) {throw(error); return}<br>
-        &nbsp; printQueryResults(rows);
-        <br>})<br>
-        <span class="brown">
-        Note the lack of semicolon at the end of query.<br>
-        If you only wany a selection of rows, use db.get() instead (fuck knows why). <br>
-        For running commands that don't return rows, use db.run()</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/ebd67efaa8f63838eef97d09033582c9.js"></script>
 
     <p><code>db.each()</code> allows you to run a query and then perform a callback on every row and then on the rows object subsequently</p>
-    <div class="code">
-        db.each(<span class="orange">'QUERY'</span>,<br>
-        &nbsp; (error, row) => {<span class="black">/*callback to run on individual rows*/</span>},<br>
-        &nbsp; (error, rows) => {<span class="black">/*callback to run on rows object*/</span>}<br>
-        );
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/e29c3a34b807859acdf679bd1ce6a08e.js"></script>
 
     <h3>Serialize</h3>
     <p>When running multiple asynchronous tasks, use <code>db.serialize()</code> to ensure they only run when the previous one ended</p>
-    <div class="code">
-        db.serialize(() => {<br>
-        &nbsp; db.run('QUERY<sub>1</sub>', callback<sub>1</sub>);<br>
-        &nbsp; db.run('QUERY<sub>2</sub>', callback<sub>2</sub>);<br>
-        &nbsp; .<br>
-        &nbsp; .<br>
-        &nbsp; .<br>
-        &nbsp; db.run('QUERY<sub>n</sub>', callback<sub>n</sub>)<br>
-        });
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/f6308bbc291280b3d3a201b83571175a.js"></script>
+
 </section>
 
 <section id="php">
@@ -209,11 +130,7 @@
     <h2>Race conditions</h2>
     <p>When multiple users are making changes to your database at the same time, the server might split resources and run the same query for both users at the same time. If the first user's interaction was meant to update the database but the <code>update</code> code doesn't run untill the second user's <code>select</code> code is run, then the second user get's the <em>old</em> value returned to him and. This can be solved by using: </p>
 
-    <div class="code">
-        BEGIN TRANSACTION; <br>
-        <span class="black"># Do your thing without beign interupted</span> <br>
-        COMMIT;
-    </div>
+   <script src="https://gist.github.com/alvarezrrj/9c075a422415f1d7c430a54f160ffb6b.js"></script>
     
 </section>
 

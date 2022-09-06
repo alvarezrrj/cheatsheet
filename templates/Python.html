@@ -4,19 +4,10 @@
 <section id="functions">
   <h2>Functions</h2>
   <p>Define your functions like this broh:</p>
-  <div class="code">
-    <span class="blue">def</span> function_name (par<sub>1</sub>, par<sub>2</sub>, ... , par<sub>n</sub>):<br>
-    &nbsp;<span class="blue">global</span> some_variable<br>
-    &nbsp;<span class="black">#Code block (indented)</span><br>
-    <span class="brown">The end of the indentation defines the end of the function. The <code>global</code> statement allows you to modify global variables within a function's body.</span>
-  </div>
+  <script src="https://gist.github.com/alvarezrrj/1809f15c30a7be3d4b019f45190fbfce.js"></script>
+
   <p class="red">Note: functions without a return statement (or with a plain return and no value) will return <code>None</code> which is python's only way of representing absence of value.</p>
 
-  <p>If you want to define a default parameter, you can:</p>
-  <div class="code">
-      <span class="blue">def</span> function_name (par1, par_def=<span class="yellow">'Hola'</span>): <br>
-      &nbsp; <span class="black">bla bla bla</span>
-  </div>
   <p>When calling the function, if no value is passed for its second parameter, it will use the default. Note that required parameters need to be before parameter with a default argument in the function definition.<br>
   <span class="red">Note: Do not use mutable objects (lists, sets and dictionaries) as default arguments. Weird things will happen.</span></p>
 
@@ -29,11 +20,8 @@
   </p>
 
   <h3>Accept multiple parameters</h3>
-  <div class="code">
-    <span class="blue">def some_function</span>(<span class="brown">param1</span>, <span class="brown">param2</span>, *<span class="brown">xParams</span>):<br>
-    &nbsp; <span class="black">#Code block</span>
-  </div>
-  <p>This function can take from two to infinite parameters and xParams  will be treated as a list.</p>
+  <script src="https://gist.github.com/alvarezrrj/9e2a8f61dc1d014502baf318281e058e.js"></script>
+  <p>This function can take from two to infinite parameters and x_params  will be treated as a list.</p>
 
   <p>When calling a function that takes <code>*</code> parameters, we can pass the arguments one by one:<br>
   <code>some_function(arg1, arg2, ... , argn)</code><br>
@@ -56,14 +44,8 @@
   <p><code>and</code>, <code>or</code> and <code>not</code>. Simple, plain.</p>
 
   <h3>Try ... except</h3>
-  <div class="code">
-    <span class="blue">try</span>:<br>
-    &nbsp;<span class="black">#Code block</span><br>
-    <span class="blue">except</span> <span class="orange">errorType</span>:<br>
-    &nbsp;<span class="black">#errorType catching code</span><br>
-    <span class="blue">except</span> <span class="green">Exception</span> as <span class="orange">error</span>:<br>
-    &nbsp;<span class="black">#Any error catching code</span>
-  </div>
+  <script src="https://gist.github.com/alvarezrrj/6a271e72293e09dacddc9addd75b9819.js"></script>
+
   <p>The <code>except</code> block will run if an error of the type specified is <em>raised</em> during the <code>try </code>block. If the error type doesn't match, the last except clause will catch any error.</p>
 </section>
 
@@ -104,7 +86,7 @@
   </p>
 
 <section id="useful-methods">
-    <table>
+    <table class="table table-striped table-light">
         <caption>Some useful functions.</caption>
         <tr>
             <th>Type</th>
@@ -268,22 +250,13 @@
         <h2>Loops</h2>
         <h3>For Loops</h3>
         <p>Iterate through the elements in a list</p>
-        <div class="code">
-          <span class="blue">for</span> <span class="orange">var</span> <span class="blue">in</span> <span class="orange">list</span>:<br>
-          &nbsp;<span class="black">#Code block</span><br>
-          <span class="brown">Note: code block will execute as many times as elements there are in 'list' and 'var' will take the values in the list.<br>
-          Note 2: you can use the range(n) function instead of list to get your loop to iterate n times.</span>
-          </div>
-          <p>You can also iterate through the keys or values in an object by using <code>object.keys()</code> or <code>object.values()</code> instead of <code>list</code>.</p>
+        <script src="https://gist.github.com/alvarezrrj/1760618d6149194a9d67753743fa328f.js"></script>
+
+        <p>You can also iterate through the keys or values in an object by using <code>object.keys()</code> or <code>object.values()</code> instead of <code>list</code>.</p>
 
       
         <h3>While loops</h3>
-        <div class="code">
-          i = 1<br>
-          <span class="blue">while</span><span class="orange"> i &lt; 10</span>: <br>
-          &nbsp;<span class="black">#Code block</span><br>
-          &nbsp;i++
-        </div>
+        <script src="https://gist.github.com/alvarezrrj/f91b3b28f8ad2cda031083be8532d2e7.js"></script>
 
         <h3>Continue</h3>
         <p>The <code>continue</code> keyword will skip the current iteration and jump to the next one.</p>
@@ -319,52 +292,24 @@
         <h2>Dictionaries (~js' objects, C's hash tables)</h2>
         <p>Dictionaries are unordered sets of <code>key:value</code> pairs. Update or create a key:value pair with <code>myDic['key'] = value</code>.</p>
         <p>Create a dictionary from two lists with the fololwing sintax:</p>
-        <div class="code">
-          myDict = {key:value <span class="blue">for</span> key, value <span class="blue">in</span> zip(list1, list2)}
-        </div>
+        <script src="https://gist.github.com/alvarezrrj/069c0bc780d15a9ab60d148ace2efa13.js"></script>
 
         <p>Check the existence of a key in a dictionary with:</p>
-        <div class="code">
-          <span class="blue">if</span> key <span class="blue">in</span> <span class="brown">dictionary</span>: <br>&nbsp;<span class="black">#Code block </span>
-        </div>
+        <script src="https://gist.github.com/alvarezrrj/0f23fe419a020dc147e89ffdd6c35e70.js"></script>
 
         <p>Add elements into the dictionary with the following:</p>
-        <img src="/static/Images/dict.py.png">
+        <script src="https://gist.github.com/alvarezrrj/4bade5490b6737b98666ccc7df4292e9.js"></script>
       </section>
 
       <section id="files">
         <h2>Files, bro!</h2>
         <h3>Open and read</h3>
-        <div class="code">
-          <span class="brown">foo</span> = open(<span class="orange">'filename.ext'</span>)<br>
-          <span class="black">#This line creates a file object</span><br>
-          <span class="brown">contents</span> = foo.<span class="lightblue">read</span>()<br>
-          <span class="black">#This line reads the contents of the file and stores them in the variable contents.</span><br>
-          foo.<span class='lightblue'>close</span>()
-        </div>
-
-        <h3>Create and write</h3>
-        <div class="code">
-          <span class="brown">file</span> = open(<span class="orange">'foo.txt'</span>, <span class="orange">'w'</span>)<br>
-          <span class="black">#Use the 'w' argument to open in write mode and overwrite the file (if it already exists). Use 'a' to open in append mode.</span>
-          <span class="brown">file</span>.<span class="lightblue">write</span>(<span class="orange">'Sample text'</span>)<br>
-          file.<span class='lightblue'>close</span>()
-          
-        </div>
-        <p>Remember to <b>close</b> files when you're done with them. Alternatively, we can use the following sintax which does it for you:</p>
-        <div class="code">
-          <span class="blue">with</span> open(<span class="orange">'file.txt'</span>) <span class="blue">as</span> <span class="brown">foo</span>:<br>
-          &nbsp;foo.<span class="lightblue">read</span>()
-        </div>
+        <script src="https://gist.github.com/alvarezrrj/c214f53c2eb2ed044471b142276ad637.js"></script>
 
         <h3>CSV files</h3>
         <p>See the <a href="https://docs.python.org/3/library/csv.html">documentation here</a>.</p>
         <p>Python has a <code>csv</code> library to handle these type of files:</p>
-        <div class="code">
-          <span class="blue">import</span> <span class="brown">csv</span><br><br>
-          <span class="blue">with</span> open(<span class="orange">'file.csv'</span>, <span class="brown">newline</span> = <span class="orange">''</span>) <span class="blue">as</span> <span class="brown">foo</span>:<br>
-          &nbsp; <span class="brown">data</span> = <span class="brown">csv</span>.<span class="lightblue">DictReader</span>(<span class="brown">foo</span>, <span class="brown">delimiter</span> = ';')
-        </div>
+        <script src="https://gist.github.com/alvarezrrj/e474165f9658be1b3697f4e068de9886.js"></script>
 
         <p><code>csv.DictReader</code> returns a list of dictionaries representing the lines in the file (rows on the table) whose keys are the first line in the csv file (which would make the table headers on the spreadsheet).<br>
         <code>newline = ''</code> somehow allows you to read line breaks (\n) without python confusing it for a new line (row).<br>
@@ -372,7 +317,7 @@
         </p>
 
         <h3>Writing CSV files</h3>
-        <div class="code"><img src='./Images/csv_write.jpg' title='writing csv files' height='280px'></div>
+        <div class="code"><img src='static/Images/csv_write.jpg' title='writing csv files' height='280px'></div>
 
         <h3>managing JSON files</h3>
         <p>There's not a lot going on since the structure is the same, only the data types have different names. See the <a href="https://docs.python.org/3/library/json.html?highlight=json">reference here</a>.</p>
@@ -382,12 +327,7 @@
         <h2>Classes</h2>
         <p>Python classes have <em>attributes</em> instead of <em>properties</em>, like js classes do.</p>
         <p>When defining a class' methods, they will allways have at least one argument: <code>self</code>, that refers to the class itself (equivalent to <code>this </code>keyword in JS.</p>
-        <div class="code">
-          <span class="blue">class MyClass</span>:<br>
-          &nbsp; <span class="brown">property01</span> = 1<br>
-          &nbsp; <span class="blue">def method01</span>(<span class="brown">self</span>):<br>
-          &nbsp; &nbsp;<span class="blue">return</span><span class="brown"> self</span>.<span class="lightblue">property01</span>
-        </div>
+        <script src="https://gist.github.com/alvarezrrj/ec42f658bf3e9043713e77459ab10cec.js"></script>
 
         <h3>Dunder methods</h3>
         <p>Double underscore methods are special.<br>
@@ -406,22 +346,20 @@
       <section id="flask">
         <h2>Flask</h2>
         <p>Flask is a python web server. It requires the following directory structure:</p>
-        <img src="/static/Images/flask.png">
+        <script src="https://gist.github.com/alvarezrrj/b3eb4635b72f7caf010a2add5fcb9ee9.js"></script>
 
         <h3>Here's what a simple flask server looks like</h3>
-        <img src="/static/Images/flask_server.png">
+        <script src="https://gist.github.com/alvarezrrj/675219da836aba96112870b0887b9d75.js"></script>
         <p>To get your server running you need to execute the following commands at the command line:</p>
-        <div class="code">
-          $ export FLASK_APP=app.py<br>
-          $ export FLASK_DEBUG=1<br>
-          $ flask run
-        </div>
+
+        <script src="https://gist.github.com/alvarezrrj/747a3a9c16df66ee0cf015386a126162.js"></script>
 
         <h3>Jinja templating syntax</h3>
         <p>Create a layout template as follows:</p>
-        <img src="/static/Images/layout.png">
+        <script src="https://gist.github.com/alvarezrrj/f47495f15390b11fca18366c093c2e02.js"></script>
+
         <p>And then plug stuff into it with</p>
-        <img src="/static/Images/jinja.png">
+        <script src="https://gist.github.com/alvarezrrj/ce32afd71251738dd65162440b6b0eee.js"></script>
       </section>
 
       <section id="sessions">
@@ -429,7 +367,7 @@
         <p>The aim here is to build stateful applications (apps that remember things). This is done through cookies. Some server may plant a cookie on a browser (for ir to store it on memory or disk) via the http header <code>'Set-Cookie: session=value'</code>. When you then visit another website, your browser will send the header <code>'Cookie: session=value'</code></p>
 
         <p>Within a Flask app, there will be a session object for every user visiting the page, in which the <strong>state</strong> can be stored:</p>
-        <img src="/static/Images/session.png">
+        <script src="https://gist.github.com/alvarezrrj/668c295e7e0800e94344f9b6bd21dcd1.js"></script>
         
       </section>
 

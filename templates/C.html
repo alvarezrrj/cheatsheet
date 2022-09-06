@@ -3,13 +3,20 @@
 {% block main %}
 <section id="intro">
     <h2>Intro</h2>
-    <p>C is a language that needs to be compiled before running it. To do so run</p>
-    <img src="/static/Images/make.png"><br>
-    and then run your code from the command line with <code>$ ./filename</code><br>
+    <p>C is a language that needs to be compiled before running it. To do so run: 
 
-    <p>Programs can take command line arguments</p>
-    <img src="/static/Images/clargs.png" alt="Command Line Arguments">
+    <script src="https://gist.github.com/alvarezrrj/5d09ba625ceb7f7e11ce02151142afcd.js"></script>    
+    
+    and then run your code from the command line with <code>$ ./filename</code>
+    </p>
+    
+
+    <p>Programs can take command line arguments
+
+    <script src="https://gist.github.com/alvarezrrj/7d60abf562fdb2fc4aad93b4a1395beb.js"></script>
+    
     Where <code>argc</code> (argument count) is the ammount of things the user typed into the terminal (including the program's name). And argv (argument vector) is an array containing all command line arguments, including the program's name at index 0.
+    </p>
     
     <h3>Exit</h3>
     <p>To stop execution of a program after an error, return a non-zero value from main. An exit code of zero means everything went well.C automatically returns 0 when it finishes execution if no return statement is present.</p>
@@ -19,21 +26,25 @@
 <section id="arrays">
     <h2>Arrays</h2>
     <p>Arrays in C can only contain variables of the same data type and are of fixed length.</p>
-    <img  src="/static/Images/c-array.png" alt="Declaring arrays">
     
+    <script src="https://gist.github.com/alvarezrrj/e1e4d5524dbbe0304479eb9ffd92a0ee.js"></script>
+
 </section>
 
 <section id="strings">
     <h2>Strings</h2>
     <p>Strings are arrays of <code>char</code>s in C. There is no such thing as 'String' data type. This means that strings can't be compared to one another; <code>'hello' == 'hello'</code> raises an error.</p>
-    <img src="/static/Images/cstrings.png">
+
+    <script src="https://gist.github.com/alvarezrrj/91627f4982d767425819df635511bd4d.js"></script>
+    
     <p>Where *s is a pointer to the first char in that strig. C then figures out the end of the string when it finds the end character <code>\0</code>.</p>
 </section>
 
 <section id="memory">
     <h2>Pointers</h2>
     <p>A pointer is a variable that stores the address of some value. They are typically 64 bits (8 bytes) long.</p>
-    <img src="/static/Images/pointers.png">
+
+    <script src="https://gist.github.com/alvarezrrj/64ff0eef614a8ebca00fad3da4cc1b4b.js"></script>
 
     <h3>Dereference operator</h3>
     <p>Once you have the address at which a value is stored, you can access that address by dereference doing <code>int m = *pointer</code>, which means go to address <code>pointer</code> and get the value stored there.</p>
@@ -43,27 +54,33 @@
 
     <h3>Dynamic memory allocation</h3>
     <p>To do something like copyting a string I can't do something like <code>char *s = "hi"; char *t = s;</code> because i'd be copying a pointer, not the string itself. What I need to do is allocate some memory where I can fit the string, store that address in <code>t</code> and then copy the string char by char.</p>
-    <img src="/static/Images/malloc.png">
+    
+    <script src="https://gist.github.com/alvarezrrj/3238467cdaf89ebfb87766a2e0ae4a76.js"></script>
 
     <p>When writing code that tinkers with memory, run <code>valgrind ./myprogram</code> to find any memory related bugs.</p>
 
     <h3>Pointer arithmetic and memory reallocation</h3>
     <p>It is possible to access the addresses following a pointer returned by malloc through <b>pointer arithmetic</b>. It is also possible to resize a block of memory with <code>realloc()</code>:</p>
-    <img src="/static/Images/pointer-arithmetic.png">
+
+    <script src="https://gist.github.com/alvarezrrj/5e4f776b9c0f380163629fe13ce4e0d2.js"></script>
 </section>
 
 <section id="data-structures">
     <h2>This is not an object</h2>
     <p>In <code>C</code> we can write our own data types:</p>
-    <img src="/static/Images/typedef.png"  alt="Declaring data structures">
+    
+    <script src="https://gist.github.com/alvarezrrj/f66a09f771957f213e6dd20531528973.js"></script>
+
     <p><code>C</code> is not an object-oriented language and the above is not equivalent to an object or class. The difference is objects can contain data as well as functions, but these can only contain data.</p>
 
     <h3>Linked Lists</h3>
     <p>Lists are a way of creating variable length arrays by defining a data structure that contains two elements: the thing we want to store and a pointer to the next node.</p>
-    <img src="/static/Images/nodes.png">
+    
+    <script src="https://gist.github.com/alvarezrrj/9b9a4130ac978d2376ccb6f9c98ffde8.js"></script>
 
     <p>You can then add nodes to the list with:</p>
-    <img src="/static/Images/nodes-2.png">
+
+    <script src="https://gist.github.com/alvarezrrj/a0bb76d3d54c2a0d277a9c55e485ed3d.js"></script>
 
     <h3>Hash tables (key-value pairs)</h3>
     <p>Hash tables are made of buckets into which values are stored. Values are assigned a bucket according to some parameter. It's the <i>hash function</i> who decides where a value goes.</p>

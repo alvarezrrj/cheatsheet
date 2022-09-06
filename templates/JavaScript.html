@@ -21,17 +21,19 @@
 
 <h3>typeof operator</h3>
 <p>It is possible to find out what data type a variable contains.</p>
-<p class="code"><span class="brown">var</span> variable01 = "Batatas are sweet"<br><span class="brown">var</span> variable02 = 25<br>typeof variable01 = "string"<br>typeof vaiable02 = "number"</p>
 
-<h2 id="definitions">Terminology bulshit</h2>
+<script src="https://gist.github.com/alvarezrrj/5f752a1207e1a252096ab7cde637b68c.js"></script>
+
+<h2 id="definitions">Terminology</h2>
 <dl>
     <dt>Properties</dt>
     <dd>Every <strong>string</strong> has a property called <code>length</code> that stores the ammount of characters in that string. We can retrieve that information by appending (connecting) the string and the property name with a <em>dot operator</em>.</dd>
-    <p class="code"><span class="brown">var</span> myString01 = "Hello motherfuckers".<br>word.length = 19 |<span class="brown">Where 'length' is the property name.</span></p>
+    <script src="https://gist.github.com/alvarezrrj/3a0db921f76ee973f3bdf388a416babc.js"></script>
 
     <dt>Methods</dt>
     <dd>Methods are actions we can perform. And we do so by using the dot operator to call a method on a string or object and then we follow it with a set of parenthesis.</dd>
-    <p class="code">myString01.startsWith('H') = True<br><span class="brown">startsWith is the method name.</span></p>
+    <script src="https://gist.github.com/alvarezrrj/3e08ef79e28d09a62a97e2939f1f4cff.js"></script>
+
     <dt>Variables</dt>
     <dd>the <code>let</code> keyword creates a local variable. The <code>var</code> keyword creates a global variable. The <code>const</code> keyword creates a constant variable, this variables can't be reasigned a value after they've been defined.
         <strong>Global variables</strong> are accesible from anywhere in te js file whereas <strong>local variables</strong> (defined within a {block of code}) are only accessible within that block of code. Codecademy say it's better to use local
@@ -39,19 +41,29 @@
 </dl>
 
 <h2 id="arrays">Arrays</h2>
-<p>Arrays can contain any data type, they can be built through an <i>array literal</i> (wrap the elements in square brackets and separated by commas) and stored into variables. Just like strings, arrays have a built-in property that stores the amount
-    of elementsin the array.</p>
-<div class="code"><span class="brown">var</span> myFirstArray: [<span class="orange">'string'</span>, <span class="green">true</span>, <span class="blue">20</span>];<br>myFirstArray.<span class="brown">length</span>&nbsp;| <span class="red">returns the number of elements (3)</span></div>
-<p>Arrays defined using the <code>const</code> keyword can have their elements modified but the variable itself cannot be modified (you can't assign a hole new array to the variable for example).</p>
-<p>For increased faff we have the option of <b>nesting</b> arrays:</p>
-<div class="code"><span class="brown">var</span> myNestedArray: [1,[2,3]];<br>myNestedArray[1]; &nbsp;&nbsp;&nbsp;| <span class="red">returns [2,3]</span><br>myNestedArray[1][0]; | <span class="red">returns 2</span></div>
+<p>
+    Arrays can contain any data type, they can be built through an <i>array literal</i> (wrap the elements in square brackets and separated by commas) and stored into variables. Just like strings, arrays have a built-in property that stores the amount
+    of elementsin the array.
+</p>
+
+<script src="https://gist.github.com/alvarezrrj/403f9d542d51d19c5e433d5be632ae78.js"></script>
+
+<p>
+    Arrays defined using the <code>const</code> keyword can have their elements modified but the variable itself cannot be modified (you can't assign a hole new array to the variable for example).
+</p>
+
+<p>
+    For increased faff we have the option of <b>nesting</b> arrays:
+</p>
+
+<script src="https://gist.github.com/alvarezrrj/57c3ca807bf622736396a422f5ca9b27.js"></script>
 
 <h2 id="templateLiterals">Template literals</h2>
 <p>It is possible to add variables into a string (interpolate). Tamplate literals are wrapped by backticks (`) and a placeolder <code>${myVar}</code> is used to add the value of the variable <code>myVar</code> into the string.</p>
 <p class="center"><img id="tempLiterals" src="/static/Images/templateLiterals.jpg" alt="Template literals example"></p>
 
 <section id="useful-methods">
-    <table>
+    <table class="table table-striped table-light">
         <caption>Some useful methods.</caption>
         <caption id="jsTableBottomCap" style="caption-side: bottom"><sup class="red">1</sup><em>Array Iteration Methods</em> are built in array methods for scanning through arrays. Find them all <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Iteration_methods">here</a>.<br>
             <sup class="red">2</sup> Find all the built-in object methods <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#Methods">here</a></caption>
@@ -159,28 +171,36 @@
 <section id="conditional-statements">
     <h2>Conditional Statements</h2>
     <h3>if...else statements</h3>
-    <p class="code">if(condition-1) {code-1}<br>else if (condition-2) {code-2}<br>&nbsp.<br>&nbsp.<br>&nbsp.<br>else if (condition-n) {code-n}<br>else {code-(n+1)}</p>
-    <p>If condition-1 evaluates to true, then code-1 executes. If it evaluates to false, then condition-2 is evaluated and code-2 executes if it is true. If all conditions evaluate to false, then code-(n+1) executes.</p>
+
+    <script src="https://gist.github.com/alvarezrrj/7285749b0bc1c49b24b0ef79b658974c.js"></script>
+
+    <p>If condition_1 evaluates to true, then code 1 executes. If it evaluates to false, then condition_2 is evaluated and code 2 executes if it is true. If all conditions evaluate to false, then code 3 executes.</p>
 
     <h3>Truthy or Falsy</h3>
-    <p class="code">if (variable){code}</p>
+    <script src="https://gist.github.com/alvarezrrj/bd13f39149720c7e81926309fc94df88.js"></script>
+
     <p>In this case the code will execute if the variable exists (is <i>truthy</i>). It won't execute if the variable is <i>undefined</i>, <i>null</i>, equal to 0 or an empty string ("") (is <i>falsy</i>).</p>
 
     <h3>Short circuit evaluation</h3>
     <p>Given the code:</p>
-    <p class="code"><span class="brown">let</span> varA<br>if (varB){varA = varB}<br>else {varA = "default value"}</p>
+    <script src="https://gist.github.com/alvarezrrj/6d07ac8191ea6f58ed3f4eb08ba4b843.js"></script>
+
     <p>The same result can be achieved with the following short circuit:</p>
-    <p class="code"><span class="brown">let</span> varA = varB || "default value"</p>
-    <p>In the case above we define a variable <code>varA</code> and it gets assigned the value of <code>varB</code> if that variable is <i>truthy</i> or "alt value" if <code>varB</code> is <i>falsy</i></p>
+    <script src="https://gist.github.com/alvarezrrj/bc4408f006515f7d15edc8c3346f9f88.js"></script>
+
+    <p>
+        In the case above we define a variable <code>varA</code> and it gets assigned the value of <code>varB</code> if that variable is <i>truthy</i> or "alt value" if <code>varB</code> is <i>falsy</i>
+    </p>
 
     <h3>Ternary operator</h3>
     <p>The ternary operator is a short form for conditions of the type: "If (condition == true) {code1} else {code2}" and its syntax is:</p>
-    <p class="code">(condition) ? code1 : code2</p>
+
+    <script src="https://gist.github.com/alvarezrrj/63587fa10921c30d23b827a496380611.js"></script>
 
     <h3>Switch keyword</h3>
     <p>This tool is used to replace lots of <code>else if</code> statements. The 'default' statement at the end states the code to be executed if none of the cases match the vairable.</p>
-    <p class="code"><span class="brown">let</span> userInput = "tomato"<br> switch (userInput){<br> &nbsp <span class="orange">case</span> "batata": console.log("Batatas are £0.83");<br><span class="blue">break;</span><br> &nbsp <span class="orange">case</span>                "banana": console.log("Bananas are £1.12);<br><span class="blue">break;</span><br> &nbsp <span class="orange">case</span> "pinaple": console.log("Pinaples are £16.3);<br><span class="blue">break;</span><br> &nbsp <span class="orange">case</span>                "yourMum": console.log("Your mum is £4.20");<br><span class="blue">break;</span><br> &nbsp <span class="brown">default</span>: console.log("Vegetable not found");<br><span class="blue">break;</span><br> }
-    </p>
+   <script src="https://gist.github.com/alvarezrrj/c96d01710efd14784995ae8ecb78132c.js"></script>
+
 </section>
 
 <section id="functions">
@@ -188,35 +208,33 @@
     <p>See the Codecademy summary <a href="https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-functions/cheatsheet">here</a>. And find out everything there is to know about this really simple topic <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">here</a>.</p>
     <h3>Default parameters</h3>
     <p>Given the function:</p>
-    <p class="code"><span class="blue">function</span> fn01 (<span class="orange">input</span> = "Default"){<br>&nbsp<span class="brown">return</span> `Congratulations, ${<span class="orange">input</span>}! You've defined a function.`}</p>
+
+    <script src="https://gist.github.com/alvarezrrj/9c9f2349ace25f0a57ea0962f7cf7f90.js"></script>
+
     <p>When the function is called, it will output <code>Congratulations, Default! You've defined a function.</code> Unless a different name is given, in which case it wil override the default parameter.</p>
 
     <h3>Arrow functions</h3>
     <p>See the reference <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions">here</a>.</p>
 
     <p>Because having two ways of defining a function wasn't enough (the traditional way and the variable way), they went and released a third way of defining a function:</p>
-    <p class="code"><span class="red">(1) </span><span class="blue">const</span> functionName = (par01, par02, ..., parN)<span class="blue"> =></span> {code}</p>
-    <p>Note that in a few pointlessly specific cases the function definition becomes shorter:
+    <script src="https://gist.github.com/alvarezrrj/48e9e69f6b7c1f6625ab6581d26005ea.js"></script>
+
+    <p>Note that in a few cases the function definition becomes shorter:
         <ul>
             <li>If and only if the function takes a single parameter, the parentheses around it are not needed.</li>
             <li>If and only if the code block is made of a single line, both the <code>return</code> keyword and the curly brackets are not needed.</li>
         </ul>
         Which looks like this:</p>
-    <p class="code"><span class="blue">const</span> functionName = parameter => code</p>
-
-    <p>Now, just to be sure, let's compare <code><span class="red">(1)</span></code> with Function Expressions:</p>
-    <p class="code"><span class="blue">const</span> functionName = <span class="blue">function</span> (par01, par02, ..., parN) {code}</p>
-    <p>Wow! it really seems worth it having a hole new way of defining a function when you gain that much convenience!</p>
-    <p class="darkRed">Arrow functions are best not used as methods (don't ask me why) and have a funny interpretation of the <code>this</code> keyword.</p>
+    <script src="https://gist.github.com/alvarezrrj/3a83130f08b6de69c6d517aa2b334ca5.js"></script>
 
     <h3>Higher order functions</h3>
     <p>Higher order functions are those that take a function as a parameter, return a function, or both.<br>In javaScript funcitons can be treated as another data type and that allows us to assign a function as the value of a variable. You might
         think 'Why on earth would I want to do this?' and somebody would say 'Well, imagine you have a function with a very long name and want to rename it but without loosing all the info held in its name' to which you would say 'Just don't be
         an idiot and use comments instead of a long ass name'. Either way, we can do it because its javaScript and here is how to:
     </p>
-    <div class="code">
-        <span class="blue">function</span> functionWithAStupidlyLongName() {<br>&nbsp; /*code block*/<br>};<br><span class="brown">const</span> newName = functionWithAStuidlyLongName;<br>newName()
-    </div>
+   
+    <script src="https://gist.github.com/alvarezrrj/164dcfa8e419ae32ff6922cd111a2b03.js"></script>
+
     <p>Note that when assigning the function to the constant variable, we do it without parenthesis because we want to assign the function itself, not the value it returns when it is invoked.</p>
 
 </section>
@@ -228,28 +246,32 @@
     </ul>
     <h3><strong>For</strong> loops</h3>
     <p>The for loop is made of three expressions: initialization; stopping expression; iteration. The first two expressions are analized at the beginning of each iteration and the last one is applied at the end.</p>
-    <div class="code"><span class="blue">for</span> (<span class="brown">let</span> a = 0; <span class="black">a &lt X</span>;<span class="green">a++</span>) {code block}</div>
+
+    <script src="https://gist.github.com/alvarezrrj/d877a1b31f719cd6984e5dbb825d6467.js"></script>
 
     <h3><strong>While</strong> loops</h3>
     <p>The while loops is very similar, only that the variable whose value the loop evaluates before running the code is defined outside the loop and the iterator is added inside the code block:</p>
-    <div class="code"><span class="brown">var</span> a = 0;<br><span class="blue">while</span><span class="black"> (a &lt X)</span> {<br>&nbsp; /*code block*/<br>&nbsp;<span class="green">a++</span>;<br>}
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/27c252505588e505e4696eb83117f768.js"></script>
 
     <h3><strong>Do ... while</strong> loops</h3>
     <p>In the <code>do ... while</code> loop the condition is evaluated after the first iteration, which means the code will run at least once even if the condition evaluates to false the first time.</p>
-    <div class="code"><span class="brown">let</span> a = 0<br><span class="blue">do</span> {<br>/*code block*/<br><span class="green">a++</span>;}<br><span class="blue">while</span> (<span class="black">a &lt X</span>)</div>
+    <script src="https://gist.github.com/alvarezrrj/7f7ae791bf016a9a2e20f9e03e0b4c02.js"></script>
 
     <h3><strong>For ... in</strong> loops for objects</h3>
     <p>Objects properties are anordered and that makes it impossible to iterate through them using the traditional for loop. But worry not my dear friends, here comes the loop of loops, the loop that loops through any loop, and object: </p>
-    <div class="code"><span class="blue">for</span>(i in objectName) {<br>&nbsp; console.log(`${i}: ${objectName[i]`)<br>}</div>
+    
+    <script src="https://gist.github.com/alvarezrrj/f739026fdf92757216545f7580a587b3.js"></script>
+
     <p>In this case <code>i</code> isn't an index, it is the key.</p>
 
 </section>
 <section id="objects">
     <h2>darthScript Vader: <strong>Objects</strong></h2>
     <p>To create an object we use an <em>object literal</em>, that is, a pair of curly braces filled with <strong>unordered data</strong> in the form of <strong>"key": value</strong> pairs separated by commas ',' that form the object's <em>properties</em>.
-        Keys are allways strings and the values can be any data type, including other objects.</p>
-    <div class="code"><span class="brown">let</span> spaceShip = {<br>&nbsp; <span class="orange">"color"</span>: <span class="orange">"matte silver"</span>,<br>&nbsp; <span class="orange"> "tank capacity(L)"</span>: <span class="blue">150</span><br>}</div>
+        Keys are allways strings and the values can be any data type, including other objects.
+    </p>
+    
+    <script src="https://gist.github.com/alvarezrrj/32ccea96b447641efa84b7107185784f.js"></script>
 
     <h3>Accessing an object's property</h3>
     <p>Object properties can be acces through their key name using the dot operator: <code>objectName.key</code> returns the value of that property.<br>Another way to access a property is with brackets: <code>objectName["key"]</code>; This way <b>must</b>                be used when accessing a key that has special caracters or spaces in it and it apparently has other advantages so we might as well stick to it to avoid fucking up and getting untraceable errors.<br>An object can be updated by accessing
@@ -261,9 +283,8 @@
 
     <p>Writing an method into an object was quite intuitive and straightforward - the key is the function name, then use the keyword <code>function</code> and define an annonymus function normally - untill some asshole made it possible to remove
         the colon (:) and the <code>function</code> keyword:</p>
-    <div class="code"><span class="red">old style</span><br><span class="brown">var</span> myObject = {<br>&nbsp; <span class="orange">"functionName"</span>: <span class="blue">function</span>() {/*function body*/}<br>}<br><span class="red">new style</span><br>
-        <span class="brown">var</span> myObject = {<br>&nbsp; <span class="orange">"functionName"</span>() {/*function body*/}<br>}
-    </div>
+   
+    <script src="https://gist.github.com/alvarezrrj/caa2f06d70cdb9a3253b8c9841a6e172.js"></script>
 
     <h3>Privacy</h3>
     <p>It refers to the fact that we sometimes don't want some properties in our objects to be modified. javaScript ahsn't got any built in privacy but there are some naming conventions that indicate this. An underscore before the property name means
@@ -278,9 +299,12 @@
     <div class="code"><img src="/static/Images/setter.jpg" alt="setter method example"></div>
 
     <h3>Factory Functions</h3>
-    <p>Pretty straightforward, define a function that takes X amount of parameters, return an object with X amount of properties using those parameters. Easy, right? No! they had to go and create a shorthand to save yourself 5 keystrokes. What a
-        load of dogshit! for fuck's sake. Anyway, this is it:</p>
-    <div class="code"><span class="brown">const</span> <span class="blue">functionFactory</span>(a, b, c, ..., n){<br>&nbsp; <span class="black">return</span> {a, b, c, ..., n}<br>}<br><span class="brown">var</span> myObject = <span class="blue">functionFactory</span>                (<span class="orange">"Robert"</span>, <span class="orange">"de Niro"</span>, <span class="darkRed">69</span>);<br><br>console.log(myObject) | <span class="red">returns</span> {a: "Robert", b: "de Niro", c: 69}</div>
+    <p>
+        Pretty straightforward, define a function that takes X amount of parameters, return an object with X amount of properties using those parameters.
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/6b2d76a14b9c6643d7aba04194500e3d.js"></script>
+
     <p>In short, when defining the function, the name you give the parameters, will be the key name in the object</p>
 
     <h3>Classes - another way of creating objects</h3>
@@ -288,9 +312,8 @@
 
     <p>Did you like the factory functions? Screw them!<br>As we all know by now, javaScript loves redundancy, and in the sake of it here we have another object-mass-production technique</p>
     <p>Correction: instances are not objects, they're only unbelievably similar to them. Classes are created like this:</p>
-    <div class="code"><span class="blue">class</span> Dog {<br>&nbsp;<span class="green">constructor</span>(name, age) {<br>&nbsp;&nbsp;this.<span class="green">name</span> = <span class="brown">name</span>;<br>&nbsp;&nbsp;this.<span class="green">age</span> =
-        <span class="brown">age</span>;<br>&nbsp;}
-        <span class="black">/*Add getters and Setters here*/</span><br>}<br><span class="brown">const</span> favDog = <span class="blue">new</span> Dog(Malek, 3);</div>
+    
+    <script src="https://gist.github.com/alvarezrrj/cd29ebd7ed29079007e9c520c1a1367b.js"></script>
 
     <p>By convention, class names should be Capitalized and camelCased. When we create a new <em>instance</em> of our class (an object wuth the properties and methods of a class), we do it using the <code>new</code> keyword which calls the <code>constructor</code>                method. After the constructor (when we define the class) we can add getters, setters and oter methods, only they <b>will not</b> be separated by <b>commas</b>.</p>
 
@@ -328,12 +351,14 @@
 
     <h3>Interactivity</h3>
     <p>We can get elements to respond to any <a href="https://developer.mozilla.org/en-US/docs/Web/Events">event</a>:</p>
-    <div class="code"><span class="brown">let</span> myElement = document.querySelector("button")<br>myElement.event = myFunction</div>
+    
+    <script src="https://gist.github.com/alvarezrrj/629884f8c2247f4d66556a9bdd9a331e.js"></script>
+
     <p>The <em>event handler function</em>, the function that runs when an event fires on certain element, is registered as a <em>property</em> of the DOM element it interacts with.<br> Another way of adding event handlers is the <code>.addEventListener()</code>                method which takes in two parameters, the event as a string and without the <code>on-</code> prefix and the function name. The method is prefered when you want to add more than one event listener to a single element. And it looks like
         this:
-        <br> <span class="code">myElement.addEventListener(<span class="orange">"click"</span>,
-        <span class="blue">myFunction</span>);</span><br> The <code>.removeEventListener</code> does what you expect and takes the same parameters as its cousin.
     </p>
+    
+    <script src="https://gist.github.com/alvarezrrj/bbe711e924fcfabd7ae5d598f07710dd.js"></script>
 
     <p>All event handlers are passed the event object as an argument if no arguments are explicity passed on to the function at the time of calling it.</p>
 
@@ -351,8 +376,8 @@
     <h2>Handlebars</h2>
     <p>See how to use it <a href="https://www.codecademy.com/learn/paths/web-development/tracks/build-interactive-websites/modules/templating-with-handlebars/cheatsheet">here</a>.</p>
     <p>Handlebars is a library that allows you to create templates. It's not the simplest one to use, but it works like this:</p>
-    <div class="code"><span class="brown">const</span> template = <span class="orange">'&ltp&gtHello, &#123;&#123;name&#125;&#125;! Welcome to handlebars&lt/p&gt'</span>;<br><span class="brown">const</span> templateFunction = <span class="darkRed">Handlebars</span>.<span class="blue">compile</span>(template);<br>
-        <span class="brown">var</span> myObject = {<span class="green">name</span>: <span class="orange">"Steve"</span>};<br><span class="brown">const</span> html = <span class="darkRed">templateFunction</span>(myObject); </div>
+   
+    <script src="https://gist.github.com/alvarezrrj/45ee0d703e1d1cbaab4154cc30fa5f2c.js"></script>
 
     <p>So, to make things clear, this is how it goes:
         <ol>
@@ -384,29 +409,44 @@
         by the console as an error but it won't stop the rest of the code from running. We need to <code>throw</code> the error for that.</p>
 
     <h3>Try ... catch</h3>
-    <p>The <code>try</code> statement will attempt to run the code block inside it, and if it throws an error, instead of stopping the code and logging it to the console, it will pass it to the <code>catch(e)</code> statement, store it in the variable
-        <code>e</code> and process it according to what we tell the catch statement to do. Take a look at my girlfriend:</p>
-    <div class="code"><span class="blue">try</span> {<br>&nbsp;<span class="black">/*code prone to error*/</span> }<br><span class="blue">catch</span>(<span class="brown">e</span>) {<br>&nbsp;<span class="black">/*if an error is thrown, do this*/ </span>}</div>
-    <p>The beauty of this is that I can put an <code>if/else</code> statement in the try and throw an error myself to then handle it in the catch statement.</p>
+    <p>
+        The <code>try</code> statement will attempt to run the code block inside it, and if it throws an error, instead of stopping the code and logging it to the console, it will pass it to the <code>catch(e)</code> statement, store it in the variable
+    <code>e</code> and process it according to what we tell the catch statement to do. Take a look at my girlfriend:
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/da44ed4665bf96a94777ee01011b117f.js"></script>
+
+    <p>
+        The beauty of this is that I can put an <code>if/else</code> statement in the try and throw an error myself to then handle it in the catch statement.
+    </p>
+
 </section>
 
 <section id="asynchronous">
     <h2>Asynchronous operations</h2>
     <h3>Promises</h3>
     <p>See the complete detailed explanation <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Here</a></p>
-    <p>A promise is an object that is created by passing an <strong>executor function</strong> to the <code>new Promise</code> constructor. <br>
+    
+    <p>
+        A promise is an object that is created by passing an <strong>executor function</strong> to the <code>new Promise</code> constructor. <br>
         <code>var promise01 = new Promise(executor);</code><br>A promise can be in one of three states: <i>pending</i>, <i>fulfilled</i> (with a value) or <i>rejected</i> (with a reason).<br> The executor function is written by me and starts running
         asynchronously inmediately after the constructor is called. In turn the executor function takes two functions: <code>resolve(result)</code> and <code>reject(reason)</code>, one of which will be called at the end of the executor's code.
         Depending on the output of the executor, one of these functions will be called and then js will pass the value we passed to this function (the result in case of fulfillment or the reason in case of rejection) into the promise's settled
         status. If the promise was fulfilled, the result will be passed to the fulfillment handling function (assigned to the promise object via the .then method) and if it is rejected, the reason will be passed to the rejection handling function
-        (assigned to the promise object via the .catch method, or as the second parameter of the .then method). </p>
-    <div class="code"><span class="brown">var</span> somePromise = <span class="blue">new</span> Promise(executor(resolved, rejected) => {<br>&nbsp;<span class="blue">try</span>{<span class="black">/*some code*/</span><br>&nbsp;&nbsp;&nbsp;&nbsp;<span clas="darkRed">resolved</span>(
-        <span class="orange">result</span>)}<br>&nbsp;<span class="blue">catch</span>(<span class="orange">e</span>) {rejected(<span class="orange">e</span>)}<br>})<br><br>somePromise.then(handleFulfillment, handleRejection);</div>
-    <p>When the somePromise object is created, *some code* is going to run and if the task is completed, <code>resolved</code> will be called with the result of that task. this changes the status of the <code>somePromise</code> object to fulfilled
-        and sets it's value equal to <code>result</code>, then <code>handleFulfillment(result)</code> will be called (obviously it needs to be defined first, which I didn't do here because I'm lazy). If instead *some code* throws an error, rejected(e)
-        will be called and then <code>e</code> will be passed to <code>handleRejection</code>.</p>
+        (assigned to the promise object via the .catch method, or as the second parameter of the .then method). 
+    </p>
+    
+    <script src="https://gist.github.com/alvarezrrj/e8c6c20ec4773d56f98a874f7b8fe8a1.js"></script>
 
-    <p>The <code>Promise.all()</code> static method takes an array of promises and waits untill all promises are fulfilled or one is rejected to return an array of the values of the resolved promises or the reason for rejection, respectively</p>
+    <p>
+        When the somePromise object is created, *some code* is going to run and if the task is completed, <code>resolved</code> will be called with the result of that task. this changes the status of the <code>somePromise</code> object to fulfilled
+        and sets it's value equal to <code>result</code>, then <code>handleFulfillment(result)</code> will be called (obviously it needs to be defined first, which I didn't do here because I'm lazy). If instead *some code* throws an error, rejected(e)
+        will be called and then <code>e</code> will be passed to <code>handleRejection</code>.
+    </p>
+
+    <p>
+        The <code>Promise.all()</code> static method takes an array of promises and waits untill all promises are fulfilled or one is rejected to return an array of the values of the resolved promises or the reason for rejection, respectively
+    </p>
 
     <h3>Async ... await</h3>
     <p>To define an asynchronous function, simply use the <code>async</code> keyword before the function definition and you're done.<br>Async functions <strong>allways return a promise</strong> even if you don't tell it to: if there's no return value
@@ -462,10 +502,16 @@
 
 <section id="JSX">
     <h2>React and JSX</h2>
+
     <p>See the reference <a href="https://reactjs.org/docs/hello-world.html" l>here</a>
+
     <h3>Add react to a website</h3>
-    <p>Se the step by step <a href="https://reactjs.org/docs/add-react-to-a-website.html">here</a>.</p>
+    <p>
+        Se the step by step <a href="https://reactjs.org/docs/add-react-to-a-website.html">here</a>.
+    </p>
+
     <p>You will need to add the following script tags on your html file: </p>
+
     <p>Make sure to change <code>"development.js</code> for <code>"production.min.js"</code><br>
 
     <code>
@@ -473,6 +519,7 @@
     &lt;script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin&gt;<br>
     &lt;script type="module" src="myReactAppFile.js"&gt;&lt;/script&gt;<br>
     </code>
+
     <span class="red">Remember to link your own .js file as type="module"</span><br><br>
 
     Then go to the root directory of your application from your command line and run the commands:
@@ -482,82 +529,91 @@
     <code>npx babel --watch src --out-dir destination --presets react-app/prod </code><br>
     Where src is the folder where your ES6 file is and destination is the folder where you want your transpiled file. Link the transpiled file to your html file and give your <code>script</code> tag a type="module" attribute.<br> 
 
-</p>    
+    </p>    
 
-        <p>JSX is a javascript syntax extension thing that looks like HTML but with some particularities:
-            <ul>
-                <li>JSX elements can be thrown into any place the other data types can be (variables, functions, object properties, you name it, JSX fits in).</li>
-                <li>They can have attributes, just like HTML elements do.</li>
-                <li>If a JSX expression takes more than one line, it <strong>must</strong> be wrapped in parentheses.</li>
-                <li>Outer element rule: the first opening tag and the final closing tag in an expression must belong to the same element (the hole thing needs to be wrapped in a containing element - in div).</li>
-                <li>We can't use the <code>class</code> attribute, use <code>className</code> instead.</li>
-                <li>Self-closing tags must have a forward slash at the end: &ltbr/&gt.</li>
-                <li>To write JavaScript code inside a JSX element, wrap it in curly braces.</li>
-                <li>You can acces global variables inside a JSX expression.</li>
-                <li>Event listener names are camelCased: <code>&ltimg onClick={someFunction} src={imgUrl} /&gt</code>.</li>
-                <li>You <strong>cannot</strong> whack an <code>if</code> statement inside a JSX expression.But you <strong>can</strong> use a <code>ternary operator</code>.</li>
-                <li>Another operator we can use is <code>condition && code block</code> in which the code block runs only if the condition evaluates to true. Nothing happens otherwise. </li>
-                <li>When writing lists, give the <code>li</code> elements a <code>key</code> attribute and assign it a unique value for every item. React will use this keys for something.</li>
-                <li>Adjacent JSX elements must be wrapped in a containing element, but we can use <em>fragments</em> (&lt;&gt; &lt;/&gt;) instead of using a <code>div</code> element.</li>
-            </ul>
-        </p>
+    <p>JSX is a javascript syntax extension thing that looks like HTML but with some particularities:
+        <ul>
+            <li>JSX elements can be thrown into any place the other data types can be (variables, functions, object properties, you name it, JSX fits in).</li>
+            <li>They can have attributes, just like HTML elements do.</li>
+            <li>If a JSX expression takes more than one line, it <strong>must</strong> be wrapped in parentheses.</li>
+            <li>Outer element rule: the first opening tag and the final closing tag in an expression must belong to the same element (the hole thing needs to be wrapped in a containing element - in div).</li>
+            <li>We can't use the <code>class</code> attribute, use <code>className</code> instead.</li>
+            <li>Self-closing tags must have a forward slash at the end: &ltbr/&gt.</li>
+            <li>To write JavaScript code inside a JSX element, wrap it in curly braces.</li>
+            <li>You can acces global variables inside a JSX expression.</li>
+            <li>Event listener names are camelCased: <code>&ltimg onClick={someFunction} src={imgUrl} /&gt</code>.</li>
+            <li>You <strong>cannot</strong> whack an <code>if</code> statement inside a JSX expression.But you <strong>can</strong> use a <code>ternary operator</code>.</li>
+            <li>Another operator we can use is <code>condition && code block</code> in which the code block runs only if the condition evaluates to true. Nothing happens otherwise. </li>
+            <li>When writing lists, give the <code>li</code> elements a <code>key</code> attribute and assign it a unique value for every item. React will use this keys for something.</li>
+            <li>Adjacent JSX elements must be wrapped in a containing element, but we can use <em>fragments</em> (&lt;&gt; &lt;/&gt;) instead of using a <code>div</code> element.</li>
+        </ul>
+    </p>
 
-        <h3>Render JSX elements</h3>
-        <p>To render JSX elements use:</p>
-        <div class="code"><span class="blue">import</span> <span class="brown">React</span> from <span class="orange">"react"</span>;<br><span class="blue">import</span> <span class="brown">ReactDOM</span> from <span class="orange">"react-dom"</span>;<br><br>
-            <span class="brown">ReactDOM</span>.<span class="lightblue">render</span>(JSXelement, HTMLelement);</div>
+    <h3>Render JSX elements</h3>
+    <p>To render JSX elements use:</p>
 
-        <h3>.createElement method</h3>
-        <p>See the documentation <a href="https://reactjs.org/docs/react-api.html#react.createelement">here</a>.</p>
+    <script src="https://gist.github.com/alvarezrrj/fd96d8980b660a1609bf9e30c6fc12c0.js"></script>
 
-        <h3>Components</h3>
+    <h3>.createElement method</h3>
+    <p>See the documentation <a href="https://reactjs.org/docs/react-api.html#react.createelement">here</a>.</p>
 
-        <p>JSX elements can be HTML-esque or can be a component. A component is actually a class that <code>extends </code>the <code>React.Component</code> class. </p>
-        <div class="code"><img src="/static/Images/JSXcomponents.jpg" height="300px" alt="JSX Components"> </div>
-        <p>The class we just created has only one method: <code>render</code>, that returns a JSX element. When a component is passed onto the <code>ReactDOM.render</code> method, ReactDOM.render knows it's not a html element because it's capitalized
-            (we must make sure to capitalize the component class when defining it) and then calls the render method on the component, which in turn returns a JSX element for ReactDOM.render to render.</p>
+    <h3>Components</h3>
 
-        <h3>Component properties</h3>
-        <p>All components can be given properties at the moment of creating an instance of them: <code>&lt;MyComponent name="Stuart" /&gt;</code>, this gives the JSX element a property <code>name</code> with a value of <code>Stuart</code>. When defining
-            the constructor of a component, it must <strong>allways</strong> start with <code>super(props)</code>. A component's properties are stored under it's <code>props</code> property.<br> Components are usually given a <code>state</code>                    property which can be modified by calling the <code>setState</code> method and passing to it the new value of the state property (only modify a component's state through the <code>setState</code> method, otherwise React won't re-render
-            the element. When a component's state changes, React automatically re-renders it. A component's state cannot be accesed by another component (this is why states are called local or encapsulated).
-        </p>
-        <p>All components have a built in property called <code>defaultProps</code> that we can assign an object to and this objects value will be used if no properties are passed on to the component when it gets called. Find out <a href="https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values">more</a>.</p>
+    <p>JSX elements can be HTML-esque or can be a component. A component is actually a class that <code>extends </code>the <code>React.Component</code> class. </p>
+    <div class="code"><img src="/static/Images/JSXcomponents.jpg" height="300px" alt="JSX Components"> </div>
+    <p>The class we just created has only one method: <code>render</code>, that returns a JSX element. When a component is passed onto the <code>ReactDOM.render</code> method, ReactDOM.render knows it's not a html element because it's capitalized
+        (we must make sure to capitalize the component class when defining it) and then calls the render method on the component, which in turn returns a JSX element for ReactDOM.render to render.</p>
 
-        <h3>Function components</h3>
-        <p>When a component has only got a render method, it can be described as a function instead of a subclass of <code>React.Components</code></p>
-        <div class="code">function SomeComponent(props){<br>&nbsp;return /*JSX element*/<br>}</div>
+    <h3>Component properties</h3>
+    <p>All components can be given properties at the moment of creating an instance of them: <code>&lt;MyComponent name="Stuart" /&gt;</code>, this gives the JSX element a property <code>name</code> with a value of <code>Stuart</code>. When defining
+        the constructor of a component, it must <strong>allways</strong> start with <code>super(props)</code>. A component's properties are stored under it's <code>props</code> property.<br> Components are usually given a <code>state</code>                    property which can be modified by calling the <code>setState</code> method and passing to it the new value of the state property (only modify a component's state through the <code>setState</code> method, otherwise React won't re-render
+        the element. When a component's state changes, React automatically re-renders it. A component's state cannot be accesed by another component (this is why states are called local or encapsulated).
+    </p>
+    <p>All components have a built in property called <code>defaultProps</code> that we can assign an object to and this objects value will be used if no properties are passed on to the component when it gets called. Find out <a href="https://reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values">more</a>.</p>
 
-        <h3>Creating a React App</h3>
-        <p>To start a react app, in the console, go to the directory where the app will be located and type <code>create-react-app app_name</code> once the console did it's thing, change directory to the app directory and type <code>npm start</code>                    for the terminal to render your html on the browser. The files in the <code>src</code> directory are the ones you want to edit (I think). </p>
+    <h3>Function components</h3>
+    <p>
+        When a component has only got a render method, it can be described as a function instead of a subclass of <code>React.Components</code>
+    </p>
+    
+    <script src="https://gist.github.com/alvarezrrj/26b0c58ef7b92f8706db21130f2d8746.js"></script>
 
-        <h3>Styles</h3>
-        <p>When creating a JSX element, we can add inline styles by adding a style property and passing it an object with all the styles. Multi word style names are camelCased instead of hyphenated.</p>
-        <div class="code">&lt;h1 style=&#123;&#123;color: 'blue', 'fontSize': '1.2 rem'&#125;&#125;&gt;Styled header&lt;/h1&gt;</div>
-        <p>The first set of brackets is for inserting js into JSX and the second belongs to the object. This allows you to write a style object, store iti in a variable and then assign it to the style property.</p>
+    <h3>Creating a React App</h3>
+    <p>
+        To start a react app, in the console, go to the directory where the app will be located and type <code>create-react-app app_name</code> once the console did it's thing, change directory to the app directory and type <code>npm start</code>                    for the terminal to render your html on the browser. The files in the <code>src</code> directory are the ones you want to edit (I think). 
+    </p>
 
-        <h3>Proptype and default props</h3>
-        <p>See the reference <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">here</a>.</p>
-        <p>React has some built-in typechecking. By givin the property <code>propTypes</code> to your component you can ensure a certain data type is passed to your element with an error showing on the console if the data type is incorrect.</p>
+    <h3>Styles</h3>
+    <p>
+        When creating a JSX element, we can add inline styles by adding a style property and passing it an object with all the styles. Multi word style names are camelCased instead of hyphenated.
+    </p>
 
-        <h3>Lifecycle methods</h3>
-        <p>There are three categories of lifecycle methods: <code>mounting, updating</code> and <code>unmounting</code>.<br>
-            <ol class="lifecycleMethods">Mounting methods:
-                <li><code>componentWillMount</code></li>
-                <li><code>render</code></li>
-                <li><code>componentDidMount</code></li>
-            </ol>
-            When a component 'mounts' (renders for the first time), it calls these three methods in that order.</p>
+    <script src="https://gist.github.com/alvarezrrj/d6ec2c017075e0419ec4a3c376974655.js"></script>
 
-        <ol class="lifecycleMethods">Updating methods
-            <li><code>componentWillReceiveProps(nextProps)</code>: this method receives the properties being passed on to the component and allows you to compare the new properties to the current state before the component gets updated. </li>
-            <li><code>shouldcomponentUpdate(nextProps, nextState)</code>: this method must return either <code>true</code> or <code>false</code>. If it returns true, everything goes as normal, but if it returns false, all subsequent update methods
-                will NOT be called, not even <code>render</code>.</li>
-            <li><code>componentWillUpdate(nextProps, nextState)</code>: you <strong>can't</strong> call setState from within this method.</li>
+    <p>The first set of brackets is for inserting js into JSX and the second belongs to the object. This allows you to write a style object, store iti in a variable and then assign it to the style property.</p>
+
+    <h3>Proptype and default props</h3>
+    <p>See the reference <a href="https://reactjs.org/docs/typechecking-with-proptypes.html">here</a>.</p>
+    <p>React has some built-in typechecking. By givin the property <code>propTypes</code> to your component you can ensure a certain data type is passed to your element with an error showing on the console if the data type is incorrect.</p>
+
+    <h3>Lifecycle methods</h3>
+    <p>There are three categories of lifecycle methods: <code>mounting, updating</code> and <code>unmounting</code>.<br>
+        <ol class="lifecycleMethods">Mounting methods:
+            <li><code>componentWillMount</code></li>
             <li><code>render</code></li>
-            <li><code>componentDidUpdate(prevProps, prevState)</code></li>
+            <li><code>componentDidMount</code></li>
         </ol>
-        All five of these methods are called in order every time a component updates. The last two are useful for interacting with elements outside react. </p>
+        When a component 'mounts' (renders for the first time), it calls these three methods in that order.</p>
+
+    <ol class="lifecycleMethods">Updating methods
+        <li><code>componentWillReceiveProps(nextProps)</code>: this method receives the properties being passed on to the component and allows you to compare the new properties to the current state before the component gets updated. </li>
+        <li><code>shouldcomponentUpdate(nextProps, nextState)</code>: this method must return either <code>true</code> or <code>false</code>. If it returns true, everything goes as normal, but if it returns false, all subsequent update methods
+            will NOT be called, not even <code>render</code>.</li>
+        <li><code>componentWillUpdate(nextProps, nextState)</code>: you <strong>can't</strong> call setState from within this method.</li>
+        <li><code>render</code></li>
+        <li><code>componentDidUpdate(prevProps, prevState)</code></li>
+    </ol>
+    All five of these methods are called in order every time a component updates. The last two are useful for interacting with elements outside react. </p>
 
     <ol>Unmounting method
         <li><code>componentWillUnmount</code>: This is the only unmounting method and it gets called when the component gets removed from the DOM, the user changes browser windows or closes the browser.</li>
@@ -579,15 +635,7 @@
     <p><a href="https://mongoosejs.com/">Documentation</a></p>
     <p>Mongoose is a JavaScript library for working with databases in JSON format. It provides the methods to translate JS objects into BSON (Binary JSON) data and vice versa.</p>
 
-    <div class="code">
-        const schema = new mongoose.Schema({<br>
-        &nbsp;name: {type: string, required: true},<br>
-        &nbsp;property<sub>1</sub>: {type: number, required: true}<br>
-        });<br>
-        <span class="brown">Creates the structure of the file.</span><br><br>
-        const item<sub>1</sub> = mongoose.model(<span class="yellow">'item1'</span>, schema);<br>
-        <span class="brown">Creates an item</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/fe4860c75dbe11e328a304537451466c.js"></script>
 </section>
 
 {% endblock %}

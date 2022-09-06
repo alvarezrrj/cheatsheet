@@ -10,7 +10,7 @@
     <!--script src="/static/script.js"></script-->
     <!--script src="../Resources/Libraries/jquery-3.5.0.js"></script-->
 
-    <link rel="stylesheet" type="text/css" href="/static/libraries/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/static/libraries/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/static/styles.css">
 
 </head>
@@ -60,7 +60,7 @@
 
     </header>
 
-    <div class="row">
+    <div class="row justify-content-around">
       {% if sections %}
       <nav id="internal-nav" class="offcanvas-lg offcanvas-start col-3 order-2 text-muted mt-4" tabindex="-1" aria-label="Internal navigation">
 
@@ -93,7 +93,7 @@
     {% endif %}
 
       <main 
-        class="col order-1" 
+        class="col col-lg-8 col-xl-7 col-xxl-6 order-1" 
         data-bs-spy="scroll" 
         data-bs-target="#internal-nav" 
         tabindex="0">
@@ -102,4 +102,5 @@
       </main>
   </div>
   <script src="../static/libraries/js/bootstrap.bundle.js"></script>
+  <script src="../static/js/script.js"></script>
 </body>

@@ -19,23 +19,23 @@
             <li>Properties: these are in a state of quantum entanglement with fields. Anything that happens to these happens to them. In fact, they are named after the field they are entangled to but with Title case. When doing <code>instanceName.Property</code> in the background C is calling a <code>Set</code> or <code>Get</code> method which in turn modifies or returns the value of the correspondent field.</li>
             <li>Methods: define the constructor by giving it the same name as the class itself and use the <code>this</code> keyword (although it's not mandatory, it's better to be explicit) to set the Properties' values</li>
         </ul>
+    </p>
 
+    <p>
         Property and Getter/Setter syntax looks like this:<br>
         <div class="code">
             <img src="/static/Images/cs-class-properties.jpg" alt="Getter/Setter syntax example" height="190"><br>
             <span class="red">Where 'value' is the value passed on to the setter.</span><br>
-            <br>
-            <span class="black">/* If you like overcomplicating things and you want a Property that directly sets the value of the field with no validation whatsoever, there is a forn of shorthand syntax for you: */</span><br>
-            <span class="blue">public</span> <span class="brown">string Name </span>{<br>
-            &nbsp; {<span class="blue">get</span>; <span class="blue">set</span>;}<br>}
-            <br>
-            <br>
-            <Span class="red">Mote that in the shorthand form, it's not necesary to define the field, C does it for us.</Span>
         </div>
-        <br>
-        <strong>Static</strong> members can be added by using the keyword <Code>static</Code> between the access modifier and the data type and they can be accessed through <code>ClassName.Member</code> (static members are related to the Class, not an instance). Only remember that static methods can only access static fields.
-        If you make the hole Class static, it won't be able to be instantiated. Do this if you are creating a library or utility.
+      </p>
+
+    <script src="https://gist.github.com/alvarezrrj/6a2400c7ba4f299d698fe534849d80f1.js"></script>
+
+    <p>
+      <strong>Static</strong> members can be added by using the keyword <Code>static</Code> between the access modifier and the data type and they can be accessed through <code>ClassName.Member</code> (static members are related to the Class, not an instance). Only remember that static methods can only access static fields.
+      If you make the hole Class static, it won't be able to be instantiated. Do this if you are creating a library or utility.
     </p>
+    
 
     <h3>State</h3>
     <p>
@@ -62,12 +62,9 @@
 
     <h3>Data types and variable declaration</h3>
     <p>
-        Variable declaration syntax is: <br>
-        <div class="code">
-            <span class="blue">type</span>[?] <span class="brown">varName</span> = value;
-            <span class="black"># Where the optional question mark makes the variable nullable. Otherwise it <strong>must</strong> have a value.</span>
-        </div>
+        Variable declaration syntax is:
     </p>
+    <script src="https://gist.github.com/alvarezrrj/55ba92fdd4e636c08780785c05a069f0.js"></script>
 
     <h3>Implicitly typed local variables</h3>
     <p>
@@ -75,7 +72,7 @@
     </p>
 
     <p>
-        <strong>You can only use the <code>var</code> keyword if the variable is initialized </strong>(given a value)
+        <strong>You can only use the <code>var</code> keyword if the variable is initialized </strong>(given a value).
     </p>
 
     <ul>
@@ -130,26 +127,29 @@
 
     <p>
         Declare and initialize arrays as follows:
-        <div class="code">
-            <span class="black">// Single line </span><br>
-            <span class="brown">type</span>[] <span class="brown">arrayName</span> = {<span class="brown">element1</span>, <span class="brown">element2</span>, ..., <span class="brown">elementn</span>};
-            <br><br>
-            <span class="black">// Multi line</span><br>
-            <span class="brown">type</span>[] <span class="brown">arrayName</span>;<br>
-            <span class="brown">arrayName</span> = <span class="blue">new</span> <span class="brown">type</span>[] {<span class="brown">element1</span>, <span class="brown">element2</span>, ..., <span class="brown">elementn</span>};<br>
-            <br>
-            <span class="black">// Initialize empty array</span><br>
-            <span class="brown">type</span>[] <span class="brown">arrayName</span> = <span class="blue">new</span> <span class="brown">type</span>[<span class="darkRed">size</span>];<br>
-            <span class="black">// Where size is an integer</span><br>
-            <br>
-            <span class="red">Note you must use the new keyword when declaring and initializing the array on different lines.</span>
-
-        </div>
+        <script src="https://gist.github.com/alvarezrrj/ba398d11ebde11cc0f388be0d9ca74b9.js"></script>
 
         Just like in Java, array sizes are <strong>fixed</strong>. Luckily, there exists the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.array.resize?view=net-5.0"><code>Resize</code></a> method.
     </p>
 
 
+</section>
+
+<section id="references">
+  <h2>References</h2>
+  <p>In c#, when we do something like
+    <script src="https://gist.github.com/alvarezrrj/6b8b4a844c10321e139740b57a43661a.js"></script>
+
+    Instead of copying the value (in this case an object) of <code>varName</code>  onto <code>varName2</code>, C# assings the same object to the second variable. Kind of like doing an <code>alias</code>.<br>
+    Just keep in mind this doesn't work the same way with <i>value types</i> (<code>int</code>, <code>double</code>, <Code>bool</Code>, <code>char</code>), where the variable contains the actual value instead of pointing to an address in memory that contains the object as it happens with <i>reference types</i>.
+  </p>
+
+  <p>Now this is important when doing comparison in C# because when comparing <i>value types</i>, C will check whether the variables contain the same value. But when comparing <i>reference types</i>, C will check wether the variables point to the same address  in memory, that is, whether they <b>are the same thing</b>.</p>
+
+  <p>When a class (<code>SomeClass</code>) implements an interface (<code>ISomeInterface</code>) or extends a <code>Superclass</code>, we can reference instances of that class as of type <code>ISomeInterface</code> or <code>Superclass</code>. This is called <strong>upcasting</strong>. Bear in mind though, that when referencing an object as belonging to it's superclass, we loose all functionality specific to the subclass and can only access the members of the instannce that are present in the superclass.</p>
+
+  <h3>Abstract members</h3>
+  <p>In the superclass definition use <code>acces_modifier abstract type MemberName;</code> to ensure that all subclasses define that property or method. This is useful if you want all your subclasses to have a certain member that is unique to them so you can't define it within the superclass. Only bear in mind that if one member of a class is <code>abstract</code>, then the hole class cannot be instantiated and therefore the entire class itself needs to be declared as <code>abstract</code> (<code>abstract class ClassName</code>). Also remember that when defining the member in subclasses we are in effect overriding it, so we need to use the <code>override</code> keyword.</p>
 </section>
 
 <section id="access-modifiers">
@@ -185,6 +185,9 @@
         <li>
             <code>static</code>: A static member belongs to the type itself rather than to an instance of some class. If the static keyword is applied to a class, all its members must be static.
         </li>
+        <li>
+          <code>virtual</code>: A virtual member is one that can later be overriden in subclasses.
+        </li>
     </ul>
 </section>
 
@@ -200,16 +203,19 @@
 
 <section id="methods">
   <h2>Methods</h2>
-  <p>Take a look at <a href="https://docs.microsoft.com/en-us/dotnet/csharp/methods">the docs</a>.</p>
-  <p>For a method to accept array arguments or to give it default parameters use: <br>
-    <img src="/static/Images/c-method-definition2.jpg" alt="Method definition in c#">
-    <br><br>
+  <p>
+    Take a look at <a href="https://docs.microsoft.com/en-us/dotnet/csharp/methods">the docs</a>.
+  </p>
+
+  <p>
+    For a method to accept array arguments or to give it default parameters use:
+  </p>
+
+  <script src="https://gist.github.com/alvarezrrj/f5decf06a7c7b46707fcc5b3a20d6d67.js"></script>
+
+  <p>
     For named arguments use the following syntax when calling the method:<br>
-    <div class="code">
-      <br>
-      <span class="brown">MethodName</span>(<span class="brown">argName</span>: <span class="brown">value</span>);
-      <br><br>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/d09367def4b9ca00fd468f7e0cb036ac.js"></script>
 
     Only remember that when mixing positional and named arguments in a method call, positional  arguments <strong>must </strong>come before named arguments.
   </p>
@@ -218,90 +224,67 @@
   <p>Apparently this could be useful but it seems to me a long form of defining a method with optional arguments and them checking the existence of the parameters on the method call. Anyway, it goes like this: you can define a method more than once with different argument types, order, or ammount and the method that runs is the one that matches the arguments. After writing this it occurs to me that this may be good when your are likely to receive different parameter types on your method calls. It's just that stupid codecademy only gave examples for the sama type of argument, only different ammount, which again, seems to be a lot sympler to achieve with optional arguments.</p>
 
   <h3>Method output</h3>
-  <p>It is posible to have a method modify a global varialbe. Enter <code>out</code><br>
-  <div class="code">
-    <span class="blue">static</span> <span class="brown">return_type MethodName</span> (<span class="blue">out</span> <span class="brown">type arg</span>) {<br>
-    &nbsp; <span class="brown">arg</span> = <span class="black">// New Value</span>;<br>
-    &nbsp; <span class="blue">return</span> <span class="black">// Return Value</span>;
-    <br>}
-    <br><br>
-    <span class="black">// When calling this method, pass a variable in to it and it will modify its value.</span><br>
-    <span class="brown">MethodName</span>(<span class="blue">out </span><span class="brown">varToModify</span>);
-  </div>
-  <br>
+  <p>It is posible to have a method modify a global varialbe. Enter <code>out</code>
   </p>
+  <script src="https://gist.github.com/alvarezrrj/64602c6697077b754e9a0269c9e2a1cc.js"></script>
 
   <h3>Alternate expressions: expresion-bodied definitions and lambda expressions</h3>
-  <p><em>Expression-bodied definitions</em>, aka arrow functions, are a short way of definig single line methods and void methods: 
-  <div class="code">
-    <span class="brown">type</span>/<span class="blue">void</span> <span class="brown">MethodName</span>(<span class="brown">type args</span>) => <span class="black">// Return value</span>;<br>
-    <br>
-    <span class="red">Note how similar this is to js arrow functions. The curly braces and return keyword dissapear and are replaced by the arrow =>.<br>
-    <br>
-    Sometimes the data type of the argument is obvious and you can skip it.</span>
-  </div>
-  <br>
-  <em>Lambda expressions</em> are the exact same thing as anonymus arrow functions. Period.
+  <p>
+    <em>Expression-bodied definitions</em>, aka arrow functions, are a short way of definig single line methods and void methods: 
+  </p>
+
+  <script src="https://gist.github.com/alvarezrrj/28b31e5e8c37937604f2058ed3867020.js"></script>
+
+  <p>
+  <em>Lambda expressions</em> are the exact same thing as anonymus arrow functions.
   </p>
 </section>
 
-<section id="interfaces">
-  <h2>Interfaces and inheritance</h2>
-  <p>Alright, this is getting a little codecademish. <br>
-    An interface is kind of like a structure that defines the Properties and methods that a Class should have. That's why an interface's members are empty.
+<section id="common-type-system">
+  <h2>Common Type System</h2>
 
-    <div class="code">
-      <span class="blue">interface</span> <span class="brown">IMyInterface</span> {<br>
-      &nbsp; <span class="black">/* Declare Properties and methods without giving them values or definitions. */</span>
-      <br>}
-      <br>
-      <span class="red">For convention, start interface names with a capital 'I'</span>
-    </div>
-    <br>
+  <p>
+    All types defined using the <code>class</code>, <code>record</code>, <code>delegate</code>, <code>array</code> and <code>interface</code> keywords are <em>reference types</em>. When declaring a variable of reference type, it will hold the value <code>null</code> untill it is assigned an instance of taht type.
+  </p>
+  
+  <p>
+    All types defined using the <code>struct</code> and <code>enum</code> keywords are <code>value types</code>, which are <code>sealed</code>, that is, no other type can inherit from them. However, a struct can implement interfaces and therefore can be cast to the interface it implements. This causes a <em>boxing</em> operation to wrap the struct inside a reference type. This happens when a value type is passed to a method that takes an <code>Object</code> or any interface type as input parameter.
+  </p>
+
+  <p>
+    <code>record</code> types may be either reference types or value types.
+  </p>
+
+  <h3>Enum</h3>
+  <p>An enum defines a set of named integral constants, like the ones under System.IO.FileMode, which indicate which mode a file shoud be opened in.</p>
+
+  <h3>Interfaces</h3>
+  <p>
+    An interface is kind of like a structure that defines the Properties and methods that a Class should have. That's why an interface's members are empty.
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/467aec6571c93c3f9bbaa9660ed3aac3.js"></script>
+
+
+  <p>
     And once the interface is defined, implement it like this: 
-    <div class="code">
-      <span class="blue">class MyClass</span> : <span class="brown">IMyInterface</span> {<br>
-      &nbsp; <span class="black">// Define same members than the interface.
-        <br>}
-    </div>
-    <br>
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/fa8d5b106604b6602c0ec9ec798428f2.js"></script>
+
+  <p>
     Apparently this is a way of forcing yourself to define certain members into your classes. IF the class that you define as an implementation of an interface does not contain the same members as the interface, you'll get an error.<br>
     Learning this things feels very much like learning Pythagoras theorem when I was 12. I really fucking hope this all becomes useful one day.
   </p>
 
   <h3>Inheritance</h3>
-  <p>To create subclasses, use the same colon notation we use for impplementing interfaces. In fact, you can create a subclass and implement an interface at the same time:
-    <div class="code">
-      <span class="blue">class MySubClass</span> : <span class="brown">SuperClass</span>, <span class="brown">Interface</span> {<br>
-        &nbsp; <span class="blue">public</span> <span class="brown">MySubClass</span>(<span class="brown">type arguments</span>) : <span class="blue">base</span>(<span class="brown">arguments</span>)<br>
-        <span class="black">// Here goes the code that goes on top of the superclass' constructor.</span>
-        <br>}
-        <br><br>
-        <span class="red">The ':' notation and base keyword calls the superclass' constructor </span>
-    </div>
-  <br>
+  <p>
+    To create subclasses, use the same colon notation we use for impplementing interfaces. In fact, you can create a subclass and implement an interface at the same time:
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/2055218505877dee5557f8ffc4dd50b5.js"></script>
+
+  <p>
   Use the <code>protected </code>keyword to allow subclasses to acces parent class members.<br>
   If you want to <strong>override</strong> members, you have to tell C that beforehand by using the kwyword <code>virtual</code> after the access modifier on the superclass and then use <code>override</code> after the acces modifier on the subclass to rewrite the thing.
   </p>
-
-  <h3>Abstract members</h3>
-  <p>In the superclass definition use <code>acces_modifier abstract type MemberName;</code> to ensure that all subclasses define that property or method. This is useful if you want all your subclasses to have a certain member that is unique to them so you can't define it within the superclass. Only bear in mind that if one member of a class is <code>abstract</code>, then the hole class cannot be instantiated and therefore the entire class itself needs to be declared as <code>abstract</code> (<code>abstract class ClassName</code>). Also remember that when defining the member in subclasses we are in effect overriding it, so we need to use the <code>override</code> keyword.</p>
-</section>
-
-<section id="references">
-  <h2>References</h2>
-  <p>In c#, when we do something like
-    <div class="code">
-      <span class="brown">type varName</span> = <span class="blue">new</span> <span class="brown">type</span>();<br>
-      <span class="brown">type varName2</span> = <span class="brown">varName</span> ;
-    </div>
-    Instead of copying the value (in this case an object) of <code>varName</code>  onto <code>varName2</code>, C# assings the same object to the second variable. Kind of like doing an <code>alias</code>.<br>
-    Just keep in mind this doesn't work the same way with <i>value types</i> (<code>int</code>, <code>double</code>, <Code>bool</Code>, <code>char</code>), where the variable contains the actual value instead of pointing to an address in memory that contains the object as it happens with <i>reference types</i>.
-  </p>
-
-  <p>Now this is important when doing comparison in C# because when comparing <i>value types</i>, C will check whether the variables contain the same value. But when comparing <i>reference types</i>, C will check wether the variables point to the same address  in memory, that is, whether they <b>are the same thing</b>.</p>
-
-  <p>When a class (<code>SomeClass</code>) implements an interface (<code>ISomeInterface</code>) or extends a <code>Superclass</code>, we can reference instances of that class as of type <code>ISomeInterface</code> or <code>Superclass</code>. This is called <strong>upcasting</strong>. Bear in mind though, that when referencing an object as belonging to it's superclass, we loose all functionality specific to the subclass and can only access the members of the instannce that are present in the superclass.</p>
 
   <h3>Object Class</h3>
   <p>Check out the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-5.0">docs</a>.</p>
@@ -316,47 +299,43 @@
       <li>ToString() (<code>virtual</code>)- describes the object.</li>
 
     </ul>
-    </p>
+  </p>
+
+</section>
+
+<section id="generics">
+  <h2>Generics</h2>
+  <p>
+    A generic type is one that is declared with <em>type parameters</em>, like the <code>System.Collections.Generic.List&lt;T&gt;</code> which has one type parameter that was given the name <code>T</code> by convention. Client code will provide the type when creating an instance of the type
+  </p>
+
+  <script src="https://gist.github.com/alvarezrrj/3fca66a58be19ae9da44a5d5a6da98c2.js"></script>
+  
 </section>
 
 <section id="strings">
   <h2>Strings</h2>
   <p>Strings are peculiar. They are objects that contain a load of <code>char</code> types but they behave like value types when we do things like comparing strings or assigning the string stored in a variable to another variable.
-    <div class="code">
-      <span class="brown">string str1</span> = <span class="orange">"papota"</span>;<br>
-      <span class="brown">string str2</span> = <span class="brown">str1</span>;<br>
-      <span class="black">/* str1 and str2 point to different locations in memory. Modifying one wont't affect the other */</span><br>
-      <br>
-      <span class="brown">string str3</span> = <span class="orange">"papota"</span>;<br>
-      <span class="brown">string 1</span> == <span class="brown">string 3</span> <span class="black">// true</span>
-    </div>
-    <br>
-
   </p>
+
+  <script src="https://gist.github.com/alvarezrrj/0a940e583d5969161c44f1132d37d9d1.js"></script>
+
 
   <h3>Variable parsing into strings (string interpolation)</h3>
   <p>Use the following syntax:
-    <div class="code">
-      <span class="brown">string myString</span> = <span class="orange">$"This is a string that will parse a </span>{<span class="brown">variable</span>}<span class="yellow">."</span>;<br />
-        <span class="red">Escape sequences (like \t and \n) are parsed by the complier.</span>
-    </div>
-    <br>
-    Check the <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated">docs</a>.
+  <script src="https://gist.github.com/alvarezrrj/c82e8ba19089ea271d09075c222ba9c0.js"></script>
+    
+  Check the <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated">docs</a>.
   </p>
 
-    <h4>Verbatim String Literal</h4>
-    <p>Escape an entire string by prepending your string with an <code>@</code> directive</p>
-    <div class="code">
-        Console.WriteLine(<span class="brown">@"c:\source\repos"</span>); <br />
-        <br />
-        > c:\source\repos
+  <h4>Verbatim String Literal</h4>
+  <p>Escape an entire string by prepending your string with an <code>@</code> directive</p>
+  <script src="https://gist.github.com/alvarezrrj/f24ec4003624340509ccfd181d90bf2d.js"></script>
 
-    </div>
+  <p>String interpolation and verbatim literals <strong>can</strong> be combined.</p>
 
-    <p>String interpolation and verbatim literals <strong>can</strong> be combined.</p>
-
-    <h4>String concatenation</h4>
-    <p>Concatenate strings with <span class="brown">"Hello, "</span> <code>+</code> <span class="brown">"World!"</span>;</p>
+  <h4>String concatenation</h4>
+  <p>Concatenate strings with <span class="brown">"Hello, "</span> <code>+</code> <span class="brown">"World!"</span>;</p>
 
   <h3>String's built in methods and properties</h3>
   <p>Find them all in the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.clone?view=net-5.0">docs</a>.</p>
@@ -374,13 +353,13 @@
 
 <section id="lists">
   <h2>Lists</h2>
-  <p>Same thing we have in Java. Someone realised C style arrays are good for fuck all and invented the Lists, which is the usefull type of array. Let's see now how clumsy it is to build them:
-    <div class="code">
-      <span class="blue">using</span> <span class="brown">System</span>.<span class="brown">Collections</span>.<span class="brown">Generic</span>;<br>
-      <br>
-      <span class="brown">List</span>&lt;<span class="brown">data_type</span>&gt; <span class="brown">listName</span> = <span class="blue">new</span> <span class="brown">List</span>&lt;<span class="brown">data_type</span>&gt; {<span class="brown">element1</span>, <span class="brown">element2</span>, ..., <span class="brown">elementN</span>};
-    </div>
-    <br>
+  <p>
+    Same thing we have in Java. Someone realised C style arrays are good for fuck all and invented the Lists, which is the usefull type of array. Let's see now how clumsy it is to build them:
+  </p>
+
+  <script src="https://gist.github.com/alvarezrrj/e3090ad5ec06e88f2632ae0dd957c07d.js"></script>
+
+  <p>
     You can access and modify list's elements through square bracket notation (lists are zero indexed). And you can iterate through lists with <code>foreach</code> loops just as we do with arrays.<br>
     The methods to work with these guys are (see the full list <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=net-5.0">here</a>):
     <ul>
@@ -405,30 +384,22 @@
   </p>
 
   <p>There are two ways of writing queries: the plain old SQL type of syntax and the method syntax.
-    <div class="code">
-      <span class="black">//Query style</span><br>
-      <span class="blue">var</span> <span class="brown">filteredData</span> =  <span class="blue">from</span> <span class="brown">info</span> <span class="blue">in</span> <span class="brown">dataBase</span><br>
-      &nbsp; <span class="blue">where</span> <span class="black">// Condition to test on info</span> <br>
-      &nbsp; <span class="blue">select</span> <span class="brown">info</span>;<br>
-      <br>
-      <span class="black">// Method style</span><br>
-      <span class="blue">var</span> <span class="brown">filteredData2</span> = <span class="brown">dataBase</span>.<span class="brown">Where</span>(<span class="brown">info</span> =&gt; <span class="black">// Condition to test on info</span>);<br>
-      <br>
-      <span class="blue">var</span> <span class="brown">filteredData3</span> = <span class="brown">filteredData2</span>.<span class="brown">Select</span>(<span class="brown">info</span> =&gt; <span class="black">// Modify info here</span>);<br>
-      <br>
-      <span class="red">Note: dataBase is an iterable. filteredData will contain all the elements in dataBase that meet the condition.<br>
-      The Where() method takes a function as an argument like the .map() method in JavaScript<br>
-      The Select() method allows you to perform a certain action on the data and returs the modified data.</span>
-    </div>
-    <p>For a full list of methods <a href="https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.aggregate?view=net-5.0">see the reference</a>.</p>
   </p>
+
+  <script src="https://gist.github.com/alvarezrrj/79ee460ae4c624acf3c05f408df3665c.js"></script>
+  
+  <p>
+    For a full list of methods <a href="https://docs.microsoft.com/en-us/dotnet/api/system.linq.enumerable.aggregate?view=net-5.0">see the reference</a>.
+  </p>
+
 </section>
 
 <section id="ASP.NET-core">
     <h2>ASP .NET Core</h2>
     <h3>Entity Framework Core</h3>
     <p>This is a NuGet package that allows you to interact with a SQL Server. Once your <code>ApplicationDbContext.cs</code> (db structure),  <code>connection string</code> (server name and that, in appsettings.json) and <code>dependency injection</code> (builder.Services in Program.cs) are set up, run the following incantation to cretate a <code>Migrations</code> folder and the files that will create the database:</p>
-    <div class="code">add-migration AddTablenameToDb</div>
+    
+    <script src="https://gist.github.com/alvarezrrj/f0ddf8eaa40274b7aead74f3ae3fbc04.js"></script>
 
     <p>You can then run <code>Update-Database</code> from the Package Manager Console which will run the files created by the above command and thus create the database (if it doesn't exist) and add the table to it.</p>
 

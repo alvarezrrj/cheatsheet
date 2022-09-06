@@ -11,9 +11,8 @@
 
     <h2>Data types and variable declaration</h2>
     <p>Variable names start with a letter, <code>$</code> or underscore. For declaring variables we need to specify what data type they are: </p>
-    <div class="code">
-        <span class="brown">int age</span> = <span class="darkRed">27</span>;
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/351c076102b1ddfcb61bedb1562a13f5.js"></script>
+
     <p>Data types are:
         <ul>
         <li><code>int</code>: integers.</li>
@@ -33,7 +32,7 @@
         <li><code>.charAt(index)</code> returns the character at the spexified index.</li>
         <li><code>.substring(start, end)</code> returns the substring between start and end-1, omit second argument to go till the  end.</li>
         <li><code>.toUpperCase()</code> returns the string in <code>UPERCASE</code>. Does not modify original string.</li>
-        <LI><code>.toLowerCase()</code> returns the string in <code>lowercase</code>. Does not modify oringinal string.</LI>
+        <li><code>.toLowerCase()</code> returns the string in <code>lowercase</code>. Does not modify oringinal string.</li>
     </ul>
 
     <h3>Arrays</h3>
@@ -54,36 +53,11 @@
     <p>Arrays hvave a fixed length, which means you can't add or remove elements from them. Luckily, there exists the ArrayList, which is exactly the same but without a fixed length.<br>
     To use them first we have to <code>import java.utils.ArrayList</code> them
     </p>
-    <div class="code">
-        <span class="blue">ArrayList</span>&lt;<span class="brown">String</span>&gt;<span class="brown"> myArrayList</span> = <span class="blue">new</span> <span class="brown">ArrayList</span>&lt;<span class="brown">String</span>&gt;();<br>
-        <br>
-        <span class="brown">myArrayList</span>.<span class="brown">add</span>(stuff);<br>
-        <span class="black">&gt;&gt; Adds stuff to the end of the Array List.</span><br>
-        <br>
-        <span class="brown">myArrayList.size</span>();<br>
-        <span class="black">&gt;&gt; Returns the size of the Arra List.</span><br>
-        <br>
-        <span class="brown">myArrayList.get</span>(index);<br>
-        <span class="black">&gt;&gt; Returns the element at index.</span><br>
-        <br>
-        <span class="brown">myArrayList.set</span>(index, newValue);<br>
-        <span class="black">&gt;&gt; Rewrites the element at index to be newValue.</span><br>
-        <br>
-        <span class="brown">myArrayList.remove</span>(element);<br>
-        <span class="black">&gt;&gt; Removes the first instance of element.</span><br>
-        <br>
-        <span class="brown">myArrayList.indexOf</span>(element);<br>
-        <span class="black">&gt;&gt; Returns the index of element.</span><br>
-        <br>
-        <br>
-        <span class="red">Note: for some Java reason, when creating ArrayLists made of chars, ints, or doubles, we have to write <code>Char</code>, <code>Integer</code>, or <code>Double</code> instead of <code>String</code>.<br>
-        Note 2: I hope this all makes sense some day.</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/17fce7e5ec6f5001cb094c6cc453aeeb.js"></script>
 
     <h2>Embeding variables into strings</h2>
-    <div class="code">
-        <span class="orange">"Use this syntax to parse "</span>+<span class="brown">variableName</span>+<span class="orange">" into Strings".</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/b7e1eec3c9b9d9b3fa0a74a2ef7b4bef.js"></script>
+
     <p>If you look closely you'll see that we're only concatenating strings. You can also use numbers, Java can handle that.</p>
 
     <h2>Comparing objects</h2>
@@ -140,25 +114,15 @@
 
         <h2>Loops</h2>
         <h3>While</h3>
-        <div class="code">
-            <span class="blue">while</span> (condition) {<br>
-            &nbsp; <span class="black">// Code block</span><br>
-            }
-        </div>
+        <script src="https://gist.github.com/alvarezrrj/cc0511d9f80a9847a08e6eb7bd209f33.js"></script>
 
         <h3>For </h3>
-        <div class="code">
-                <span class="blue">for </span>(int counter = 1; counter &lt; 10; counter++) {<br>
-                &nbsp; <span class="black">// Code block</span><br>}
-        </div>
+        <script src="https://gist.github.com/alvarezrrj/d38c069fe7a977c2c7ca2952d089b144.js"></script>
 
         <h3>For each</h3>
         <p>For each loops allow you to iterate through the elements in a Array or Array List</p>
-        <div class="code">
-            <span class="blue">for </span>(type element : array) {<br>
-            &nbsp; // Code block<br>}
-        </div>
-
+        <script src="https://gist.github.com/alvarezrrj/d20e9352e505ccb0b367d7e4ef288b1d.js"></script>
+        
         <h3>Try... catch</h3>
         <img src="/static/Images/java-try-catch.jpg" alt="Try catch syntax.">
             

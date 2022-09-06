@@ -26,6 +26,8 @@ with os.scandir('templates') as iterator:
         if entry.is_file() and not entry.name.startswith('.') and not "layout" in entry.name:
             langs.append(entry.name.split('.')[0])
 
+    langs.sort()
+
 # Global variables available to every template
 app.jinja_env.globals["languages"] = langs
 

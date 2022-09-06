@@ -29,11 +29,8 @@ Strings are wrapped in double quotes and to include quotes inside a string we ha
 
 <h3>Variable assignment</h3>
 <p>Declare a variable using the following sintax: </p>
-<div class="code">
-<span class="brown">$my_str</span> = <span class="orange">"Saratustra"</span>;<br>
-<span class="brown">$my_int</span> = <span class="darkRed">7</span>;<br>
-<span class="brown">$my_float</span> = <span class="darkRed">3.14</span>;
-</div>
+<script src="https://gist.github.com/alvarezrrj/8aa34fe2b1db2799ca240ccae5340476.js"></script>
+
 <p>Variable names can contain letters, numbers and underscores but cannot start with a number.<br>
 To call a variable's value, use the dollar sign and variable's name: <code>echo <span class="brown">$my_var</span></code> prints "Saratustra".</p>
 
@@ -44,12 +41,7 @@ To call a variable's value, use the dollar sign and variable's name: <code>echo 
 
 <h3>Variable Parsing</h3>
 <p>Double quoted strings allow you to throw variables at them and they will be parsed as the value they contain. Use curly braces if you need to modify the resulting  string. Let's take a look:</p>
-<div class="code">
-<span class="brown">$food</span> = <span class="orange">"treat"</span>;<br>
-<span class="brown">$amount</span> = <span class="orange">"a lot"</span>;<br>
-<span class="blue">echo</span> <span class="orange">"I love </span><span class="darkRed">$</span>{<span class="darkRed">food</span>}<span class="orange">s</span> <span class="darkRed">$amount</span><span class="orange">"</span>;<br><br>
-<span class="black">&gt;&gt; "I love treats a lot".</span>
-</div>
+<script src="https://gist.github.com/alvarezrrj/76e379c68798376c612d87c166780cf9.js"></script>
 
 <h3>Superglobals and form handling</h3>
 <p>Superglobals are variables that are related to https requests (I think) and are available in all scopes within the php script:</p>
@@ -78,15 +70,7 @@ When setting the forms <code>method</code> attribute to "post", the form data wi
 <section id="functions">
 <h2>Functions</h2>
 <p>Defining functions looks very much like JavaScript: </p>
-<div class="code">
-<span class="brown">$global_var</span>;<br>
-<span class="blue">funcition myFunction</span>(<span class="darkRed">$param1</span>, <span class="darkRed">$param2</span>, &<span class="darkRed">$param3</span> ) {<br>
-&nbsp;<span class="blue">global</span> <span class="darkRed">$global_var</span><br>
-&nbsp;<span class="black">/* Code block */</span>
-<br>}<br>
-<span class="black">Any actions performed on param3 will modify the value of the original variable, as it is an alias.<br>
-A function can access variables from the global scope using the above syntax.</span>
-</div>
+<script src="https://gist.github.com/alvarezrrj/71e73b6c0d5a6955d759b30230ce4244.js"></script>
 
 <p>Defining functions with default parameters looks just like python (and probably js too).</p>
 
@@ -94,7 +78,7 @@ A function can access variables from the global scope using the above syntax.</s
 </section>
 
 <section id="built-in-functions">
-<table>
+<table class="table table-striped table-light">
 <tr>
     <th>Type</th>
     <th>Function</th>
@@ -211,45 +195,16 @@ A function can access variables from the global scope using the above syntax.</s
 <section id="conditionals">
     <h2>Conditionals</h2>
     <h3><b>If</b> Statement</h3>
-    <div class="code">
-        <span class="blue">If</span> (condition === <span class="darkRed"> TRUE</span>) {<br>
-        &nbsp; <span class="black">// Code block</span><br>}<br>
-        <span class="blue">elseif</span> (condition2 === <span class="darkRed">TRUE</span>) {<br>
-        &nbsp; <span class="black">// Code Block</span><br>}
-        <br>
-        <span class="blue">else </span> { <br>
-        &nbsp; <span class="black"> // Code block</span><br>
-        }<br>
-        <span class="brown">Note: the booleans are not case sensitive, but they're written in uppercase for convention.</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/ef6cec4eeb6fefc491241c1ae4a91e44.js"></script>
+
     <p>Just like in JavaScript, PHP has an <em>identical operator</em>: <code>===</code> and an <em>equal operator</em>: <code>==</code>.</p>
 
     <h3><b>Switch</b> statement</h3>
     <p>The syntax is the same as JS:</p>
-    <div class="code">
-        <span class="blue">Switch</span> (<span class="darkRed">$param</span>) {<br>
-        &nbsp; <span class="blue">case</span> <span class="brown">"A"</span>:<br>
-        &nbsp; &nbsp; <span class="black">// Code block</span><br>
-        &nbsp; &nbsp; <span class="blue">break</span>;<br>
-        &nbsp; <span class="blue">case</span> <span class="brown">"B"</span>:<br>
-        &nbsp; <span class="blue">case</span> <span class="brown">"C"</span>:<br>
-        &nbsp; &nbsp; <span class="black">// Code block</span><br>
-        &nbsp; &nbsp; <span class="blue">break</span>;<br>
-        &nbsp; &nbsp; .<br>
-        &nbsp; &nbsp; .<br>
-        &nbsp; &nbsp; .<br>
-        &nbsp; <span class="blue">case</span> <span class="brown">"N"</span>:<br>
-        &nbsp; &nbsp; <span class="black">// Code block</span><br>
-        &nbsp; &nbsp; <span class="blue">break</span>;<br>
-        &nbsp; <span class="blue">default</span>:<br>
-        &nbsp; &nbsp; <span class="black">// Code block to run if no case matches.</span><br>
-        &nbsp; &nbsp; <span class="blue">break</span>;<br>
-        }<br>
-        <span class="brown">Note: you can join cases for which you want the same code to run. This is due to <strong>fallthrough</strong>: when the machine finds a case that matches but no 'break' keyword, it will run all subsequent code untill it finds a 'break' or the end of the statement.</span>
-    </div>
+    <script src="https://gist.github.com/alvarezrrj/9e06a9b660ccac739fa1a6dd57ae83a8.js"></script>
 
     <h3><b>Ternary</b> operator</h3>
-    <div class="code"><span class="darkRed">condition</span> ? <span class="black">return this if TRUE</span> : <span class="black">return this if FALSE</span></div>
+    <script src="https://gist.github.com/alvarezrrj/9680970cac455f43ec1641b930aefcde.js"></script>
 
     <h3>Truthy and Falsy</h3>
     <p>Nothing new here. Falsy variables are:
@@ -346,57 +301,8 @@ A function can access variables from the global scope using the above syntax.</s
 <section id="classes">
     <h2>Classes</h2>
     <p>Classes are defined and instantiated the same way they are in javaScript: </p>
-    <div class="code">
-        <span class="blue">class Perro </span> { <br>
-        &nbsp; <span class="blue">public</span> <span class="brown">$name</span>, <span class="brown">$lastName</span>, <span class="brown">$color</span>;<br>
-        <span class="black">// The public keyword makes this properties accessible from within the object and from outside. Public is the default for methods.</span><br>
-        <br>
-
-        &nbsp; <span class="blue">private</span> <span class="brown">$health</span>;<br>
-        <span class="black">// Private properties can only be accesed by the object's methods. REMEMBER: private properties cannot be accesed by child classes. Use <em>protected</em> instead to allow this.</span><br>
-        <br>
-
-        &nbsp; <span class="blue">static function bark</span>(){<br>
-        &nbsp; &nbsp; <span class="blue">return</span> <span class="orange">"Whof!"</span><br>
-        &nbsp; }<br>
-        <span class="black">// Assign a class static methods (or properties) that you can later access without the need of instantiating the class through the syntax ClassName::methodName()</span><br>
-        <br>
-
-        &nbsp; <span class="blue">function __construct</span>(<span class="brown">$param1</span>) { <br>
-        &nbsp; &nbsp; <span class="brown">$this </span>-> <span class="brown"> name</span> = <span class="brown">$param1</span>;<br>
-        <span class="black">/* The constructor is called at the moment of instantiating */</span><br>
-        <br>
-
-        &nbsp; <span class="blue">function getHealth</span>() {<br>
-        &nbsp; &nbsp; <span class="blue">return</span> <span class="brown">$this</span> -> <span class="brown">health</span>;<br>
-        &nbsp; }<br>
-        <span class="black">// Use getters and setters to access private properties.</span><br>
-        <br>
-
-        &nbsp; <span class="blue">function getFullName</span>(){<br>
-        &nbsp; &nbsp; <span class="blue">return </span><span class="brown">$this</span> -> <span class="brown">name</span> . <span class="orange">" "</span> . <span class="brown">$this</span> -> <span class="brown">lastName</span>;<br>
-        &nbsp; }<br>
-        };
-
-        
-        <br>
-        <br>
-        <span class="brown">$perrito</span> = <span class="blue"> new </span> <span class="brown">Perro</span>(<span class="orange">"Batata"</span>);<br>
-        <br>
-        
-        <span class="black">/* Use the object operator '->' to access the object's properties and methods. */</span><br>
-        <span class="brown">$perrito </span>-> <span class="brown">color</span> = <span class="orange">"magenta"</span>;<br>
-        <br>
-
-        <span class="blue">echo</span> <span class="brown">$perrito</span> -> <span class="brown">name</span>;<br>
-        <span class="black">&gt;&gt; prints "Batata"</span><br>
-        <br>
-
-        <span class="blue">echo</span> <span class="brown">Perro</span>::<span class="brown">bark</span>();<br>
-        <span class="black">&gt;&gt; prints "Whof!"</span>
-
-    </div>
-
+    <script src="https://gist.github.com/alvarezrrj/4777950b70ffb19254b5f1d3417b1a21.js"></script>
+    
     <h3>Inhrtitance</h3>
     <p>Subclasses can be defined using the keyword <code>extends</code>. Nothing new here.<br>
     Within a subclass we can overwrite a parent method by simply redefining it and we can call parent methods using <code>parent::methodName()</code></p>
