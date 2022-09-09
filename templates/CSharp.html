@@ -7,6 +7,19 @@
         Let's see if i got this right: an application written in C contains many classes, each written in its own file, which is named after the class it contains and is used by the <code>main()</code> method in the <code>Program</code> class (in the Program.cs file).
     </p>
 
+    <p>
+        C# is an object oriented programming language. Very similar to Java by the looks of it. Use <code>Console.WriteLine("String")</code> to write to the console and <code>Console.ReadLine()</code> to read user input.<br>
+        User input from the console comes in as a string. To convert variables from one data type to another use the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.convert?view=netframework-4.7.2">Convert class</a>.<br>
+        <code>// Write single line comments like this</code> and<br>
+        <code>
+            /* Multi <br>
+            &nbsp; &nbsp;line<br>
+            &nbsp; &nbsp;comments<br>
+            &nbsp; &nbsp;like this          */
+        </code>
+    </p>
+
+
     <h3>Classes and Namespace</h3>
     <p>
         Classes contain the code that implements a type and are organized into namespaces to prevent naming collisions. A namespace is like the surname for a type.
@@ -27,15 +40,17 @@
             <img src="/static/Images/cs-class-properties.jpg" alt="Getter/Setter syntax example" height="190"><br>
             <span class="red">Where 'value' is the value passed on to the setter.</span><br>
         </div>
-      </p>
+    </p>
 
     <script src="https://gist.github.com/alvarezrrj/6a2400c7ba4f299d698fe534849d80f1.js"></script>
 
     <p>
-      <strong>Static</strong> members can be added by using the keyword <Code>static</Code> between the access modifier and the data type and they can be accessed through <code>ClassName.Member</code> (static members are related to the Class, not an instance). Only remember that static methods can only access static fields.
-      If you make the hole Class static, it won't be able to be instantiated. Do this if you are creating a library or utility.
+        <strong>Static</strong> members can be added by using the keyword <Code>static</Code> between the access modifier and the data type and they can be accessed through <code>ClassName.Member</code> (static members are related to the Class, not an instance). Only remember that static methods can only access static fields.
+        If you make the hole Class static, it won't be able to be instantiated. Do this if you are creating a library or utility.
     </p>
-    
+
+    <h3>Abstract members</h3>
+    <p>A member declared as <code>abstract</code> has a signature definition but no implementation. Declare them with <code>acces_modifier abstract type MemberName;</code> to ensure that all subclasses define that property or method. This is useful if you want all your subclasses to have a certain member that is unique to them so you can't define it within the superclass. Only bear in mind that if one member of a class is <code>abstract</code>, then the hole class cannot be instantiated and therefore the entire class itself needs to be declared as <code>abstract</code> (<code>abstract class ClassName</code>). Also remember that when defining the member in subclasses we are in effect overriding it, so we need to use the <code>override</code> keyword.</p>
 
     <h3>State</h3>
     <p>
@@ -46,19 +61,6 @@
         Other methods moidfy the state of the application by updating values or storing new ones. These are known as <strong>stateful</strong> or <strong>instance</strong> methods.
     </p>
 
-
-
-    <p>
-        C# is an object oriented programming language. Very similar to Java by the looks of it. Use <code>Console.WriteLine("String")</code> to write to the console and <code>Console.ReadLine()</code> to read user input.<br>
-        User input from the console comes in as a string. To convert variables from one data type to another use the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.convert?view=netframework-4.7.2">Convert class</a>.<br>
-        <code>// Write single line comments like this</code> and<br>
-        <code>
-            /* Multi <br>
-            &nbsp; &nbsp;line<br>
-            &nbsp; &nbsp;comments<br>
-            &nbsp; &nbsp;like this          */
-        </code>
-    </p>
 
     <h3>Data types and variable declaration</h3>
     <p>
@@ -131,8 +133,6 @@
 
         Just like in Java, array sizes are <strong>fixed</strong>. Luckily, there exists the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.array.resize?view=net-5.0"><code>Resize</code></a> method.
     </p>
-
-
 </section>
 
 <section id="references">
@@ -148,8 +148,6 @@
 
   <p>When a class (<code>SomeClass</code>) implements an interface (<code>ISomeInterface</code>) or extends a <code>Superclass</code>, we can reference instances of that class as of type <code>ISomeInterface</code> or <code>Superclass</code>. This is called <strong>upcasting</strong>. Bear in mind though, that when referencing an object as belonging to it's superclass, we loose all functionality specific to the subclass and can only access the members of the instannce that are present in the superclass.</p>
 
-  <h3>Abstract members</h3>
-  <p>In the superclass definition use <code>acces_modifier abstract type MemberName;</code> to ensure that all subclasses define that property or method. This is useful if you want all your subclasses to have a certain member that is unique to them so you can't define it within the superclass. Only bear in mind that if one member of a class is <code>abstract</code>, then the hole class cannot be instantiated and therefore the entire class itself needs to be declared as <code>abstract</code> (<code>abstract class ClassName</code>). Also remember that when defining the member in subclasses we are in effect overriding it, so we need to use the <code>override</code> keyword.</p>
 </section>
 
 <section id="access-modifiers">
@@ -186,9 +184,122 @@
             <code>static</code>: A static member belongs to the type itself rather than to an instance of some class. If the static keyword is applied to a class, all its members must be static.
         </li>
         <li>
-          <code>virtual</code>: A virtual member is one that can later be overriden in subclasses.
+          <code>virtual</code>: Enter Polymorpihsm. A virtual member is one that can later be overriden in subclasses. Use the <code>override</code> keyword on the derived class' method. This allows you to call a method on the base class and execute the overriden version on the derived class.  
         </li>
     </ul>
+</section>
+
+<section id="common-type-system">
+    <h2>Common Type System</h2>
+
+    <p>
+        All types defined using the <code>class</code>, <code>record</code>, <code>delegate</code>, <code>array</code> and <code>interface</code> keywords are <em>reference types</em>. When declaring a variable of reference type, it will hold the value <code>null</code> untill it is assigned an an object of a compatible type.
+    </p>
+
+    <p>
+        All types defined using the <code>struct</code> and <code>enum</code> keywords are <code>value types</code>, which are <code>sealed</code>, that is, no other type can inherit from them. However, a struct can implement interfaces and therefore can be cast to the interface it implements. This causes a <em>boxing</em> operation to wrap the struct inside a reference type. This happens when a value type is passed to a method that takes an <code>Object</code> or any interface type as input parameter.
+    </p>
+
+    <p>
+        <code>record</code> types may be either reference types or value types.
+    </p>
+
+    <h3>Records</h3>
+    <p>
+        Although they are reference types, for records, value equality means that two variables of a record type are equal if the types and values of all fields and properties match.
+    </p>
+
+    <p>
+        Records are also <strong>immutable</strong>, which means its member values cannot be modified after the object is instantiated.
+    </p>
+
+    <p>
+        Records can inherit from another record but not from a class, and classes cannot inherit from records.
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/12e385c4884ee34456c05735ed958ddf.js"></script>
+
+    <p>
+        Use a <code>with</code> statement to copy an inmutable object and change its properties.
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/62b1dd92fd16fcedccfe230f9240a41c.js"></script>
+
+    <h3>Enum</h3>
+    <p>An enum defines a set of named integral constants, like the ones under System.IO.FileMode, which indicate which mode a file shoud be opened in.</p>
+
+    <h3>Interfaces</h3>
+    <p>
+        An interface defines the Properties and methods that a <code>class</code> or <code>struct</code> must implement. In general they only contain signatures but may also define <code>static</code> methods which must have an implementation. When an interface declares a default implementation of a method, any class implementing that interface inherits that implementation (although you need to cast the class instance to the interface type to access the default implementation).
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/467aec6571c93c3f9bbaa9660ed3aac3.js"></script>
+
+    <p>
+        You can count on any class that implements the above <code>IEquatable&lt;T&gt;</code> interface to contain an <code>Equals</code> method with which an instance of the class can determine whether it's equal to another instance of the same class.
+    </p>
+
+    <p>
+        And once the interface is defined, implement it like this:
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/fa8d5b106604b6602c0ec9ec798428f2.js"></script>
+
+    <p>
+        Apparently this is a way of forcing yourself to define certain members into your classes. IF the class that you define as an implementation of an interface does not contain the same members as the interface, you'll get an error.<br>
+        Learning this things feels very much like learning Pythagoras theorem when I was 12. I really fucking hope this all becomes useful one day.
+    </p>
+
+    <h3>Inheritance</h3>
+    <p>
+        When you create a class, you can inherit from any other class that is not defined as <code>sealed</code> and override <code>virtual</code> methods. When a class declares a base class, it inherits all its members except the constructors.
+    </p>
+    <p>
+        A class can only directly inherit from one base class but can implement more than one interface.
+    </p>
+    <p>
+        To create subclasses, use the same colon notation we use for impplementing interfaces. In fact, you can create a subclass and implement an interface at the same time:
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/2055218505877dee5557f8ffc4dd50b5.js"></script>
+
+    <p>
+        Use the <code>protected </code>keyword to allow subclasses to acces parent class members.<br>
+        If you want to <strong>override</strong> members, you have to tell C that beforehand by using the keyword <code>virtual</code> after the access modifier on the superclass and then use <code>override</code> after the acces modifier on the subclass to rewrite the thing.
+    </p>
+
+    <h3>Polymorphism</h3>
+    <p>
+        Polymorphism refers to the fact that an object can be identified as as its base class type. This way, when a derived class inherits from a base class with <code>virtual</code> methods, it can <code>override</code> them. Overriden methods can then be invoked from an instance even when it has been cast to its base class.
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/907ff59bdeeed9e6ca4d05a814eb7bd4.js"></script>
+
+    <p>
+        If you want to retain access to the base class' method, use the <code>new</code> keyword (instead of <code>override</code>) on the derived class method to tell the compiler you're not overriding the base method. This way, you can access the base class method on an instance of the derived class by casting it to the base class.
+    </p>
+
+    <p>
+        Another way to acces a base class' overriden or replaced method from a derived class is by using the <code>base</code> keyword.
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/89c36fdc99aee2fe34e27d5bc5eec2ac.js"></script>
+
+
+    <h3>Object Class</h3>
+    <p>Check out the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-5.0">docs</a>.</p>
+    <p>
+        All classes are children of one God Class: <code>Object</code>. This means that upcasting allows us to reference any object as of type <code>Object</code>.<br>
+        <span class="red">Note: value types also inherit from <code>Object</code>. </span><br>
+        <br>
+
+        The Object class has a couple (arguably) usefull methods:<br>
+        <ul>
+            <li>Equals(object) (<code>virtual</code>) - I don't really know what this thing compares, the actual value? the data type? the address at which the variable points to? </li>
+            <li>GetType() - returns the data type.</li>
+            <li>ToString() (<code>virtual</code>)- describes the object.</li>
+
+        </ul>
+    </p>
+
 </section>
 
 <section id="control-flow">
@@ -240,68 +351,6 @@
   </p>
 </section>
 
-<section id="common-type-system">
-  <h2>Common Type System</h2>
-
-  <p>
-    All types defined using the <code>class</code>, <code>record</code>, <code>delegate</code>, <code>array</code> and <code>interface</code> keywords are <em>reference types</em>. When declaring a variable of reference type, it will hold the value <code>null</code> untill it is assigned an instance of taht type.
-  </p>
-  
-  <p>
-    All types defined using the <code>struct</code> and <code>enum</code> keywords are <code>value types</code>, which are <code>sealed</code>, that is, no other type can inherit from them. However, a struct can implement interfaces and therefore can be cast to the interface it implements. This causes a <em>boxing</em> operation to wrap the struct inside a reference type. This happens when a value type is passed to a method that takes an <code>Object</code> or any interface type as input parameter.
-  </p>
-
-  <p>
-    <code>record</code> types may be either reference types or value types.
-  </p>
-
-  <h3>Enum</h3>
-  <p>An enum defines a set of named integral constants, like the ones under System.IO.FileMode, which indicate which mode a file shoud be opened in.</p>
-
-  <h3>Interfaces</h3>
-  <p>
-    An interface is kind of like a structure that defines the Properties and methods that a Class should have. That's why an interface's members are empty.
-  </p>
-  <script src="https://gist.github.com/alvarezrrj/467aec6571c93c3f9bbaa9660ed3aac3.js"></script>
-
-
-  <p>
-    And once the interface is defined, implement it like this: 
-  </p>
-  <script src="https://gist.github.com/alvarezrrj/fa8d5b106604b6602c0ec9ec798428f2.js"></script>
-
-  <p>
-    Apparently this is a way of forcing yourself to define certain members into your classes. IF the class that you define as an implementation of an interface does not contain the same members as the interface, you'll get an error.<br>
-    Learning this things feels very much like learning Pythagoras theorem when I was 12. I really fucking hope this all becomes useful one day.
-  </p>
-
-  <h3>Inheritance</h3>
-  <p>
-    To create subclasses, use the same colon notation we use for impplementing interfaces. In fact, you can create a subclass and implement an interface at the same time:
-  </p>
-  <script src="https://gist.github.com/alvarezrrj/2055218505877dee5557f8ffc4dd50b5.js"></script>
-
-  <p>
-  Use the <code>protected </code>keyword to allow subclasses to acces parent class members.<br>
-  If you want to <strong>override</strong> members, you have to tell C that beforehand by using the kwyword <code>virtual</code> after the access modifier on the superclass and then use <code>override</code> after the acces modifier on the subclass to rewrite the thing.
-  </p>
-
-  <h3>Object Class</h3>
-  <p>Check out the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object?view=net-5.0">docs</a>.</p>
-  <p>All classes are children of one God Class: <code>Object</code>. This means that upcasting allows us to reference any object as of type <code>Object</code>.<br>
-    <span class="red">Note: value types also inherit from <code>Object</code>. </span><br>
-    <br>
-
-    The Object class has a couple (arguably) usefull methods:<br>
-    <ul>
-      <li>Equals(object) (<code>virtual</code>) - I don't really know what this thing compares, the actual value? the data type? the address at which the variable points to? </li>
-      <li>GetType() - returns the data type.</li>
-      <li>ToString() (<code>virtual</code>)- describes the object.</li>
-
-    </ul>
-  </p>
-
-</section>
 
 <section id="generics">
   <h2>Generics</h2>
@@ -311,6 +360,26 @@
 
   <script src="https://gist.github.com/alvarezrrj/3fca66a58be19ae9da44a5d5a6da98c2.js"></script>
   
+</section>
+
+<section id="anonymus-types">
+    <h2>Anonymus Types</h2>
+    <p>
+        Anonymus types are used to create a set of readonly key=value pairs. Make one by using the <code>new</code> keyword followed by an object initializer:
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/d64583a955de4298327424538541d1a3.js"></script>
+
+    <p>
+        The data types for each property are inferred by the compiler. And the property names can be ommitted if the anonymus type is being initialized with some class' properties, in which case the compiler gives them the same name as the property being used.
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/88b9316eabf956cb2a608128f7090639.js"></script>
+
+    <p>
+        The <code>with</code> statement can be used to copy an instance of anonymus type while changing one of its property's value. Just like you do with <code>record</code>s.
+    </p>
+
 </section>
 
 <section id="strings">
@@ -394,14 +463,53 @@
 
 </section>
 
-<section id="ASP.NET-core">
-    <h2>ASP .NET Core</h2>
-    <h3>Entity Framework Core</h3>
-    <p>This is a NuGet package that allows you to interact with a SQL Server. Once your <code>ApplicationDbContext.cs</code> (db structure),  <code>connection string</code> (server name and that, in appsettings.json) and <code>dependency injection</code> (builder.Services in Program.cs) are set up, run the following incantation to cretate a <code>Migrations</code> folder and the files that will create the database:</p>
+<section id="entity-framework-core">
+    <h2>Entity Framework Core</h2>
+    <p>
+        See the <a href="https://www.youtube.com/watch?v=jgESld7U5Bw&list=PLdo4fOcmZ0oXCPdC3fTFA3Z79-eVH3K-s&index=5">performance tips</a> for better, faster and stronger querying.
+    </p>
+
+
+    <h3>Creating database from model</h3>
+    <p>This is a NuGet package that allows you to interact with a SQL Server. Once your <a href="#appdbcontext"><code>ApplicationDbContext.cs</code></a>, Models (entity structure) and <code>connection string</code> (server name and that, in appsettings.json) and <code>dependency injection</code> (builder.Services in Program.cs) are set up, run the following incantation to cretate a <code>Migrations</code> folder and the files that will create the database:</p>
     
     <script src="https://gist.github.com/alvarezrrj/f0ddf8eaa40274b7aead74f3ae3fbc04.js"></script>
 
-    <p>You can then run <code>Update-Database</code> from the Package Manager Console which will run the files created by the above command and thus create the database (if it doesn't exist) and add the table to it.</p>
+    <p>
+        The generated schema is based on the model specified in <code>DbContext</code>
+    </p>
+
+    <p>
+        You can then run <code>Update-Database</code> from the Package Manager Console which will run the files created by the above command and thus create the database (if it doesn't exist) and add the table to it.
+    </p>
+
+    <p>
+        To modify a database's structure, just modify the model, run create-migration and EF will generate the queries necesary for making the changes.
+    </p>
+
+    <h4 id="appdbcontext">The data context: AppDbContext</h4>
+    <p>
+        By convention, it goes in a directory called Data. This class derives from <code>Microsoft.EntityFrameworkCore.DbContext</code> (the database session handler) and specifies which entity sets (tables) are included in the data model by way of its DbSet properties. Think of each DbSet as a mapper to a table in the database.
+    </p>
+
+    <h3>Scaffolding - model from db</h3>
+    <p>
+        Use the <code>Scaffold-DbContext</code> commandlet to create the Models from an existing database. See how to use it <a hre="https://www.youtube.com/watch?v=DCYVfLT5_QI&list=PLdo4fOcmZ0oXCPdC3fTFA3Z79-eVH3K-s&index=2">here</a>.
+    </p>
+
+    <h3>Scaffolded pages - auto CRUD</h3>
+        
+        <p>
+            In Visual Studio, Add the nuget package <code>Microsoft.EntityFrameworkCore.Design</code> and use 'add new scaffolded item' to generate CRUD pages. This also creates the <code>AppDbContext.cs</code> file and adds it to the dependency injection container in <code>Program.cs</code>.
+        </p>
+
+
+    <h3>Dependency Injection</h3>
+    <p>
+        Use the <code>builder.Services.AddDbContext()</code> method in your program.cs file to register the db context with dependency injection. ASP will then inject a db context object into a page model constructor with the right signature.
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/489d1cd19defb1502766adad4825227f.js"></script>
 
 </section>
 
