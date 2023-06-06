@@ -11,8 +11,16 @@ Comments can be written the same way as in JavaScript. Use "//" for inline comme
 <h3>Where does php run?</h3>
 <p>Php can be written into html files and interpreted by browsers but it can also be run on a terminal. Write your php file starting with <code>&lt;?php</code> but leave out the closing tag.</p>
 
+<p>
+  It is also posibble to run the code using the system's built in web server:
+</p>
+<script src="https://gist.github.com/alvarezrrj/46f8b66419ee21686d50b4f3fbce0e39.js"></script>
+
 <h3>Importing files</h3>
 <p>Use <code>include "filepath.php"</code> to import things.</p>
+
+<h3>Execute shell commands</h3>
+<p>In PHP, there is the Execution Operator: backticks(``). PHP will attempt to execute the contents of the backtics as a shell command and return the output.</p>
 </section>
 
 <section id="types">
@@ -25,7 +33,11 @@ Strings are wrapped in double quotes and to include quotes inside a string we ha
 <p>Use the <em>concatenation operator</em> (.) to join strings together. The code <code>echo "Hola" . "perro"</code> outputs <code>Holaperro</code>.</p>
 
 <h4>Multi-line strings</h4>
-<p>See the reference for multi-line strings <a href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc">here</a>.</p>
+<p>
+    See the reference for multi-line strings <a href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc">here</a>.
+</p>
+
+<script src="https://gist.github.com/alvarezrrj/6c0d86f02b119348244fbabd23be2054.js"></script>
 
 <h3>Variable assignment</h3>
 <p>Declare a variable using the following sintax: </p>
@@ -55,7 +67,11 @@ When setting the HTML's form <code>method</code> attribute to "get", the form en
 <p>Contains an asoociative array with the variables in a form sent to the server via a POST method.<br>
 When setting the forms <code>method</code> attribute to "post", the form data will be sent in the request's headers</p>
 </li>
-<li>$_FILES</li>
+<li>$_FILES
+  <p>
+    Contains files sent using a <code>&lt;input type="file"&gt;</code> in a <code>&lt;form enctype="multipart/form-data"&gt;</code>. Use <code>move_uploaded_file($_FILE['name']['tmp_name'], 'path/to/new/destination')</code> to move the file from the temporary location PHP gave it (<code>name</code> is the value of the <code>name</code> attribute on the form's <code>input</code> element).
+  </p>
+</li>
 <li>$_COOKIE</li>
 <li>$_SESSION</li>
 <li>$_REQUEST
@@ -65,6 +81,26 @@ When setting the forms <code>method</code> attribute to "post", the form data wi
 </ul>
 
 <p>A forms <code>action</code> attribute accepts a link as a parameter and redirects the user to it when the submit button is pressed.</p>
+
+<h3>Type declaration</h3>
+<p>
+  Although PHP is a loosely typed language, type declarations can be added to function arguments, return values and classs properties. Check the <a href="https://www.php.net/manual/en/language.types.declarations.php">reference</a> for allowed types.
+</p>
+
+</section>
+
+<section id="sessions">
+  <h2>Sessions</h2>
+  <p>
+    Sessions are stored on the server. We might learn some more about this some day. This is what we have so far:
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/a2cfa3503cad800176d1fb6408f51745.js"></script>
+
+  <h3>Cookies</h3>
+  <p>
+    Cookies are stored on the client.
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/f6d9e0220228e0f0008d15980fd58a6b.js"></script>
 </section>
 
 <section id="functions">
@@ -78,14 +114,14 @@ When setting the forms <code>method</code> attribute to "post", the form data wi
 </section>
 
 <section id="built-in-functions">
-<table class="table table-striped table-light">
+<table class="table table-striped table-secondary">
 <tr>
     <th>Type</th>
     <th>Function</th>
     <th>Notes</th>
 </tr>
 <tr>
-    <th rowspan="9">Strings</th>
+    <th rowspan="10">Strings</th>
     <td>strrev($string)</td>
     <td>Returns the string reversed.</td>
 </tr>
@@ -118,6 +154,10 @@ When setting the forms <code>method</code> attribute to "post", the form data wi
 <tr>
     <td>preg_replace($pattern, $replacement, $string)</td>
     <td>It replaces the matching pattern with the given string. Usefulf for turning differently formatted versions of a piece of data to a single format. Tip: match the elements you don't want in your string and replace them with an empty string.</td>
+</tr>
+<tr>
+  <td>explode(string $separator, string $string)</td>
+  <td>Returns an array of strings, each of which is a substring of <code>$string</code></td>
 </tr>
 <tr>
     <th rowspan="3">Numbers</th>
@@ -214,6 +254,8 @@ When setting the forms <code>method</code> attribute to "post", the form data wi
             <li>Undefined or undeclared variables</li>
             <li>Empty arrays</li>
             <li>Number 0</li>
+            <li><code>null</code></li>
+            <li><code>false</code></li>
         </ul>
     </p>
 
@@ -263,6 +305,18 @@ When setting the forms <code>method</code> attribute to "post", the form data wi
 
     <p>Another useful function is filter_var($variable, $id). Where $variable is what we want to filter and $id specifies the type of data we want to sanitize. Check out all filter types <a href="https://www.php.net/manual/en/filter.filters.sanitize.php">here</a>.</p>
 
+    <h3>Password Hashing</h3>
+    <p>
+      Passwords cannot be stored as is on databases, they need to be encrypted. Use:
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/74ed30c759c41d6186db49b3ffa61a47.js"></script>
+    <p>
+      Where <code>$algo</code> is the encrypting algorithm to use. Use  <code>PASSWORD_DEFAULT</code> which is the default algorithm and changes over time as new and stronger options are added to PHP. Store the result in a database column that can store up to 255 chars to allow room for these changes. <code>$options</code> can be ommited for default options.
+    </p>
+
+    <p>You can then verify an incoming password against the hash with:</p>
+    <script src="https://gist.github.com/alvarezrrj/f1e5169cd1e28f192a0a6f0a28fec44a.js"></script>
+
     <h3>Rerouting</h3>
     <p>After a succesful form validation, we usually want to redirect the user to a new page. For this we use the <code>header("Location: $url")</code> function. Remember that this function needs to be called before anything gets output by the script, even empty lines like the ones produced by <code>include</code> or <code>require</code> functions. For this reason the function needs to go right at the top of the file. Inmediately after the call to <code>header()</code> use the <code>exit</code> keyword to terminate the current script. TAke a look at the <a herf="https://www.php.net/manual/en/function.header.php">docs</a>.</p>
 </section>
@@ -292,6 +346,16 @@ When setting the forms <code>method</code> attribute to "post", the form data wi
 
     <p>The <b>optional quantifier</b> (<Code>?</Code>) allows you to indicate that the character before it may appear 0 or 1 times (it's optional, right?). Use grouping to get the quantifier to apply to multiple characters.</p>
 
+    <figure>
+      <figcaption>
+        <cite>by ChatGTP</cite>
+      </figcaption>
+    <blockquote>
+      The '?' quantifier is a non-greedy quantifier, which means it will match as few characters as possible. When used in combination with other quantifiers, such as '*' or '+', it makes the regular expression stop at the first occurrence of the next character or pattern, rather than matching as many characters as possible.
+    </blockquote>
+
+  </figure>
+
     <p>The <strong>Kleene star</strong> (Did you know? Stephen Kleene invented this regex stuff)(<code>*</code>) is the ultimate quantifier. It matches the character preceding it 0, 1 or multiple times. And the <strong>Knleene plus</strong> (<code>+</code>) matches the character 1 or more times.</p>
 
     <p><b>Anchors</b> allow you to ensure the matched text begins and ends exactly as you state it. The hat (<code>^</code>) and dollar sign (<code>$</code>) allow you to match text at the beginning and end of a string respectivelly.</p>
@@ -300,12 +364,147 @@ When setting the forms <code>method</code> attribute to "post", the form data wi
 
 <section id="classes">
     <h2>Classes</h2>
-    <p>Classes are defined and instantiated the same way they are in javaScript: </p>
+    <p>
+      Classes are defined and instantiated the same way they are in javaScript: 
+    </p>
     <script src="https://gist.github.com/alvarezrrj/4777950b70ffb19254b5f1d3417b1a21.js"></script>
     
     <h3>Inhrtitance</h3>
-    <p>Subclasses can be defined using the keyword <code>extends</code>. Nothing new here.<br>
-    Within a subclass we can overwrite a parent method by simply redefining it and we can call parent methods using <code>parent::methodName()</code></p>
+    <p>
+      Subclasses can be defined using the keyword <code>extends</code>. Nothing new here.<br>
+      Within a subclass we can overwrite a parent method by simply redefining it and we can call parent methods using
+      <code>parent::methodName()</code>
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/75b41e54da02d44de6be158907321b8c.js"></script>
+
+    <h3>Traits</h3>
+    <p>
+      Traits are like classes, but only intended to group functionality. It is not possible to instantiate a <code>trait</code> on its own. The <code>this</code>, <code>self</code> and <code>parent</code> keywords used inside a trait refer to the same things they would if they were used directly in the class that <code>use</code>s the <code>trait</code>.
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/eff5a491358b46fbd10b001c508cb2f9.js"></script>
+
+    <h3>Autoloading</h3>
+    <script src="https://gist.github.com/alvarezrrj/7576c9fcb4719a5543da459875f11cb0.js"></script>
+    <p>
+      In the example above, when you call <code>new MyClass();</code>, PHP will pass the name of the class to the autoloader registered with <code>spl_autoload_register</code> if the class ins not yet defined and load the class on the fly. This way you don't have to load every single class manually. Just keep all your class files in a separate folder (<code>/path/to/classes</code>) and name them exactly as the class they contain. PHP will do the loading as and when it's needed.
+    </p>
+
+    <h3>Nullsafe operator (optional chaining operator)</h3>
+    <p>
+      Use the <code>?-></code> operator to check whether the thing to the left of the question mark is null before trying to access the things to the right.
+    </p>
+    <p>
+      For arrays, the <strong>Null coalescing operator</strong> (<code>??</code>) can be used, which returns the thing on the left if it is set and not null or the thing on the right otherwise.
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/3d3972162ce3bf54585bdf603c495fc3.js"></script>
+
+</section>
+
+<section id="namespaces">
+  <h2>Namespaces</h2>
+  <p>
+    Declare a namespace by using the <code>namespace</code> keyword at the top of your file and use a backslash as the namespace separator. You can then alias a namespace with the <code>use</code> keyword. Just remember the <code>use</code> statement doesn't import files, you have to <code>include()</code> or <code>require</code> them.
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/a489a3bfe3e054a199e445a55c1c7705.js"></script>
+</section>
+
+<section id="mvc">
+  <h2>Model, View, Controller</h2>
+  <p>
+    On the MVC structure, the models' properties represent the data structures (entities on the database) and their methods contain db interaction functionality; views are the layouts and controllers contain logic and do the link between models and views.
+  </p>
+
+  <p>
+    Controller classes are named &lt;modelName&gt;Controller. The overall structure of an MVC project is as follows:
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/4ce1230f57741731f3bdb2a110973408.js"></script>
+
+  <h3>Redirection</h3>
+  <p>
+    Using the above model, urls are quite ugly (with long query strings). Use an <code>.htaccess</code> file (located at the root directory of the project) to get apache to do cool stuff (make sure rewrite module is turned on).
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/138974849846e52aa2b3a7437028fc53.js"></script>
+
+  <h3>Enable .htaccess on Apache2</h3>
+  <p>
+    Use the following line to enable the rewrite module:
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/56acb633377b2ca2474c725a622323a4.js"></script>
+
+  <p>
+    And then add the following code into <code>/etc/apache2/sites-available/000-default.conf</code> and <code>/etc/apache2/sites-available/default-ssl.conf</code> just above the <code>&lt;/VirtualHost&gt;</code> tag for apache to actually do the thing.
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/f3637811e9476a42e481f5e9f08f8bad.js"></script>
+
+</section>
+
+<section id="laravel">
+  <h2>Laravel</h2>
+  <p>
+    Create a Laravel project with:
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/6daec396bd413bd6e846a26adbe9f1d1.js"></script>
+
+  <h3>Routing</h3>
+  <p>Routing looks pretty similar to Flask so far</p>
+  <script src="https://gist.github.com/alvarezrrj/2c12ca837ac1b2ea963238e98eff9794.js"></script>
+
+  <p>Passing parameters via the url looks like this:</p>
+  <script src="https://gist.github.com/alvarezrrj/9055cc4015583a672be22ece27c6bbaa.js"></script>
+
+  <h3>HTML Routing</h3>
+  <script src="https://gist.github.com/alvarezrrj/b65d3f66b67c768f0293caa3e64610b1.js"></script>
+  <p>
+    Above 'spam.store' is the name of the route as it apperas on <code>php artisan route:list</code>
+  </p>
+
+  <h3>Redirection</h3>
+  <p>
+    Within a controller use<br>
+    <code>redirect()->route('some.place');</code>
+  </p>
+
+  <h3>Resources</h3>
+  <p>
+    Use the command <br>
+    <code>php artisan make:controller &lt;SpamController&gt; --resource</code><br>
+    to create a controller with all CRUD actions predefined. And then use<br>
+    <code>Route::resource('/spam', SpamController::class) to do the magic.</code><br>
+    Chain the <code>->only(['action<sup>1</sup>', 'action<sup>2</sup>'])</code> method to the <code>resource()</code> function to only route into actions 1 and 2.
+    
+  </p>
+
+  <h3>Blade Templating</h3>
+  <p>Build your master page and make it look like this:</p>
+  <script src="https://gist.github.com/alvarezrrj/85de4b6c698838f9ff26914fb5259cae.js"></script>
+
+  <p>It can then be extended</p>
+  <script src="https://gist.github.com/alvarezrrj/44ab2521eedce71bb2c7ba260b304c25.js"></script>
+  <p>
+    Now the page's title will be 'Bacon', the 'links' section will contain both styles.css and more-styles.css, the header will contain the default markup and main will contain only the stuff defined in page.blade.php
+
+  </p>
+
+  <h3>Middleware</h3>
+  <p>
+    Use: <br>
+    <code>php artisan make:middleware CrispyBacon</code><br>
+    Which will bang a CrispyBacon.php file into the Middleware folder inside Http.
+  </p>
+
+  <p>
+    Then go into Kernel.php (inside Http) and add a line in <code>protected $routeMiddleware</code> to make it available
+  </p>
+
+  <p>
+    You can then apply it to a controller with:<br>
+    <code>Route::resource()->middleware(['cripsybacon', 'anotherMiddleware']);</code>
+  </p>
+
+  <p>
+    Or you may choose to <a href="https://laravel.com/docs/9.x/controllers#controller-middleware">use it within the controller's constructor</a>
+  </p>
+
 </section>
 
 {% endblock %}

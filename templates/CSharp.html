@@ -35,11 +35,15 @@
     </p>
 
     <p>
-        Property and Getter/Setter syntax looks like this:<br>
-        <div class="code">
-            <img src="/static/Images/cs-class-properties.jpg" alt="Getter/Setter syntax example" height="190"><br>
-            <span class="red">Where 'value' is the value passed on to the setter.</span><br>
-        </div>
+        Property and Getter/Setter syntax looks like this:
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/b3a4e40595b3cdafac3a1cbc7a56f875.js"></script>
+
+    <p>
+        If you you want a Property that directly sets the value 
+        of the field with no validation whatsoever, there is a 
+        form of shorthand syntax for you:
     </p>
 
     <script src="https://gist.github.com/alvarezrrj/6a2400c7ba4f299d698fe534849d80f1.js"></script>
@@ -303,13 +307,53 @@
 </section>
 
 <section id="control-flow">
-  <h2>Control flow</h2>
-  <p>If - else, switch statement, ternary operator</p>
+    <h2>Control flow</h2>
+    <p>If - else, switch statement, ternary operator</p>
 
-  <h2>Loops</h2>
-  <p>While, Do ... while, For, </p>
-  <h3>Foreach</h3>
-  <p><code>foreach (type element in collection) { code block };</code></p>
+    <h3>Null-coalescing operator: <code>??</code></h3>
+    <p>
+        <code>var a = b ?? c;</code> - Returns the value of its left-hand operand if it isn't null, otherwise evaluates the right-hand operand and returns its value. Like doing a = b || c in JavaScript.
+    </p>
+
+    <p>
+        You can also use it like this: <code>a ??= b</code> in which case it assigns the value <code>b</code> to <code>a</code> only if <code>a</code> is <code>null</code>.
+    </p>
+
+    <h3>Switch Expression</h3>
+    <p class="alert alert-warning">
+        There is a difference between the switch statement and the expression. Here is an example of the latter that returns the state of water based on its temperature:
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/e3ab928fbac23056c061a331a7e2bfd5.js"></script>
+
+    <p>
+        You can also test multiple inputs. See an example <a href="https://docs.microsoft.com/en-us/dotnet/csharp/fundamentals/functional/pattern-matching#multiple-inputs">here</a>.
+    </p>
+
+    <h2>Loops</h2>
+    <p>While, Do ... while, For, </p>
+    <h3>Foreach</h3>
+    <p><code>foreach (type element in collection) { code block };</code></p>
+
+    <h2>Pattern Matching</h2>
+    <p>
+        <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns">Pattern</a> matching allows you to test expressions. For example:
+    </p>
+
+    <h3>Null Checks</h3>
+    <p>
+        Ensure values aren't null with the following techniques:
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/deb335541201ffdf4ea5e39abd24e7fd.js"></script>
+
+    <p>Not really sure when the following is useful but it looks cool</p>
+    <script src="https://gist.github.com/alvarezrrj/e9f481a3a5db2f6e23fd8d16bb45947a.js"></script>
+
+    <h3>Type Tests</h3>
+    <p>
+        The following code tests whether a sequence implements the IList interface to use the Count property in the interface to return the element in the middle.
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/a80f52d9e60596ae969653dc8ee01689.js"></script>
+
 </section>
 
 <section id="methods">
@@ -463,53 +507,79 @@
 
 </section>
 
-<section id="entity-framework-core">
-    <h2>Entity Framework Core</h2>
-    <p>
-        See the <a href="https://www.youtube.com/watch?v=jgESld7U5Bw&list=PLdo4fOcmZ0oXCPdC3fTFA3Z79-eVH3K-s&index=5">performance tips</a> for better, faster and stronger querying.
-    </p>
+<section id="ASP.NET-core">
+    <h2>ASP .NET Core</h2>
 
+    <h3>Razor Pages Project Directory structure</h3>
 
-    <h3>Creating database from model</h3>
-    <p>This is a NuGet package that allows you to interact with a SQL Server. Once your <a href="#appdbcontext"><code>ApplicationDbContext.cs</code></a>, Models (entity structure) and <code>connection string</code> (server name and that, in appsettings.json) and <code>dependency injection</code> (builder.Services in Program.cs) are set up, run the following incantation to cretate a <code>Migrations</code> folder and the files that will create the database:</p>
+    <script src="https://gist.github.com/alvarezrrj/adfb32d63e85cf07dc8f98d73109fa24.js"></script>
     
-    <script src="https://gist.github.com/alvarezrrj/f0ddf8eaa40274b7aead74f3ae3fbc04.js"></script>
+    <p>
+        Store secrets (like API keys) in appsettings.json
+    </p>
+
+    <h3>Entity Framework Core</h3>
+    <p>
+        This is a NuGet package that allows you to interact with a database server. Start by creating a Models directory in the project root folder and stick your models inside it. By default, any property named <code>ID</code> or <code>ClassnameID</code> becomes the primary key on the database table.
+    </p>
 
     <p>
-        The generated schema is based on the model specified in <code>DbContext</code>
+        <b>Navigation properties</b> are those that hold other entities that are related to this entity.
     </p>
+
+    <p>
+        Properties are identified by EFC as <b>foreign keys</b> if they are named <code>&lt;navigation property name&gt;&lt;primary key property name&gt;</code> (like ItemID on a shopping cart whose related entity Item has a primary key named ID)
+    </p>
+        
+    <p>
+        Once your <code>ApplicationDbContext.cs</code> (db structure),  <code>connection string</code> (server name and that, in appsettings.json) and <code>dependency injection</code> (builder.Services in Program.cs) are set up, run the following incantation to cretate a <code>Migrations</code> folder and the files that will create the database:
+    </p>
+
+    <script src="https://gist.github.com/alvarezrrj/f0ddf8eaa40274b7aead74f3ae3fbc04.js"></script>
 
     <p>
         You can then run <code>Update-Database</code> from the Package Manager Console which will run the files created by the above command and thus create the database (if it doesn't exist) and add the table to it.
     </p>
 
     <p>
-        To modify a database's structure, just modify the model, run create-migration and EF will generate the queries necesary for making the changes.
+        Check out <a href="https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-6.0&tabs=visual-studio#add-the-database-exception-filter">This NuGet package</a> for easier database debugging.
     </p>
 
-    <h4 id="appdbcontext">The data context: AppDbContext</h4>
+    <h3>Scaffolding</h3>
     <p>
-        By convention, it goes in a directory called Data. This class derives from <code>Microsoft.EntityFrameworkCore.DbContext</code> (the database session handler) and specifies which entity sets (tables) are included in the data model by way of its DbSet properties. Think of each DbSet as a mapper to a table in the database.
+        Create a folder under <code>Pages</code> where you want your CRUD pages to end up, right click on it and select <b>Add</b> &gt; <b>New Scaffold Item</b>. This will:
+        <ul>
+            <li>Generate all CRUD pages,</li>
+            <li>Generate the <code>DbContext.cs</code> class,</li>
+            <li>Add the context to dependency injection in <code>Program.cs</code></li>
+            <li>Add the database connection string to <code>appsettings.json</code>.</li>
+        </ul>
     </p>
 
-    <h3>Scaffolding - model from db</h3>
+    <h3>Model Binding</h3>
     <p>
-        Use the <code>Scaffold-DbContext</code> commandlet to create the Models from an existing database. See how to use it <a hre="https://www.youtube.com/watch?v=DCYVfLT5_QI&list=PLdo4fOcmZ0oXCPdC3fTFA3Z79-eVH3K-s&index=2">here</a>.
+        See the <a href="https://docs.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-6.0">reference</a>
     </p>
-
-    <h3>Scaffolded pages - auto CRUD</h3>
-        
-        <p>
-            In Visual Studio, Add the nuget package <code>Microsoft.EntityFrameworkCore.Design</code> and use 'add new scaffolded item' to generate CRUD pages. This also creates the <code>AppDbContext.cs</code> file and adds it to the dependency injection container in <code>Program.cs</code>.
-        </p>
-
-
-    <h3>Dependency Injection</h3>
     <p>
-        Use the <code>builder.Services.AddDbContext()</code> method in your program.cs file to register the db context with dependency injection. ASP will then inject a db context object into a page model constructor with the right signature.
+        Use <code>[Bind Properties]</code> at the page model level to automatically retrieve data from form fields, query string and uploaded files, convert it to the correct types and bind it to public properties and method parameters on the page model.
     </p>
 
-    <script src="https://gist.github.com/alvarezrrj/489d1cd19defb1502766adad4825227f.js"></script>
+    <h3>Data Annotations and Client Side Validation</h3>
+    <p>
+        When defining a model, use data anotations like
+        <ul>
+            <li><code>[Required]</code></li>
+            <li><code>[DisplayName("Some string")]</code></li>
+            <li><code>[Required]</code></li>
+            <li><code>[Range(1, 100, ErrorMessage = "number should be 1 to 100")]</code></li>
+        </ul>
+        to describe the rules you want applied to your model properties. The <code>&lt;span asp-validation-for&gt;</code> tag helpers will then display error messages on the frontend when the rules don't match.
+    </p>
+
+    <h3>Seed Database</h3>
+    <p>
+        Check out Microsoft's tutorial <a href="https://learn.microsoft.com/en-us/aspnet/core/data/ef-rp/intro?view=aspnetcore-6.0&tabs=visual-studio#seed-the-database">here</a>, or see Brhugen's way on <code>Abby.DataAccess.DbInitializer</code>.
+    </p>
 
 </section>
 
@@ -559,4 +629,3 @@
     </p>
 </section>
 {% endblock %}
-

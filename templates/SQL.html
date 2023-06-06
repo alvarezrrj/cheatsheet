@@ -58,7 +58,10 @@
     <script src="https://gist.github.com/alvarezrrj/d76abf235385d01a7eb5658ca1db7e09.js"></script>
 
     <h3>See a database's structure</h3>
-    <p>In MariaDB, you can use the <code>SHOW CREATE DATABASE dbname | TABLE tblname</code> to se a db structure.</p>
+    <p>
+      In MariaDB, you can use the following commands to see a <code>CREATE</code> statement or a representation of a table:
+    </p>
+    <script src="https://gist.github.com/alvarezrrj/a67fedad20fe87900e460dd431ba7a25.js"></script>
 
 </section>
 
@@ -91,9 +94,12 @@
 
 <section id="php">
     <h2>SQL in PHP</h2>
-    <p>The <code>Mysqli</code> (MySQL improved) class allows you to acces the functionality provided by MySQL 4.1 and above.</p>
+    <p>
+      The <code>Mysqli</code> (MySQL improved) class allows you to acces the functionality provided by MySQL 4.1 and above.
+    </p>
 
-    <p>Connect to the database with <br>
+    <p>
+      Connect to the database with <br>
         <code>$conn = new mysqli($host, $user, $password, $dbname, $port, $socket);</code> See the <a href="https://www.php.net/manual/en/book.mysqli">reference</a>. <br>
         and ensure the connection was successful by checking<br>
         <code>$conn->conncect_errno</code> which will be set to 0 on a successful connection and an integer value on error. If <code>$conn->conncect_errno</code> is different than 0, you can then find the error description under <br>
@@ -116,13 +122,20 @@
 
     Use <code>$result->fetchh_all(MYSQLI_ASSOC)</code> to get an array of asociative arrays, each of which represents a result row. Alternatively use <br>
     <code>$result->fetch_asoc()</code> which returns an asociative array representing a row each time you call it or <code>null</code> when there are no more rows.
-</p>
+    </p>
 
     <h3>Prepared statements</h3>
-    <p>Use <br><code>$stmt = $conn->prepare("QUERY WITH ? PLACEHOLDERS ?")</code> and then bind the parameters with<br>
+    <p>
+      Use <br><code>$stmt = $conn->prepare("QUERY WITH ? PLACEHOLDERS ?")</code> and then bind the parameters with<br>
     <code><a href="https://www.php.net/manual/en/mysqli-stmt.bind-param.php">$stmt->bind_param</a>("ss", $var1, $var2)</code> followed by <br>
     <code>$stmt->execute()</code> which runs the query and returns <code>true</code> on success and <code>false</code> on failure.<br>
-    You can then run <code>$result = $stmt->get_result()</code> which returns a <code>mysqli_result</code> object that can be used as described above. </p>
+    You can then run <code>$result = $stmt->get_result()</code> which returns a <code>mysqli_result</code> object that can be used as described above. 
+    </p>
+
+    <h3>Closing connections</h3>
+    <p>
+      Use <code>mysqli::close()</code> method to explicitly close a prevously opened connection. Not strictly necesary as open MySQL connections and result sets are automatically closed when their objects are destroyed.
+    </p>
 
 </section>
 

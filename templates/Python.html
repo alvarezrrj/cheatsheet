@@ -86,7 +86,7 @@
   </p>
 
 <section id="useful-methods">
-    <table class="table table-striped table-light">
+    <table class="table table-striped table-secondary">
         <caption>Some useful functions.</caption>
         <tr>
             <th>Type</th>
@@ -243,6 +243,15 @@
           <td>.readline()</td>
           <td>Returns a single line. Subsequent calls to the function return subsequent lines. Once the file has been read completely, the function will return an empty string.</td>
         </tr>
+        <tr>
+          <th rowspan="2">OS</th>
+          <td>os.system('command')</td>
+          <td>Run bash <code>command</code></td>
+        </tr>
+        <tr>
+          <td>os.listdir()</td>
+          <td>Return a list of all files under current directory</td>
+        </tr>
 
       </table>
 
@@ -369,6 +378,16 @@
         <p>Within a Flask app, there will be a session object for every user visiting the page, in which the <strong>state</strong> can be stored:</p>
         <script src="https://gist.github.com/alvarezrrj/668c295e7e0800e94344f9b6bd21dcd1.js"></script>
         
+      </section>
+
+      <section id="micropython">
+        <h2>MicroPython</h2>
+        <h3>
+          To get started
+        </h3>
+        <p>
+          Connect to the board via picocom, run <code>import webrepl_setup</code> to activate webrepl, connect the PC to the board's wifi (password: micropythoN) and connect to webrepl using the boards IP address 192.168.4.1:8266.
+        </p>
       </section>
 
 {% endblock %}

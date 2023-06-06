@@ -3,38 +3,60 @@
 {% block main %}
 <section id="some-commands">
 <h2>Some useful commands</h2>
-<p><code>date</code> - shows the current date and time.<br>
-    <code>cal</code> - displays a calendar of the current month.<br>
-    <code>df</code> - shows the free disk space.<br>
-    <code>free</code> - shows the free memory space.<br>
-    <code>file filename</code> - shows the filename's file type.<br>
-    <code>less filename</code> - is a program for viewing long text documents. Press <code>h</code> for help navigating the file.<br>
-    <code>type command</code> - shows what the <code>command</code> is.<br>
-    <code>which command</code> - shows the location of the program (only works on executable programmes, not shell built ins or aliases).<br>
-    <code>man n command</code>  displays the manual page for that command, where <code>n</code> is the section number (see page 46 of TLCL for a section breakout).<br>
-    <code>apropos search-term</code> - it returns all the man pages matching the search term.<br>
-    <code>command --help</code> - diplays a help page on how to use the command. It's a lot more readable than de <code>man</code>.<br>
-    <code>info command</code> - shows general information abaut the command.<br>
-    <code>uniq [file]</code> - removes duplicate adjacent lines from file or standard input.<br>
-    <code>wc [file]</code> - prints the line, word and byte count from file or stdin.<br>
-    <code>grep regExp [file]</code>- prints the lines of the file (or stdin) that contain the regExp.<br>
-    <code>tail</code> - besides printing the last 10 lines of a file, if used with the option <code>-f</code>, it keeps track of the file and prints new lines to the console as soon as they're written on the file until stopped with <code>ctrl-c</code>.
-    <br>
-    <code>tee file | command</code> - works as a Y-split in a pipeline, taking input and sending it to both stdout and a file (or several files).<br>
-    <code>printenv</code> - displays all global variables.<br>
-    <code>script [file]</code> - allows you to record an entire terminal session and store it in <code>file</code>.<br>
-    <code>lsblk</code> - list all available block dheevices (I think it refers to USB things).<br>
-    <code>gunzip</code> - Uncompress (decompress / unzip) files.<br>
-    <code>gzip</code> - Compress files.<br>
-    <code>unzip file.zip</code> - uncompress .zip file.<br>
-    <code>zip filename file1 file2 ... fileN</code> - compress files. Filename is the name of the result compressed file.<br>
-    <code>id</code> - display user ID.<br>
-    <code>sed 's/old/new/g' file.txt</code> - Substitute all instances of <i>old</i> for <i>new</i>.<br>
-    <code>bash -c command</code> - Run <code>command</code><br>
-    <code>bash [option] script-file</code> - Run <code>script-file</code><br>
-    <code>xargs [option]... COMMAND [INITIAL-ARGS]...</code> - Run COMMAND with arguments [INITIAL-ARGS] and more arguments read from input.<br>
+<ul>
+  <li><code>date</code> - shows the current date and time.</li>
+  <li><code>cal</code> - displays a calendar of the current month.</li>
+  <li><code>df</code> - shows the free disk space.</li>
+  <li><code>free</code> - shows the free memory space.</li>
+  <li> <code>file filename</code> - shows the filename's file type.</li>
+  <li><code>locate path/name</code> - fid a file containing 'name' under 'path'</li>
+  <li><code>less filename</code> - is a program for viewing long text documents. Press <code>h</code> for help
+    navigating the file.</li>
+  <li><code>type command</code> - shows what the <code>command</code> is.</li>
+  <li><code>which command</code> - shows the location of the program (only works on executable programmes, not shell
+    built ins or aliases).</li>
+  <li><code>man n command</code> displays the manual page for that command, where <code>n</code> is the section number
+    (see page 46 of TLCL for a section breakout).</li>
+  <li><code>apropos search-term</code> - it returns all the man pages matching the search term.</li>
+  <li><code>command --help</code> - diplays a help page on how to use the command. It's a lot more readable than de
+    <code>man</code>.</li>
+  <li><code>info command</code> - shows general information abaut the command.</li>
+  <li> <code>uniq [file]</code> - removes duplicate adjacent lines from file or standard input.</li>
+  <li> <code>wc [file]</code> - prints the line, word and byte count from file or stdin.</li>
+  <li><code>grep regExp [file]</code>- prints the lines of the file (or stdin) that contain the regExp.</li>
+  <li><code>tail</code> - besides printing the last 10 lines of a file, if used with the option <code>-f</code>, it
+    keeps track of the file and prints new lines to the console as soon as they're written on the file until stopped
+    with <code>ctrl-c</code>.</li>
 
-</p>
+  <li><code>tee file | command</code> - works as a Y-split in a pipeline, taking input and sending it to both stdout and
+    a file (or several files).</li>
+  <li><code>printenv</code> - displays all global variables.</li>
+  <li><code>script [file]</code> - allows you to record an entire terminal session and store it in <code>file</code>.
+  </li>
+  <li><code>lsblk</code> - list all available block dheevices (I think it refers to USB things).</li>
+  <li><code>gunzip</code> - Uncompress (decompress / unzip) files.</li>
+  <li><code>gzip</code> - Compress files.</li>
+  <li><code>unzip file.zip</code> - uncompress .zip file.</li>
+  <li> <code>zip filename.zip file1 file2 ... fileN</code> - compress files. Filename is the name of the result compressed
+    file.</li>
+  <li><code>id</code> - display user ID.</li>
+  <li><code>sed 's/old/new/g' file.txt</code> - Substitute all instances of <i>old</i> for <i>new</i>.</li>
+  <li><code>bash -c command</code> - Run <code>command</code></li>
+  <li><code>bash [option] script-file</code> - Run <code>script-file</code></li>
+  <li><code>xargs [option]... COMMAND [INITIAL-ARGS]...</code> - Run COMMAND with arguments [INITIAL-ARGS] and more
+    arguments read from input.</li>
+  <li><code>lsb_release -a</code> - See OS info.</li>
+  <li><code>ffmpeg -i in/infile.png -c:v libwebp out/outfile.webp</code> - Convert images to webp format using ffmpeg.</li>
+  <li><code>cwebp -q 90 -lossless in_file -o out_file</code></li> - Convert images to webp format using cwebp.
+  <li><code>vwebp image.webp</code> - Visualize .webp images</li>
+<li><code>qrencode -o filename.png string</code> - Encode &lt;string&gt; into a QR code and save as &lt;filename&gt;</li>
+<li><code>WIFI:T:WPA;S:&lt;your Wi-Fi network name&gt;P:&lt;your Wi-Fi network password&gt;</code></li> - Use this format to encode your wifi credentials into a QR code
+<li><code>ffmpeg -fflags +genpts -i input.webm -r 24 output.mp4</code> - Convert webm video to MP4</li>
+<li><code>${string%.*}</code> - remove everything after the '.' from <code>string</code></li>
+<li><code>sudo dpkg -i filename.deb</code> - Install software from <code>.deb</code> file</li>
+<li><code>openssl rand -base64 9</code> - Generate a random string of size 9 (ensure size is dibisible by 3 to avoid padding)</li>
+
+</ul>
 
 <h3>Wildcards</h3>
 <div class="code"><img src="/static/Images/wildcards.jpg" alt="wildcards" height="180px"></div><br>
@@ -91,20 +113,52 @@
 
 <section id="permissions">
 <h2>Permissions</h2>
-<p>The <code>chmod</code> command is used for changing the mode (permissions) of a file or directory. Only the file's owner and the superuser are allowed to make changes in permissions. Using 3 octal digits allows us to set peprmissions for the
-    owner, group owner and world respectively: </p>
-<div class="code"><img src="/static/Images/octal.jpg" height=" 220px"> </div>
+<p>
+  In the Unix security model, a user may own files and directories. When a user owns a file
+or directory, the user has control over its access. Users can, in turn, belong to a group
+consisting of one or more users who are given access to files and directories by their
+owners. In addition to granting access to a group, an owner may also grant some set of
+access rights to everybody, which in Unix terms is referred to as the <i>world</i>. To find information about your identity, use the <code>id</code> command.
+</p>
 
-<p>Alternatively, symbolic notation may be used. The first part of symbolic notation specifies who the changes apply to: u (user/owner), g (group), o (others/world), a (all) and the second part says what permissions are being modified: r, w,
-    x or any combination. Use + to add permisions, - to remove and = to apply only the specified permissions and remove all others. Example: <code>chmod u+rwx</code> gives the file owner permission to read, write and execute. If the first
-    part is omitted, all is assumed.</p>
+<p>
+  The <code>chmod</code> command is used for changing the mode (permissions) of a file or directory. Only the file's owner and the superuser are allowed to make changes in permissions. Using 3 octal digits allows us to set peprmissions for the
+    owner, group owner and world respectively: 
+  </p>
+<img src="/static/Images/octal.jpg" height="220px">
 
-<h3>Changeing identity</h3>
+<p>
+  Alternatively, symbolic notation may be used. The first part of symbolic notation specifies who the changes apply to:
+  u (user/owner), g (group), o (others/world), a (all) and the second part says what permissions are being modified: r,
+  w,
+  x or any combination. Use + to add permisions, - to remove and = to apply only the specified permissions and remove
+  all others. Example: <code>chmod u+rwx</code> gives the file owner permission to read, write and execute. If the first
+  part is omitted, all is assumed.
+</p>
+
+<h3><code>umask</code> - Set default permissions</h3>
+<p>
+  This command controls the default permissions given to a file when it is created. It uses octal notation to represent a <i>mask</i> of bits to be removed from the file attributes. If we expand the octal value of mask into binary, we can see how it works.
+</p>
+<script src="https://gist.github.com/alvarezrrj/78c0fcbda507d73c308e9b06420fe69c.js"></script>
+<p>
+  We can see that everywhere a 1 appears on the binary value of the mask, a file attribute is removed.
+</p>
+
+<h3>Changing identity</h3>
 <p>It is possible to start a shell session as another user by using the command <code>su [-l] [user]</code>. Use <code>sudo su -</code> to start a session as the superuser.</p>
 
 <h3>Change owner</h3>
 <p>Use <code>chmod [owner][:[group]] file...</code></p>
 <img src="/static/Images/chown.jpg" alt="chown" height="200px">
+
+<h3>Create a shared directory</h3>
+<p>
+  First, creatae a group and add all users who need access to the directory to it. Then use <code>chown :&lt;group_name&gt; /path/to/shared-dir</code> to make the directory owned by the group and <code>chmod 775 /path/to/shared-dir</code> to give the group members read, write and execute (execute permission is needed in directories in order to access them) permissions on the directory.
+</p>
+<p>
+  We now have a directory owned by the group that allows all gorup members to create files but those files will be given the users default permissions (probably something like -rw-r--r--) so we need to change the users <code>umask</code> to 0002. But there's still a problem, each file created will be given the default group it's creator belongs to instead of &lt;group_name&gt;. This can be fixed by setting the <i>setgid</i> bit on the directory, which is shows ap as an <code>s</code> on the directory listing and means all files created under the directory will belong to the same group the directory does, not to the file creator's group. To do this use <code>sudo chmod g+s /path/to/shared-dir</code>
+</p>
 </section>
 
 <section id="processes">
@@ -201,6 +255,42 @@ The SFTP protocol is supported by many of the GUI file managers. This allows you
 </p>
 
 <p>Run a remote GUI through <code>ssh</code> by using the -X flag, which allows you to run graphical programs on the remote machine. Then, once logged in to the remote machine, run the <code>xload</code> command.</p>
+
+</section>
+
+<section id="backups">
+  <h2>Backing up a Linux System</h2>
+  <p>
+    <code>cd</code> into the root directory and run the following line (as superuser) to compress everything
+  </p>
+
+  <p>
+    <code>tar cvpzf backup.tar.gz --exclude=/backup.tgz --exclude=/proc --exclude=/lost+found  --exclude=/mnt --exclude=/media --exclude=/sys --exclude=/run --exclude=/dev /</code>
+  </p>
+
+  <p>The options in the above command mean:
+    <ul>
+      <li>Create archive</li>
+      <li>Verbose mode</li>
+      <li>Preserve permissions</li>
+      <li>Compress using gzip</li>
+      <li>Filename</li>
+    </ul>
+  </p>
+
+  <h3>Restoring</h3>
+  <p>You can do this on a running system if you want. Run the following line</p>
+  <p>
+    <code>tar xvpfz backup.tar.gz -C /</code>
+  </p>
+  <p>
+    Re-create the directories you excluded and reboot
+  </p>
+  <p>
+    <code>
+      sudo mkdir proc lost+found mnt media sys run dev
+    </code>
+  </p>
 
 
 </section>

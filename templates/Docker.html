@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<section id="images">
+  <h2>Images</h2>
+  <p>
+    Find the image you want to use in <a href="https://hub.docker.com/">Docker Hub</a>. And run them with <code>docker run image_name:tag</code> (omit tag to use 'latest', but it's good practice to include one). If the image is not found locally, it will be downloaded from Docker Hub.
+  </p>
+</section>
+
+<section id="commands">
+  <h2>Commands</h2>
+  <ul>
+    <li><code>docker images</code> - List all downloaded images</li>
+    <li><code>docker ps</code> - List all running containers</li>
+    <li><code>docker ps -a</code> - List all containers (running and stopped)</li>
+    <li><code>docker run -d image_name</code> - Run dettached container from image (in background)</li>
+    <li><code>docker start container_id</code> - Restart a stopped container by id</li>
+    <li><code> docker stop container_id</code> - Stop a container</li>
+    <li><code>docker logs [-f] container_id</code> - See logs. Ensure you app logs to stdout, not to a file. This way docker is able to catch the logs.</li>
+    <li><code>docler exec -it container_id sh</code> - Start interactive shell inside the container</li>
+    <li><code>docker</code></li>
+    
+  </ul>
+</section>
+
+<section id="dockerfile">
+  <h2>Dockerfile</h2>
+  <p>
+    To create an application, we need to create a Dockerfile (named exactly that)
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/30b655cc9525fdc9981e5e05ca809f9f.js"></script>
+  <p>
+    Once your Dockerfile is ready, build the image with <code>docker build -t image_name .</code> from the directory where the file is located. And run it with <code>docker run [-p 80:80] image_name</code>. The <code>-p</code> flag forwards trafic from port 80 in the host to port 80 in the container. Use the <code>-v</code> (volume) flag with <code>/path/to/dir/on/host:/dir/in/container</code> to synchronize a directory in the host with the container. Mounting volumes allows you to persist data between container restarts and to modify the source code on the fly (without the need to restart the container).
+  </p>
+</section>
+
+<section id="hosting">
+  <h2>Hosting your Images</h2>
+  <p>
+    To host your images on Docker Hub:
+    <ul>
+      <li><code>docker login</code> - Log into docker</li>
+      <li><code>docker push username/image_name:tag</code> - Push image (must follow naming convention)</li>
+    </ul>
+  </p>
+</section>
+
+<section id="networks">
+  <h2>Networks</h2>
+  <p>
+    It's common practice to run the DB server on a container and the application code on a different one. To do this, we need to create a <b>network</b> with <code>docker network create network_name</code>. And then run your first container: 
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/d5daaf0e76900f711b7cb30349871743.js"></script>
+  <p>
+    Finally run your other containers by passing the --network flag with the network name to allow the containers to communicate with each other.
+  </p>
+
+  <h3>Docker Compose</h3>
+  <p>
+    <code>docker-compose.yaml</code> files allow you to write all the commands you would normally run in the terminal in a file. You can also start multiple containers at once, which will automatically be started on the same network.
+  </p>
+  <script src="https://gist.github.com/alvarezrrj/9dd59825b8695017234c0d68023fc8f6.js"></script>
+  <p>
+    To start the containers, run <code>docker-compose up [-d]</code>. To stop it, run <code>docker-compose down</code>.
+  </p>
+</section>
+
+
+{% endblock %}

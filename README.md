@@ -1,8 +1,8 @@
-# Project Title
+# CheatSheet
 
-A simple Flask app that serves a multipage cheat sheet. Navigation bars are generated automatically and styled with Bootstrap
+A simple Flask app that serves my personal cheat sheet on my local network.
 
-## Getting Started
+## If anyone anywhere would ever want to use this
 
 * Write your .html files in templates/
 * .html files should only have &lt;section&gt;s
