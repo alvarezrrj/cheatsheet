@@ -11,12 +11,8 @@ A simple Flask app that serves my personal cheat sheet on my local network.
 
 ## Built With
 
-* [Flask](https://flask.palletsprojects.com/en/2.2.x/) - The web framework used
-* [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/) - Styles
-
-## Authors
-
-* [Rodrigo Alvarez](https://github.com/alvarezrrj)
+* [Flask](https://flask.palletsprojects.com/en/2.2.x/) and
+* [Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/) for styles
 
 
 ## Acknowledgments
